@@ -1,4 +1,4 @@
-import { isAdminAuthenticatedFromRequest } from '@/lib/admin-auth';
+import { isAdmin } from '@/lib/admin';
 import { getEnv } from '@/lib/cloudflare';
 import { SubmissionNotFoundError, updateSubmissionResult } from '@/lib/submissions';
 import type { SubmissionStatus } from '@/types';
@@ -13,7 +13,7 @@ interface ResultBody {
 }
 
 export async function POST(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-  if (!isAdminAuthenticatedFromRequest(request)) {
+  if (!(await isAdmin())) {
     return NextResponse.json({ error: '未授权' }, { status: 401 });
   }
 

@@ -1,43 +1,4 @@
-import { isAdminAuthenticatedFromRequest } from '@/lib/admin-auth';
 import { describe, expect, it } from 'vitest';
-
-describe('Admin Authentication', () => {
-  it('should reject request without cookie', () => {
-    const request = new Request('http://localhost/api/admin/submissions', {
-      headers: {},
-    });
-    expect(isAdminAuthenticatedFromRequest(request)).toBe(false);
-  });
-
-  it('should reject request with expired token', () => {
-    const expiredToken = String(Date.now() - 10000);
-    const request = new Request('http://localhost/api/admin/submissions', {
-      headers: {
-        cookie: `admin_session=${expiredToken}`,
-      },
-    });
-    expect(isAdminAuthenticatedFromRequest(request)).toBe(false);
-  });
-
-  it('should accept request with valid token', () => {
-    const validToken = String(Date.now() + 3600000);
-    const request = new Request('http://localhost/api/admin/submissions', {
-      headers: {
-        cookie: `admin_session=${validToken}`,
-      },
-    });
-    expect(isAdminAuthenticatedFromRequest(request)).toBe(true);
-  });
-
-  it('should reject request with invalid token format', () => {
-    const request = new Request('http://localhost/api/admin/submissions', {
-      headers: {
-        cookie: 'admin_session=not-a-number',
-      },
-    });
-    expect(isAdminAuthenticatedFromRequest(request)).toBe(false);
-  });
-});
 
 describe('Admin Submissions API', () => {
   it('should parse pagination params', () => {

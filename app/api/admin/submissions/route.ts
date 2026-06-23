@@ -1,16 +1,16 @@
-import { isAdminAuthenticatedFromRequest } from '@/lib/admin-auth';
+import { isAdmin } from '@/lib/admin';
 import { getEnv } from '@/lib/cloudflare';
 import { getSubmissions } from '@/lib/db';
 import { type NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
-  if (!isAdminAuthenticatedFromRequest(request)) {
+  if (!(await isAdmin())) {
     return NextResponse.json({ error: '未授权' }, { status: 401 });
   }
 
   try {
     const env = await getEnv();
-    const { searchParams } = new URL(request.url);
+    const { searchParams } = request.nextUrl;
 
     const page = Number.parseInt(searchParams.get('page') ?? '1', 10);
     const limit = Number.parseInt(searchParams.get('limit') ?? '20', 10);
