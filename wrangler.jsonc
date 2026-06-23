@@ -36,5 +36,12 @@
       "name": "EMAIL",
       "allowed_destination_addresses": ["*"]
     }
-  ]
+  ],
+  "vars": {
+    "ADMIN_EMAIL": "admin@vibesite.dev",
+    "NEXT_PUBLIC_TURNSTILE_SITE_KEY": "",
+    "NEXT_PUBLIC_GA_ID": "",
+    "R2_DEPLOYED_BUCKET_NAME": "vibesite-deployed",
+    "TELEGRAM_CHAT_ID": ""
+  }
 }
