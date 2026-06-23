@@ -1,3 +1,6 @@
+-- Migration: Create submissions table
+-- Created: 2026-06-23
+
 CREATE TABLE IF NOT EXISTS submissions (
   id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(8)))),
   project_name TEXT NOT NULL,

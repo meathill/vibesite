@@ -1,0 +1,44 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Logo — wordmark" subtitle="Sizing & spacing for the lockup" viewport="700x360" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Logo — wordmark</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .stack { display: flex; flex-direction: column; gap: 14px; }
+  .frame {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 22px 28px;
+    background: var(--neutral-0);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .frame img { height: 44px; }
+  .frame.small img { height: 28px; }
+  .frame.large img { height: 64px; }
+  .meta-pair { font-family: var(--font-mono); font-size: 11px; color: var(--muted-foreground); text-align: right; }
+  .meta-pair b { display:block; color: var(--neutral-800); font-weight:600; font-size: 11px; }
+</style>
+</head>
+<body class="card">
+  <div class="stack">
+    <div class="frame large">
+      <img src="../assets/logo-wordmark.svg" alt="Meathill">
+      <div class="meta-pair"><b>display / hero</b>height ≥ 56px</div>
+    </div>
+    <div class="frame">
+      <img src="../assets/logo-wordmark.svg" alt="Meathill">
+      <div class="meta-pair"><b>navbar / footer</b>height 40–48px</div>
+    </div>
+    <div class="frame small">
+      <img src="../assets/logo-wordmark.svg" alt="Meathill">
+      <div class="meta-pair"><b>compact</b>min height 28px</div>
+    </div>
+  </div>
+</body>
+</html>

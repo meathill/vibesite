@@ -15,8 +15,6 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "db:init": "wrangler d1 execute vibesite-db --file=./db/schema.sql",
-    "db:seed": "wrangler d1 execute vibesite-db --file=./db/seed.sql",
     "db:migrate": "wrangler d1 migrations apply vibesite-db",
     "db:migrate:create": "wrangler d1 migrations create vibesite-db",
     "db:migrate:list": "wrangler d1 migrations list vibesite-db",

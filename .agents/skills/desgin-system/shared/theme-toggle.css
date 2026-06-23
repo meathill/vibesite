@@ -1,0 +1,69 @@
+/* shared/theme-toggle.css — shape for the theme toggle button.
+   Imported by each UI kit's index.html alongside theme-toggle.js. */
+
+.mh-theme-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 99px;
+  background: var(--neutral-0);
+  border: 1px solid var(--border);
+  display: inline-grid;
+  place-items: center;
+  cursor: pointer;
+  color: var(--neutral-700);
+  font-size: 16px;
+  transition: background var(--duration-fast) var(--ease-out), color var(--duration-fast)
+    var(--ease-out), transform var(--duration-fast);
+  flex: 0 0 34px;
+}
+.mh-theme-btn:hover {
+  background: var(--accent);
+  color: var(--brand-700);
+  border-color: oklch(0.58 0.22 28 / 30%);
+}
+.mh-theme-btn:active {
+  transform: scale(0.94);
+}
+.mh-theme-btn i {
+  font-size: 17px;
+}
+
+[data-theme="dark"] .mh-theme-btn {
+  background: var(--surface-raised);
+  color: var(--foreground);
+}
+[data-theme="dark"] .mh-theme-btn:hover {
+  color: var(--primary);
+}
+
+/* Smooth root-level color transition on toggle.
+   Restricted to color-bearing props so layout-affecting transitions don't sneak in. */
+html {
+  transition: background-color var(--duration-base) var(--ease-out), color var(--duration-base)
+    var(--ease-out);
+}
+body,
+.nav,
+.topbar,
+.header,
+.sidebar,
+.card,
+.table-card,
+.feature,
+.stat-tile,
+.composer,
+.upgrade-banner,
+.agent-card,
+.dl-form,
+.modal,
+.toast,
+.filterbar,
+.statbar,
+.batchbar,
+.reply,
+.translation,
+.footer,
+.trust {
+  transition: background-color var(--duration-base) var(--ease-out), border-color
+    var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out);
+}

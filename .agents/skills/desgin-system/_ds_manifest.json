@@ -1,0 +1,1334 @@
+{
+  "namespace": "MeathillDesignSystem_019e2c",
+  "components": [],
+  "startingPoints": [],
+  "cards": [
+    {
+      "path": "emails/01-download-complete.html",
+      "group": "Brand",
+      "viewport": "700x1000",
+      "name": "Email — Download complete"
+    },
+    {
+      "path": "emails/02-payment-receipt.html",
+      "group": "Brand",
+      "viewport": "700x900",
+      "name": "Email — Payment receipt"
+    },
+    {
+      "path": "emails/03-comment-notification.html",
+      "group": "Brand",
+      "viewport": "700x850",
+      "name": "Email — New comment to moderate"
+    },
+    {
+      "path": "emails/04-quota-warning.html",
+      "group": "Brand",
+      "viewport": "700x900",
+      "name": "Email — Quota warning"
+    },
+    {
+      "path": "emails/05-welcome.html",
+      "group": "Brand",
+      "viewport": "700x900",
+      "name": "Email — Welcome & verify"
+    },
+    {
+      "path": "og/01-default.html",
+      "group": "Brand",
+      "viewport": "1200x630",
+      "name": "OG image — Default"
+    },
+    {
+      "path": "og/02-article.html",
+      "group": "Brand",
+      "viewport": "1200x630",
+      "name": "OG image — Article"
+    },
+    {
+      "path": "og/03-feature.html",
+      "group": "Brand",
+      "viewport": "1200x630",
+      "name": "OG image — Product feature"
+    },
+    {
+      "path": "og/04-pro.html",
+      "group": "Brand",
+      "viewport": "1200x630",
+      "name": "OG image — Pro / pricing"
+    },
+    {
+      "path": "preview/01-logo-mark.html",
+      "group": "Brand",
+      "viewport": "700x380",
+      "subtitle": "Mark on light, tinted, dark, gradient",
+      "name": "Logo — mark"
+    },
+    {
+      "path": "preview/02-logo-wordmark.html",
+      "group": "Brand",
+      "viewport": "700x360",
+      "subtitle": "Sizing & spacing for the lockup",
+      "name": "Logo — wordmark"
+    },
+    {
+      "path": "preview/03-brand-gradient.html",
+      "group": "Brand",
+      "viewport": "700x340",
+      "subtitle": "Premium gradient & soft wash",
+      "name": "Brand gradient"
+    },
+    {
+      "path": "preview/24-icons.html",
+      "group": "Brand",
+      "viewport": "700x420",
+      "subtitle": "Phosphor regular/fill/duotone via CDN",
+      "name": "Iconography — Phosphor"
+    },
+    {
+      "path": "states/index.html",
+      "group": "Brand",
+      "viewport": "1280x1200",
+      "name": "Edge & empty states"
+    },
+    {
+      "path": "preview/04-colors-brand-scale.html",
+      "group": "Colors",
+      "viewport": "700x280",
+      "subtitle": "Warm crimson — 50 → 950",
+      "name": "Brand color scale"
+    },
+    {
+      "path": "preview/05-colors-neutrals.html",
+      "group": "Colors",
+      "viewport": "700x280",
+      "subtitle": "Warm-tinted neutrals — no cool blue",
+      "name": "Neutral color scale"
+    },
+    {
+      "path": "preview/06-colors-semantic.html",
+      "group": "Colors",
+      "viewport": "700x240",
+      "subtitle": "success / warning / destructive / info",
+      "name": "Semantic colors"
+    },
+    {
+      "path": "preview/07-colors-tokens.html",
+      "group": "Colors",
+      "viewport": "700x360",
+      "subtitle": "–background, –primary, –muted, etc.",
+      "name": "Semantic tokens"
+    },
+    {
+      "path": "preview/16-buttons.html",
+      "group": "Components",
+      "viewport": "700x360",
+      "subtitle": "default · secondary · outline · ghost · destructive · link",
+      "name": "Buttons — variants"
+    },
+    {
+      "path": "preview/17-buttons-states.html",
+      "group": "Components",
+      "viewport": "700x360",
+      "subtitle": "xs → xl · hover / press / focus / loading / disabled",
+      "name": "Buttons — sizes & states"
+    },
+    {
+      "path": "preview/18-inputs.html",
+      "group": "Components",
+      "viewport": "700x320",
+      "subtitle": "default · icon · focus · invalid · disabled",
+      "name": "Inputs & form fields"
+    },
+    {
+      "path": "preview/19-badges.html",
+      "group": "Components",
+      "viewport": "700x260",
+      "subtitle": "filled · status pill · counter · inline",
+      "name": "Badges & status pills"
+    },
+    {
+      "path": "preview/20-cards.html",
+      "group": "Components",
+      "viewport": "700x360",
+      "subtitle": "feature · interactive · tinted CTA",
+      "name": "Cards"
+    },
+    {
+      "path": "preview/21-pricing-card.html",
+      "group": "Components",
+      "viewport": "700x380",
+      "subtitle": "Free + Pro with featured ribbon",
+      "name": "Pricing card"
+    },
+    {
+      "path": "preview/22-navbar.html",
+      "group": "Components",
+      "viewport": "700x160",
+      "subtitle": "Glass sticky nav · 56px · 2xl",
+      "name": "Navbar"
+    },
+    {
+      "path": "preview/23-stats-bar.html",
+      "group": "Components",
+      "viewport": "700x180",
+      "subtitle": "Trust strip — big numbers, no decoration",
+      "name": "Stats bar"
+    },
+    {
+      "path": "preview/12-radii.html",
+      "group": "Spacing",
+      "viewport": "700x240",
+      "subtitle": "Radius scale — sm → 3xl",
+      "name": "Radii"
+    },
+    {
+      "path": "preview/13-shadows.html",
+      "group": "Spacing",
+      "viewport": "700x230",
+      "subtitle": "xs → xl + primary glow",
+      "name": "Shadows & elevation"
+    },
+    {
+      "path": "preview/14-spacing-scale.html",
+      "group": "Spacing",
+      "viewport": "700x290",
+      "subtitle": "4 → 96px on the 4px unit",
+      "name": "Spacing scale"
+    },
+    {
+      "path": "preview/15-motion.html",
+      "group": "Spacing",
+      "viewport": "700x240",
+      "subtitle": "ease-out / ease-in-out / linear + durations",
+      "name": "Motion"
+    },
+    {
+      "path": "preview/08-type-families.html",
+      "group": "Type",
+      "viewport": "700x380",
+      "subtitle": "Sora / Plus Jakarta Sans / JetBrains Mono",
+      "name": "Type — families"
+    },
+    {
+      "path": "preview/09-type-display.html",
+      "group": "Type",
+      "viewport": "700x360",
+      "subtitle": "h1 → h5 specimens",
+      "name": "Type — display scale"
+    },
+    {
+      "path": "preview/10-type-body.html",
+      "group": "Type",
+      "viewport": "700x320",
+      "subtitle": "lede, body, body-sm, caption",
+      "name": "Type — body & prose"
+    },
+    {
+      "path": "preview/11-type-eyebrow-mono.html",
+      "group": "Type",
+      "viewport": "700x280",
+      "subtitle": "Eyebrow label, kbd, inline code, terminal",
+      "name": "Type — eyebrow & mono"
+    },
+    {
+      "path": "ui_kits/app-dashboard/index.html",
+      "group": "UI Kit — App Dashboard",
+      "viewport": "1280x800",
+      "subtitle": "Sidebar · composer · live task table with state transitions",
+      "name": "UI Kit — App dashboard"
+    },
+    {
+      "path": "ui_kits/comment-admin/index.html",
+      "group": "UI Kit — Comment Admin",
+      "viewport": "1440x1000",
+      "subtitle": "Awesome Comment moderation · batch actions · AI replies",
+      "name": "UI Kit — Comment admin"
+    },
+    {
+      "path": "ui_kits/marketing-site/index-zh.html",
+      "group": "UI Kit — Marketing Site",
+      "viewport": "1280x800",
+      "subtitle": "Chinese localization with Noto Sans SC fallback",
+      "name": "UI Kit — Marketing site (中文)"
+    },
+    {
+      "path": "ui_kits/marketing-site/index.html",
+      "group": "UI Kit — Marketing Site",
+      "viewport": "1280x800",
+      "subtitle": "Hero · features · agents · pricing CTA · FAQ · footer",
+      "name": "UI Kit — Marketing site"
+    }
+  ],
+  "templates": [],
+  "globalCssPaths": [
+    "colors_and_type.css",
+    "og/og.css",
+    "preview/_card.css",
+    "shared/theme-toggle.css",
+    "ui_kits/app-dashboard/app.css",
+    "ui_kits/comment-admin/admin.css",
+    "ui_kits/marketing-site/site.css"
+  ],
+  "tokens": [
+    {
+      "name": "--font-display",
+      "value": "'Sora', 'Noto Sans SC', ui-sans-serif, system-ui, -apple-system,\n                  'Segoe UI', sans-serif",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--font-sans",
+      "value": "'Plus Jakarta Sans', 'Noto Sans SC', ui-sans-serif, system-ui,\n                  -apple-system, 'Segoe UI', sans-serif",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--font-mono",
+      "value": "'JetBrains Mono', ui-monospace, 'SF Mono',\n                  Menlo, Consolas, monospace",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--text-2xs",
+      "value": "0.6875rem",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    { "name": "--text-xs", "value": "0.75rem", "kind": "font", "definedIn": "colors_and_type.css" },
+    {
+      "name": "--text-sm",
+      "value": "0.875rem",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    { "name": "--text-base", "value": "1rem", "kind": "font", "definedIn": "colors_and_type.css" },
+    {
+      "name": "--text-md",
+      "value": "1.125rem",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    { "name": "--text-lg", "value": "1.25rem", "kind": "font", "definedIn": "colors_and_type.css" },
+    { "name": "--text-xl", "value": "1.5rem", "kind": "font", "definedIn": "colors_and_type.css" },
+    {
+      "name": "--text-2xl",
+      "value": "1.875rem",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--text-3xl",
+      "value": "2.25rem",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    { "name": "--text-4xl", "value": "3rem", "kind": "font", "definedIn": "colors_and_type.css" },
+    {
+      "name": "--text-5xl",
+      "value": "3.75rem",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    { "name": "--text-6xl", "value": "4.5rem", "kind": "font", "definedIn": "colors_and_type.css" },
+    {
+      "name": "--weight-regular",
+      "value": "400",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--weight-medium",
+      "value": "500",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--weight-semibold",
+      "value": "600",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    { "name": "--weight-bold", "value": "700", "kind": "font", "definedIn": "colors_and_type.css" },
+    {
+      "name": "--weight-black",
+      "value": "800",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--leading-tight",
+      "value": "1.1",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--leading-snug",
+      "value": "1.25",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--leading-normal",
+      "value": "1.5",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--leading-relaxed",
+      "value": "1.65",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--tracking-tight",
+      "value": "-0.02em",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--tracking-normal",
+      "value": "0",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--tracking-wide",
+      "value": "0.05em",
+      "kind": "font",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--brand-50",
+      "value": "oklch(0.97 0.012 28)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--brand-100",
+      "value": "oklch(0.94 0.025 28)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--brand-200",
+      "value": "oklch(0.88 0.06  28)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--brand-300",
+      "value": "oklch(0.78 0.12  28)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--brand-400",
+      "value": "oklch(0.68 0.18  28)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--brand-500",
+      "value": "oklch(0.58 0.22  28)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--brand-600",
+      "value": "oklch(0.50 0.21  26)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--brand-700",
+      "value": "oklch(0.42 0.18  25)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--brand-800",
+      "value": "oklch(0.34 0.14  24)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--brand-900",
+      "value": "oklch(0.26 0.10  24)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--brand-950",
+      "value": "oklch(0.18 0.07  24)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--neutral-0",
+      "value": "#ffffff",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--neutral-50",
+      "value": "oklch(0.985 0.004 60)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--neutral-100",
+      "value": "oklch(0.965 0.008 55)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--neutral-150",
+      "value": "oklch(0.945 0.010 50)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--neutral-200",
+      "value": "oklch(0.915 0.012 48)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--neutral-300",
+      "value": "oklch(0.86  0.012 45)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--neutral-400",
+      "value": "oklch(0.72  0.012 40)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--neutral-500",
+      "value": "oklch(0.58  0.010 38)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--neutral-600",
+      "value": "oklch(0.45  0.010 36)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--neutral-700",
+      "value": "oklch(0.34  0.012 34)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--neutral-800",
+      "value": "oklch(0.24  0.012 32)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--neutral-900",
+      "value": "oklch(0.16  0.012 30)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--neutral-950",
+      "value": "oklch(0.10  0.010 28)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--success-500",
+      "value": "oklch(0.66 0.16 142)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--success-700",
+      "value": "oklch(0.46 0.13 140)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--warning-500",
+      "value": "oklch(0.78 0.16 65)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--warning-700",
+      "value": "oklch(0.55 0.14 55)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--danger-500",
+      "value": "oklch(0.58 0.22 28)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--danger-600",
+      "value": "oklch(0.50 0.23 24)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--danger-700",
+      "value": "oklch(0.42 0.20 22)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--info-500",
+      "value": "oklch(0.55 0.04 35)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--info-700",
+      "value": "oklch(0.40 0.03 35)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--background",
+      "value": "var(--neutral-50)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--foreground",
+      "value": "var(--neutral-900)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--card",
+      "value": "var(--neutral-0)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--card-foreground",
+      "value": "var(--neutral-900)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--popover",
+      "value": "var(--neutral-0)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--popover-foreground",
+      "value": "var(--neutral-900)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--primary",
+      "value": "var(--brand-500)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--primary-foreground",
+      "value": "var(--neutral-0)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--primary-hover",
+      "value": "var(--brand-600)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--primary-active",
+      "value": "var(--brand-700)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--secondary",
+      "value": "var(--neutral-100)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--secondary-foreground",
+      "value": "var(--neutral-900)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--muted",
+      "value": "var(--neutral-100)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--muted-foreground",
+      "value": "var(--neutral-500)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--accent",
+      "value": "oklch(0.96 0.018 28)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--accent-foreground",
+      "value": "var(--brand-700)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--destructive",
+      "value": "var(--danger-600)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--destructive-foreground",
+      "value": "var(--neutral-0)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--success",
+      "value": "var(--success-500)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--success-foreground",
+      "value": "var(--success-700)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--warning",
+      "value": "var(--warning-500)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--warning-foreground",
+      "value": "var(--warning-700)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--info",
+      "value": "var(--info-500)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--info-foreground",
+      "value": "var(--info-700)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--border",
+      "value": "var(--neutral-200)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--input",
+      "value": "var(--neutral-200)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--ring",
+      "value": "var(--brand-500)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--surface-raised",
+      "value": "var(--neutral-0)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--surface-sunken",
+      "value": "oklch(0.96 0.008 50)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--overlay",
+      "value": "oklch(0.10 0.010 28 / 60%)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--glass-bg",
+      "value": "rgba(255, 255, 255, 0.7)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--glass-border",
+      "value": "rgba(255, 255, 255, 0.3)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--brand-gradient",
+      "value": "linear-gradient(135deg,\n                             oklch(0.62 0.22 32) 0%,\n                             oklch(0.46 0.20 22) 100%)",
+      "kind": "other",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--brand-gradient-soft",
+      "value": "linear-gradient(180deg,\n                             oklch(0.97 0.012 28) 0%,\n                             transparent 100%)",
+      "kind": "other",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--radius",
+      "value": "0.75rem",
+      "kind": "radius",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--radius-sm",
+      "value": "calc(var(--radius) - 4px)",
+      "kind": "radius",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--radius-md",
+      "value": "calc(var(--radius) - 2px)",
+      "kind": "radius",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--radius-lg",
+      "value": "var(--radius)",
+      "kind": "radius",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--radius-xl",
+      "value": "calc(var(--radius) + 4px)",
+      "kind": "radius",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--radius-2xl",
+      "value": "calc(var(--radius) + 8px)",
+      "kind": "radius",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--radius-3xl",
+      "value": "calc(var(--radius) + 12px)",
+      "kind": "radius",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--radius-full",
+      "value": "9999px",
+      "kind": "radius",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--space-0_5",
+      "value": "0.125rem",
+      "kind": "spacing",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--space-1",
+      "value": "0.25rem",
+      "kind": "spacing",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--space-1_5",
+      "value": "0.375rem",
+      "kind": "spacing",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--space-2",
+      "value": "0.5rem",
+      "kind": "spacing",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--space-3",
+      "value": "0.75rem",
+      "kind": "spacing",
+      "definedIn": "colors_and_type.css"
+    },
+    { "name": "--space-4", "value": "1rem", "kind": "spacing", "definedIn": "colors_and_type.css" },
+    {
+      "name": "--space-5",
+      "value": "1.25rem",
+      "kind": "spacing",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--space-6",
+      "value": "1.5rem",
+      "kind": "spacing",
+      "definedIn": "colors_and_type.css"
+    },
+    { "name": "--space-8", "value": "2rem", "kind": "spacing", "definedIn": "colors_and_type.css" },
+    {
+      "name": "--space-10",
+      "value": "2.5rem",
+      "kind": "spacing",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--space-12",
+      "value": "3rem",
+      "kind": "spacing",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--space-16",
+      "value": "4rem",
+      "kind": "spacing",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--space-20",
+      "value": "5rem",
+      "kind": "spacing",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--space-24",
+      "value": "6rem",
+      "kind": "spacing",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--shadow-xs",
+      "value": "0 1px 2px 0   oklch(0.20 0.05 28 / 4%)",
+      "kind": "shadow",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--shadow-sm",
+      "value": "0 1px 3px 0   oklch(0.20 0.05 28 / 6%),\n                 0 1px 2px -1px oklch(0.20 0.05 28 / 4%)",
+      "kind": "shadow",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--shadow-md",
+      "value": "0 4px 6px -1px oklch(0.20 0.05 28 / 7%),\n                 0 2px 4px -2px oklch(0.20 0.05 28 / 4%)",
+      "kind": "shadow",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--shadow-lg",
+      "value": "0 10px 15px -3px oklch(0.20 0.05 28 / 8%),\n                 0 4px  6px -4px oklch(0.20 0.05 28 / 4%)",
+      "kind": "shadow",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--shadow-xl",
+      "value": "0 20px 25px -5px oklch(0.20 0.05 28 / 10%),\n                 0 8px 10px -6px  oklch(0.20 0.05 28 / 4%)",
+      "kind": "shadow",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--shadow-inner-highlight",
+      "value": "inset 0 1px 0 0 rgba(255,255,255,0.6)",
+      "kind": "shadow",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--shadow-inner-edge",
+      "value": "0 1px 0 0 oklch(0.20 0.05 28 / 6%)",
+      "kind": "shadow",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--shadow-primary",
+      "value": "0 1px 2px 0 oklch(0.58 0.22 28 / 14%),\n                      0 4px 12px -2px oklch(0.58 0.22 28 / 24%)",
+      "kind": "shadow",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--shadow-primary-lg",
+      "value": "0 4px 14px 0 oklch(0.58 0.22 28 / 18%),\n                      0 12px 32px -4px oklch(0.58 0.22 28 / 30%)",
+      "kind": "shadow",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--ease-out",
+      "value": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+      "kind": "other",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--ease-in-out",
+      "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "kind": "other",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--duration-fast",
+      "value": "120ms",
+      "kind": "other",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--duration-base",
+      "value": "180ms",
+      "kind": "other",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--duration-slow",
+      "value": "280ms",
+      "kind": "other",
+      "definedIn": "colors_and_type.css"
+    },
+    {
+      "name": "--background",
+      "value": "oklch(0.16 0.010 30)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--foreground",
+      "value": "oklch(0.96 0.010 60)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--card",
+      "value": "oklch(0.20 0.012 30)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--card-foreground",
+      "value": "oklch(0.96 0.010 60)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--popover",
+      "value": "oklch(0.23 0.014 30)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--popover-foreground",
+      "value": "oklch(0.96 0.010 60)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--surface-raised",
+      "value": "oklch(0.22 0.012 30)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--surface-sunken",
+      "value": "oklch(0.13 0.008 30)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--primary",
+      "value": "oklch(0.68 0.20 30)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--primary-foreground",
+      "value": "oklch(0.14 0.010 30)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--primary-hover",
+      "value": "oklch(0.74 0.20 30)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--primary-active",
+      "value": "oklch(0.62 0.21 30)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--secondary",
+      "value": "oklch(0.24 0.012 30)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--secondary-foreground",
+      "value": "oklch(0.92 0.010 60)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--muted",
+      "value": "oklch(0.22 0.012 30)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--muted-foreground",
+      "value": "oklch(0.68 0.012 40)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--accent",
+      "value": "oklch(0.28 0.05 28)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--accent-foreground",
+      "value": "oklch(0.88 0.08 28)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--destructive",
+      "value": "oklch(0.66 0.21 24)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--destructive-foreground",
+      "value": "oklch(0.14 0.010 30)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--success",
+      "value": "oklch(0.70 0.16 142)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--success-foreground",
+      "value": "oklch(0.80 0.14 142)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--warning",
+      "value": "oklch(0.80 0.16 65)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--warning-foreground",
+      "value": "oklch(0.84 0.13 65)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--info",
+      "value": "oklch(0.66 0.030 35)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--info-foreground",
+      "value": "oklch(0.80 0.020 35)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--border",
+      "value": "oklch(0.30 0.010 30 / 80%)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--input",
+      "value": "oklch(0.30 0.010 30)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--ring",
+      "value": "oklch(0.68 0.20 30)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--shadow-xs",
+      "value": "0 1px 2px 0   oklch(0 0 0 / 24%)",
+      "kind": "shadow",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--shadow-sm",
+      "value": "0 1px 3px 0   oklch(0 0 0 / 30%),\n                 0 1px 2px -1px oklch(0 0 0 / 20%)",
+      "kind": "shadow",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--shadow-md",
+      "value": "0 4px 8px -1px oklch(0 0 0 / 36%),\n                 0 2px 4px -2px oklch(0 0 0 / 20%)",
+      "kind": "shadow",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--shadow-lg",
+      "value": "0 12px 20px -3px oklch(0 0 0 / 44%),\n                 0 4px  8px -4px  oklch(0 0 0 / 24%)",
+      "kind": "shadow",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--shadow-xl",
+      "value": "0 24px 40px -8px oklch(0 0 0 / 52%)",
+      "kind": "shadow",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--shadow-inner-highlight",
+      "value": "inset 0 1px 0 0 oklch(1 0 0 / 6%)",
+      "kind": "shadow",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--shadow-inner-edge",
+      "value": "0 1px 0 0 oklch(1 0 0 / 4%)",
+      "kind": "shadow",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--shadow-primary",
+      "value": "0 1px 2px 0  oklch(0.68 0.20 30 / 24%),\n                       0 4px 16px -2px oklch(0.68 0.20 30 / 36%)",
+      "kind": "shadow",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--shadow-primary-lg",
+      "value": "0 4px 18px 0  oklch(0.68 0.20 30 / 28%),\n                       0 16px 40px -6px oklch(0.68 0.20 30 / 40%)",
+      "kind": "shadow",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--overlay",
+      "value": "oklch(0 0 0 / 70%)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--glass-bg",
+      "value": "oklch(0.18 0.012 30 / 80%)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--glass-border",
+      "value": "oklch(1 0 0 / 6%)",
+      "kind": "color",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--brand-gradient",
+      "value": "linear-gradient(135deg,\n                             oklch(0.68 0.20 30) 0%,\n                             oklch(0.50 0.18 22) 100%)",
+      "kind": "other",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    },
+    {
+      "name": "--brand-gradient-soft",
+      "value": "linear-gradient(180deg,\n                             oklch(0.24 0.04 28) 0%,\n                             transparent 100%)",
+      "kind": "other",
+      "definedIn": "colors_and_type.css",
+      "scope": ".dark"
+    }
+  ],
+  "themes": [{ "selector": ".dark", "label": "Dark" }],
+  "fonts": [],
+  "brandFonts": [
+    {
+      "family": "Sora",
+      "status": "ok",
+      "tokens": ["--font-display"],
+      "path": "colors_and_type.css"
+    },
+    {
+      "family": "Plus Jakarta Sans",
+      "status": "ok",
+      "tokens": ["--font-sans"],
+      "path": "colors_and_type.css"
+    },
+    {
+      "family": "JetBrains Mono",
+      "status": "ok",
+      "tokens": ["--font-mono"],
+      "path": "colors_and_type.css"
+    }
+  ],
+  "source": "spa"
+}
