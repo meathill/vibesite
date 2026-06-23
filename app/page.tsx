@@ -1,16 +1,16 @@
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { FaqJsonLd } from '@/components/seo/json-ld';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import {
   CheckCircleIcon,
-  ClockIcon,
   CodeIcon,
   FileZipIcon,
   GlobeIcon,
@@ -22,7 +22,6 @@ import {
   UserIcon,
 } from '@phosphor-icons/react/dist/ssr';
 import type { Metadata } from 'next';
-import { FaqJsonLd } from '@/components/seo/json-ld';
 
 export const metadata: Metadata = {
   title: 'VibeSite - AI 生成网页一键上线 | 免费部署托管',
@@ -31,16 +30,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://vibesite.dev' },
 };
 
-const AI_TOOLS = [
-  'Cursor',
-  'Bolt',
-  'Lovable',
-  'v0',
-  'ChatGPT',
-  'Claude',
-  'Windsurf',
-  'Replit',
-];
+const AI_TOOLS = ['Cursor', 'Bolt', 'Lovable', 'v0', 'ChatGPT', 'Claude', 'Windsurf', 'Replit'];
 
 const WHY_POINTS = [
   {
@@ -90,41 +80,31 @@ const PERSONAS = [
 
 const PRICING_PLANS = [
   {
-    name: '免费预览',
-    price: '0',
-    unit: '',
-    desc: '72 小时内免费访问',
-    features: ['全球 CDN 部署', '可分享的预览链接', '72 小时有效期'],
-    cta: '立即尝试',
+    name: '基础',
+    price: '99',
+    unit: '元/年',
+    desc: '快速上线，省心省力',
+    features: ['HTTPS 证书', '全球 CDN 加速', '不限访问次数', '邮件技术支持'],
+    cta: '立即开始',
     ctaHref: '/submit',
     highlighted: false,
   },
   {
-    name: '基础托管',
-    price: '29',
+    name: '全自持',
+    price: '299',
     unit: '元/年',
-    desc: '长期稳定的在线方案',
-    features: ['长期稳定的预览链接', '全球 CDN 加速', '不限访问次数', '邮件技术支持'],
-    cta: '联系我们',
+    desc: '完全掌控你的网站',
+    features: ['HTTPS 证书', '绑定自定义域名', '完全自主管理', '优先技术支持'],
+    cta: '立即开始',
     ctaHref: '/submit',
     highlighted: true,
   },
   {
-    name: '自定义域名',
-    price: '99',
-    unit: '元/年',
-    desc: '用你自己的域名',
-    features: ['绑定自己的域名', 'HTTPS 证书', '长期稳定托管', '优先技术支持'],
-    cta: '联系我们',
-    ctaHref: '/submit',
-    highlighted: false,
-  },
-  {
     name: '人工服务',
-    price: '299-999',
-    unit: '元',
+    price: '联系我',
+    unit: '',
     desc: '专业人工部署与优化',
-    features: ['专业人工部署', '代码优化建议', '性能调优', '一对一支持'],
+    features: ['HTTPS 证书', '专业人工部署', '代码优化建议', '一对一支持'],
     cta: '联系我们',
     ctaHref: '/submit',
     highlighted: false,
@@ -148,8 +128,7 @@ const FAQS = [
   },
   {
     question: '能绑定自己的域名吗？',
-    answer:
-      '可以。选择「自定义域名」方案（99 元/年），我们帮你配置域名解析和 HTTPS 证书。',
+    answer: '可以。选择「自定义域名」方案（99 元/年），我们帮你配置域名解析和 HTTPS 证书。',
   },
   {
     question: '我的代码安全吗？',
@@ -197,7 +176,11 @@ export default function HomePage() {
               FAQ
             </a>
           </div>
-          <Button size="sm" render={<a href="/submit" />}>
+          <Button
+            size="default"
+            className="bg-brand-gradient shadow-primary"
+            render={<a href="/submit" />}
+          >
             立即上线
           </Button>
         </div>
@@ -215,11 +198,15 @@ export default function HomePage() {
           <br className="hidden md:block" />
           免费预览，无需注册，全球 CDN 加速。
         </p>
-        <div className="flex gap-3">
-          <Button size="lg" render={<a href="/submit" />}>
+        <div className="flex gap-4">
+          <Button
+            size="xl"
+            className="bg-brand-gradient shadow-primary-lg"
+            render={<a href="/submit" />}
+          >
             立即上传
           </Button>
-          <Button size="lg" variant="outline" render={<a href="#how-it-works" />}>
+          <Button size="xl" variant="outline" render={<a href="#how-it-works" />}>
             了解更多
           </Button>
         </div>
@@ -242,9 +229,7 @@ export default function HomePage() {
       {/* 工具兼容条 */}
       <section className="border-y bg-muted/30 px-4 py-8">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="mb-4 text-sm text-muted-foreground">
-            支持所有主流 AI 工具生成的网页
-          </p>
+          <p className="mb-4 text-sm text-muted-foreground">支持所有主流 AI 工具生成的网页</p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             {AI_TOOLS.map((tool) => (
               <Badge key={tool} variant="secondary" className="px-4 py-1.5 text-sm">
@@ -258,9 +243,7 @@ export default function HomePage() {
       {/* 怎么用 */}
       <section id="how-it-works" className="px-4 py-16 md:py-24">
         <div className="mx-auto max-w-4xl">
-          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">
-            三步完成上线
-          </h2>
+          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">三步完成上线</h2>
           <p className="mb-12 text-center text-muted-foreground">
             不需要懂技术，不需要注册任何平台
           </p>
@@ -307,12 +290,8 @@ export default function HomePage() {
       {/* 为什么选择 VibeSite */}
       <section className="bg-muted/30 px-4 py-16 md:py-24">
         <div className="mx-auto max-w-4xl">
-          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">
-            为什么选择 VibeSite
-          </h2>
-          <p className="mb-12 text-center text-muted-foreground">
-            专为不熟悉技术部署的用户设计
-          </p>
+          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">为什么选择 VibeSite</h2>
+          <p className="mb-12 text-center text-muted-foreground">专为不熟悉技术部署的用户设计</p>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {WHY_POINTS.map((item) => (
               <Card key={item.title}>
@@ -334,9 +313,7 @@ export default function HomePage() {
       {/* 使用场景 */}
       <section className="px-4 py-16 md:py-24">
         <div className="mx-auto max-w-4xl">
-          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">
-            适合谁用
-          </h2>
+          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">适合谁用</h2>
           <p className="mb-12 text-center text-muted-foreground">
             不管你是谁，只要有一个网页想上线，我们就能帮你
           </p>
@@ -364,12 +341,8 @@ export default function HomePage() {
       {/* 定价 */}
       <section id="pricing" className="px-4 py-16 md:py-24">
         <div className="mx-auto max-w-5xl">
-          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">
-            选择适合你的方案
-          </h2>
-          <p className="mb-12 text-center text-muted-foreground">
-            先免费预览，满意了再升级
-          </p>
+          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">选择适合你的方案</h2>
+          <p className="mb-12 text-center text-muted-foreground">先免费预览，满意了再升级</p>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
             {PRICING_PLANS.map((plan) => (
               <Card
@@ -378,17 +351,13 @@ export default function HomePage() {
                   plan.highlighted ? 'border-primary shadow-md' : ''
                 }`}
               >
-                {plan.highlighted && (
-                  <Badge className="absolute -top-2.5 right-4">推荐</Badge>
-                )}
+                {plan.highlighted && <Badge className="absolute -top-2.5 right-4">推荐</Badge>}
                 <CardHeader>
                   <CardTitle className="text-base">{plan.name}</CardTitle>
                   <div className="flex items-baseline gap-1">
                     <span className="text-3xl font-bold">{plan.price}</span>
                     {plan.unit && (
-                      <span className="text-sm text-muted-foreground">
-                        {plan.unit}
-                      </span>
+                      <span className="text-sm text-muted-foreground">{plan.unit}</span>
                     )}
                   </div>
                   <p className="text-xs text-muted-foreground">{plan.desc}</p>
@@ -396,17 +365,14 @@ export default function HomePage() {
                 <CardContent className="flex flex-1 flex-col gap-3">
                   <ul className="flex-1 space-y-2">
                     {plan.features.map((feature) => (
-                      <li
-                        key={feature}
-                        className="flex items-start gap-2 text-sm"
-                      >
+                      <li key={feature} className="flex items-start gap-2 text-sm">
                         <CheckCircleIcon className="mt-0.5 size-4 shrink-0 text-success" />
                         {feature}
                       </li>
                     ))}
                   </ul>
                   <Button
-                    className="w-full"
+                    className={`w-full ${plan.highlighted ? 'bg-brand-gradient shadow-primary' : ''}`}
                     variant={plan.highlighted ? 'default' : 'outline'}
                     render={<a href={plan.ctaHref} />}
                   >
@@ -424,12 +390,8 @@ export default function HomePage() {
       {/* FAQ */}
       <section id="faq" className="px-4 py-16 md:py-24">
         <div className="mx-auto max-w-2xl">
-          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">
-            常见问题
-          </h2>
-          <p className="mb-8 text-center text-muted-foreground">
-            有疑问？看看下面能不能找到答案
-          </p>
+          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">常见问题</h2>
+          <p className="mb-8 text-center text-muted-foreground">有疑问？看看下面能不能找到答案</p>
           <Accordion multiple={false}>
             {FAQS.map((faq, index) => (
               <AccordionItem key={index} value={`faq-${index}`}>
@@ -444,17 +406,11 @@ export default function HomePage() {
       {/* 最终 CTA */}
       <section className="bg-primary px-4 py-16 text-primary-foreground md:py-24">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="mb-4 text-2xl font-bold md:text-3xl">
-            准备好上线了吗？
-          </h2>
+          <h2 className="mb-4 text-2xl font-bold md:text-3xl">准备好上线了吗？</h2>
           <p className="mb-8 text-primary-foreground/80">
             上传你的网站，10 分钟后就能分享给全世界。
           </p>
-          <Button
-            size="lg"
-            variant="secondary"
-            render={<a href="/submit" />}
-          >
+          <Button size="xl" variant="secondary" render={<a href="/submit" />}>
             立即上传
           </Button>
         </div>
@@ -481,7 +437,7 @@ export default function HomePage() {
             </a>
           </div>
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} VibeSite. All rights reserved.
+            © {new Date().getFullYear()} Meathill LLC. All rights reserved.
           </p>
         </div>
       </footer>

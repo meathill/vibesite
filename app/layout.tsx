@@ -1,25 +1,28 @@
+import { OrganizationJsonLd, SoftwareAppJsonLd, WebsiteJsonLd } from '@/components/seo/json-ld';
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { JetBrains_Mono, Plus_Jakarta_Sans, Sora } from 'next/font/google';
 import Script from 'next/script';
-import { WebsiteJsonLd, SoftwareAppJsonLd, OrganizationJsonLd } from '@/components/seo/json-ld';
 import './globals.css';
 
-const inter = Inter({
+const sora = Sora({
+  variable: '--font-display',
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500', '600', '700', '800'],
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
   variable: '--font-sans',
   subsets: ['latin'],
   display: 'swap',
-});
-
-const interHeading = Inter({
-  variable: '--font-heading',
-  subsets: ['latin'],
-  display: 'swap',
+  weight: ['400', '500', '600', '700'],
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: '--font-mono',
   subsets: ['latin'],
   display: 'swap',
+  weight: ['400', '500', '600'],
 });
 
 const SITE_URL = 'https://vibesite.dev';
@@ -105,7 +108,7 @@ export default function RootLayout({
         <OrganizationJsonLd />
       </head>
       <body
-        className={`${inter.variable} ${interHeading.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${sora.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} antialiased`}
       >
         {children}
 
