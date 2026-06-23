@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
+import Script from 'next/script';
 import { WebsiteJsonLd, SoftwareAppJsonLd, OrganizationJsonLd } from '@/components/seo/json-ld';
 import './globals.css';
 
@@ -87,6 +88,10 @@ export const metadata: Metadata = {
   },
 };
 
+// GA Measurement ID — 部署时通过环境变量注入
+// 本地开发时留空则不加载 GA
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+
 export default function RootLayout({
   children,
 }: {
@@ -98,13 +103,31 @@ export default function RootLayout({
         <WebsiteJsonLd />
         <SoftwareAppJsonLd />
         <OrganizationJsonLd />
-        {/* 百度站长验证 - 替换为实际验证码 */}
-        {/* <meta name="baidu-site-verification" content="YOUR_CODE" /> */}
       </head>
       <body
         className={`${inter.variable} ${interHeading.variable} ${jetbrainsMono.variable} antialiased`}
       >
         {children}
+
+        {/* Google Analytics */}
+        {GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}', {
+                  page_path: window.location.pathname,
+                });
+              `}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );
