@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.0",
+    "@cloudflare/workers-types": "^4.20260621.1",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "@vitejs/plugin-react": "^4.5.0",
