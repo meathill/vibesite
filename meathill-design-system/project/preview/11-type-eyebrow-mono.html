@@ -1,0 +1,64 @@
+<!doctype html>
+<!-- @dsCard group="Type" name="Type — eyebrow & mono" subtitle="Eyebrow label, kbd, inline code, terminal" viewport="700x280" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Type — eyebrow & mono</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .panel {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    background: var(--neutral-0);
+    padding: 16px 18px;
+  }
+  .meta { font-family: var(--font-mono); font-size: 10.5px; color: var(--muted-foreground); margin-top: 10px; }
+  kbd {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 2px 6px;
+    border: 1px solid var(--border);
+    border-bottom-width: 2px;
+    border-radius: var(--radius-sm);
+    background: var(--neutral-50);
+    color: var(--neutral-800);
+  }
+  pre {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    line-height: 1.6;
+    background: oklch(0.18 0.012 30);
+    color: oklch(0.92 0.01 50);
+    padding: 12px 14px;
+    border-radius: var(--radius);
+    overflow-x: auto;
+  }
+  pre .tok-key  { color: oklch(0.78 0.16 28); }
+  pre .tok-str  { color: oklch(0.80 0.13 142); }
+  pre .tok-com  { color: oklch(0.55 0.02 30); }
+</style>
+</head>
+<body class="card">
+  <div class="grid">
+    <div class="panel">
+      <div class="eyebrow">Functional · since 2024</div>
+      <h3 style="margin: 6px 0 0;">Eyebrow label</h3>
+      <p style="margin: 6px 0 0; font-size: 13px; line-height: 1.5;">12px / uppercase / +5% tracking. Used above section titles and on pricing badges. Always brand-600.</p>
+      <div class="meta">font-sans · 600 · letter-spacing 0.05em</div>
+    </div>
+    <div class="panel">
+      <div class="row" style="gap: 6px;">
+        <kbd>⌘</kbd><kbd>K</kbd>
+        <span style="font-size:13px; color: var(--neutral-700);">opens command palette</span>
+      </div>
+      <p style="margin: 10px 0 6px; font-size: 13px;">Inline code: <code>pnpm dev:web</code></p>
+      <pre><span class="tok-com"># start the worker</span>
+<span class="tok-key">pnpm</span> start:worker <span class="tok-str">--once</span></pre>
+      <div class="meta">JetBrains Mono · ligatures off</div>
+    </div>
+  </div>
+</body>
+</html>

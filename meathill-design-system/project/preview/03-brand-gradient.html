@@ -1,0 +1,54 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Brand gradient" subtitle="Premium gradient & soft wash" viewport="700x340" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Brand gradient</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .panel {
+    border-radius: var(--radius-2xl);
+    height: 160px;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .panel.full { background: var(--brand-gradient); }
+  .panel.soft { background: var(--brand-gradient-soft); color: var(--brand-700); border: 1px solid var(--border); }
+  .panel.glow {
+    background: var(--neutral-0);
+    color: var(--neutral-800);
+    border: 1px solid var(--border);
+  }
+  .panel.glow::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 0%, oklch(0.62 0.22 32 / 35%) 0%, transparent 60%);
+  }
+  .panel.glow > * { position: relative; }
+  .label-row { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10.5px; opacity: 0.85; }
+  .panel.soft .label-row { opacity: 1; color: var(--brand-700); }
+  .title { font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: -0.01em; }
+</style>
+</head>
+<body class="card">
+  <div class="grid">
+    <div class="panel full">
+      <div class="label-row"><span>--brand-gradient</span><span>135°</span></div>
+      <div class="title">Premium CTA<br>& hero badges</div>
+    </div>
+    <div class="panel soft">
+      <div class="label-row"><span>--brand-gradient-soft</span><span>180°</span></div>
+      <div class="title">Section wash<br>& empty states</div>
+    </div>
+    <div class="panel glow" style="grid-column: 1 / span 2; height: 100px;">
+      <div class="label-row"><span>radial-gradient — primary aura</span><span>used behind hero text</span></div>
+    </div>
+  </div>
+</body>
+</html>

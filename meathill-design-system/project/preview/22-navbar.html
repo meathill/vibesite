@@ -1,0 +1,73 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Navbar" subtitle="Glass sticky nav · 56px · 2xl" viewport="700x160" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Navbar</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body.card { background: var(--neutral-100); padding: 18px; }
+  .nav {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-2xl);
+    height: 56px;
+    display: flex; align-items: center;
+    padding: 0 16px;
+    gap: 14px;
+    box-shadow: var(--shadow-xs);
+  }
+  .brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-family: var(--font-display); font-size: 16px; }
+  .brand img { width: 28px; height: 28px; border-radius: 7px; }
+  .nav-links { display: flex; gap: 2px; flex: 1; margin-left: 8px; }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; color: var(--neutral-600);
+    padding: 6px 10px; border-radius: var(--radius); text-decoration: none;
+    transition: background var(--duration-fast);
+  }
+  .nav-links a:hover { background: var(--accent); color: var(--neutral-900); }
+  .nav-links a.active { background: var(--accent); color: var(--brand-700); }
+  .right { display: flex; align-items: center; gap: 8px; }
+  .pill {
+    height: 28px; padding: 0 10px; gap: 6px;
+    border-radius: 99px; border: 1px solid var(--border);
+    background: rgba(255,255,255,0.5);
+    font-size: 11.5px; color: var(--neutral-700);
+    display: inline-flex; align-items: center;
+  }
+  .avatar {
+    width: 30px; height: 30px; border-radius: 99px;
+    background: var(--brand-gradient);
+    color: white; display: grid; place-items: center;
+    font-weight: 600; font-size: 12px;
+  }
+  .footnote {
+    margin-top: 14px;
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--muted-foreground);
+  }
+  .footnote b { color: var(--neutral-900); font-weight: 600; }
+</style>
+</head>
+<body class="card">
+  <nav class="nav">
+    <div class="brand"><img src="../assets/favicon.svg" alt=""> Meathill</div>
+    <div class="nav-links">
+      <a href="#" class="active">Dashboard</a>
+      <a href="#">Use cases</a>
+      <a href="#">Pricing</a>
+      <a href="#">Extension</a>
+    </div>
+    <div class="right">
+      <span class="pill">🌐 EN</span>
+      <div class="avatar">M</div>
+    </div>
+  </nav>
+  <div class="footnote">
+    <b>Sticky navbar.</b>  56px, glass background (rgba 0.7 + blur 14px), 2xl radius.
+    Active link uses brand-tinted accent, never an underline.
+  </div>
+</body>
+</html>

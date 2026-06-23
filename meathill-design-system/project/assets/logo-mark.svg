@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <linearGradient id="mhMark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="oklch(0.62 0.22 32)"></stop>
+      <stop offset="100%" stop-color="oklch(0.46 0.20 22)"></stop>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="26" fill="url(#mhMark)"></rect>
+  
+  <path d="M 28 86 L 28 34 L 44 34 L 60 60 L 76 34 L 92 34 L 92 86 L 80 86 L 80 54 L 66 76 L 54 76 L 40 54 L 40 86 Z" fill="white"></path>
+</svg>

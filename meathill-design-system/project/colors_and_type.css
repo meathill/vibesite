@@ -1,0 +1,426 @@
+/* ============================================================
+   Meathill Design System — colors_and_type.css
+   ------------------------------------------------------------
+   Architecture follows the x-downloader codebase (Tailwind v4
+   + Base UI + CSS variables). All colors are OKLCH so they
+   compose cleanly with --alpha() and color-mix().
+
+   Warm-anchored palette. No blue, no purple, no yellow.
+   ============================================================ */
+
+/* ---- 1. Fonts (Google Fonts — free, no license file needed) */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* ============================================================
+     2. TYPE — families
+     Browsers use the first family that has a glyph for the
+     character — so Sora handles Latin, Noto Sans SC handles CJK,
+     in the same heading, automatically.
+     ============================================================ */
+  --font-display: 'Sora', 'Noto Sans SC', ui-sans-serif, system-ui, -apple-system,
+                  'Segoe UI', sans-serif;            /* h1, h2, marketing display */
+  --font-sans:    'Plus Jakarta Sans', 'Noto Sans SC', ui-sans-serif, system-ui,
+                  -apple-system, 'Segoe UI', sans-serif; /* body, ui */
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono',
+                  Menlo, Consolas, monospace;        /* code, ids, timestamps */
+
+  /* ---- 2a. Type scale (modular ~1.20, slightly compressed for ui) */
+  --text-2xs:  0.6875rem;  /* 11px  — micro labels, footer copyright   */
+  --text-xs:   0.75rem;    /* 12px  — captions, helper text            */
+  --text-sm:   0.875rem;   /* 14px  — body small / table cells         */
+  --text-base: 1rem;       /* 16px  — body                             */
+  --text-md:   1.125rem;   /* 18px  — lede, card title small           */
+  --text-lg:   1.25rem;    /* 20px  — card title                       */
+  --text-xl:   1.5rem;     /* 24px  — h4                               */
+  --text-2xl:  1.875rem;   /* 30px  — h3                               */
+  --text-3xl:  2.25rem;    /* 36px  — h2 / section heading             */
+  --text-4xl:  3rem;       /* 48px  — h1 small                         */
+  --text-5xl:  3.75rem;    /* 60px  — hero                             */
+  --text-6xl:  4.5rem;     /* 72px  — hero XL                          */
+
+  /* ---- 2b. Weights — restrained, never below 400 */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-black:    800;  /* display only */
+
+  /* ---- 2c. Line heights & tracking */
+  --leading-tight:   1.1;     /* hero / display                 */
+  --leading-snug:    1.25;    /* h2 / h3                         */
+  --leading-normal:  1.5;     /* body                            */
+  --leading-relaxed: 1.65;    /* long-form prose                 */
+  --tracking-tight:  -0.02em; /* hero / large display            */
+  --tracking-normal: 0;
+  --tracking-wide:   0.05em;  /* eyebrows, uppercase labels      */
+
+  /* ============================================================
+     3. COLORS — warm-anchored, oklch
+     ============================================================ */
+
+  /* ---- 3a. Brand primary (warm crimson — TiDB-leaning, not pink, not orange)
+           Sits between YouTube red (0.54 / 28) and a deeper rust.
+           Premium, confident, not playful. */
+  --brand-50:  oklch(0.97 0.012 28);
+  --brand-100: oklch(0.94 0.025 28);
+  --brand-200: oklch(0.88 0.06  28);
+  --brand-300: oklch(0.78 0.12  28);
+  --brand-400: oklch(0.68 0.18  28);
+  --brand-500: oklch(0.58 0.22  28);  /* primary anchor */
+  --brand-600: oklch(0.50 0.21  26);
+  --brand-700: oklch(0.42 0.18  25);
+  --brand-800: oklch(0.34 0.14  24);
+  --brand-900: oklch(0.26 0.10  24);
+  --brand-950: oklch(0.18 0.07  24);
+
+  /* ---- 3b. Warm neutrals (slight terracotta tint — hue 60 not 260) */
+  --neutral-0:    #ffffff;
+  --neutral-50:   oklch(0.985 0.004 60);   /* page background */
+  --neutral-100:  oklch(0.965 0.008 55);   /* subtle panel    */
+  --neutral-150:  oklch(0.945 0.010 50);
+  --neutral-200:  oklch(0.915 0.012 48);   /* borders         */
+  --neutral-300:  oklch(0.86  0.012 45);
+  --neutral-400:  oklch(0.72  0.012 40);   /* placeholders    */
+  --neutral-500:  oklch(0.58  0.010 38);   /* muted foreground*/
+  --neutral-600:  oklch(0.45  0.010 36);
+  --neutral-700:  oklch(0.34  0.012 34);
+  --neutral-800:  oklch(0.24  0.012 32);   /* deep text       */
+  --neutral-900:  oklch(0.16  0.012 30);   /* foreground      */
+  --neutral-950:  oklch(0.10  0.010 28);   /* near-black w/ warmth */
+
+  /* ---- 3c. Semantic (warm-leaning) */
+  --success-500: oklch(0.66 0.16 142);     /* warm olive-green, not teal  */
+  --success-700: oklch(0.46 0.13 140);
+  --warning-500: oklch(0.78 0.16 65);      /* amber — for status only     */
+  --warning-700: oklch(0.55 0.14 55);
+  --danger-500:  oklch(0.58 0.22 28);      /* shares brand red — destructive uses deeper variant */
+  --danger-600:  oklch(0.50 0.23 24);
+  --danger-700:  oklch(0.42 0.20 22);
+  --info-500:    oklch(0.55 0.04 35);      /* neutral warm-gray, NOT blue */
+  --info-700:    oklch(0.40 0.03 35);
+
+  /* ============================================================
+     4. SEMANTIC TOKENS — mirror x-downloader's --background / --primary
+        contract so existing Tailwind v4 utilities map cleanly.
+     ============================================================ */
+  color-scheme: light;
+
+  --background:            var(--neutral-50);
+  --foreground:            var(--neutral-900);
+
+  --card:                  var(--neutral-0);
+  --card-foreground:       var(--neutral-900);
+  --popover:               var(--neutral-0);
+  --popover-foreground:    var(--neutral-900);
+
+  --primary:               var(--brand-500);
+  --primary-foreground:    var(--neutral-0);
+  --primary-hover:         var(--brand-600);
+  --primary-active:        var(--brand-700);
+
+  --secondary:             var(--neutral-100);
+  --secondary-foreground:  var(--neutral-900);
+
+  --muted:                 var(--neutral-100);
+  --muted-foreground:      var(--neutral-500);
+
+  --accent:                oklch(0.96 0.018 28);   /* tinted hover/selected   */
+  --accent-foreground:     var(--brand-700);
+
+  --destructive:           var(--danger-600);
+  --destructive-foreground:var(--neutral-0);
+
+  --success:               var(--success-500);
+  --success-foreground:    var(--success-700);
+  --warning:               var(--warning-500);
+  --warning-foreground:    var(--warning-700);
+  --info:                  var(--info-500);
+  --info-foreground:       var(--info-700);
+
+  --border:                var(--neutral-200);
+  --input:                 var(--neutral-200);
+  --ring:                  var(--brand-500);
+
+  /* ---- 4a. Surfaces & elevation tints */
+  --surface-raised:        var(--neutral-0);
+  --surface-sunken:        oklch(0.96 0.008 50);
+  --overlay:               oklch(0.10 0.010 28 / 60%); /* modal scrim */
+  --glass-bg:              rgba(255, 255, 255, 0.7);
+  --glass-border:          rgba(255, 255, 255, 0.3);
+
+  /* ---- 4b. Premium gradient — warm, deep, restrained.
+           Used on hero badges, premium CTAs, brand mark only. */
+  --brand-gradient:        linear-gradient(135deg,
+                             oklch(0.62 0.22 32) 0%,
+                             oklch(0.46 0.20 22) 100%);
+  --brand-gradient-soft:   linear-gradient(180deg,
+                             oklch(0.97 0.012 28) 0%,
+                             transparent 100%);
+
+  /* ============================================================
+     5. RADII (matches x-downloader's calc cascade from --radius)
+     ============================================================ */
+  --radius:        0.75rem;                       /* 12px base   */
+  --radius-sm:     calc(var(--radius) - 4px);     /*  8px        */
+  --radius-md:     calc(var(--radius) - 2px);     /* 10px        */
+  --radius-lg:     var(--radius);                 /* 12px button */
+  --radius-xl:     calc(var(--radius) + 4px);     /* 16px        */
+  --radius-2xl:    calc(var(--radius) + 8px);     /* 20px card   */
+  --radius-3xl:    calc(var(--radius) + 12px);    /* 24px hero   */
+  --radius-full:   9999px;
+
+  /* ============================================================
+     6. SPACING — Tailwind v4 default scale (4px unit).
+        Documented here for quick reference.
+     ============================================================ */
+  --space-0_5: 0.125rem;   /*  2px */
+  --space-1:   0.25rem;    /*  4px */
+  --space-1_5: 0.375rem;   /*  6px */
+  --space-2:   0.5rem;     /*  8px */
+  --space-3:   0.75rem;    /* 12px */
+  --space-4:   1rem;       /* 16px */
+  --space-5:   1.25rem;    /* 20px */
+  --space-6:   1.5rem;     /* 24px */
+  --space-8:   2rem;       /* 32px */
+  --space-10:  2.5rem;     /* 40px */
+  --space-12:  3rem;       /* 48px */
+  --space-16:  4rem;       /* 64px */
+  --space-20:  5rem;       /* 80px */
+  --space-24:  6rem;       /* 96px */
+
+  /* ============================================================
+     7. SHADOWS — sparing, warm-tinted, never blue
+        Two intents: subtle inner highlight (cards) + colored
+        glow (primary actions only).
+     ============================================================ */
+  --shadow-xs:   0 1px 2px 0   oklch(0.20 0.05 28 / 4%);
+  --shadow-sm:   0 1px 3px 0   oklch(0.20 0.05 28 / 6%),
+                 0 1px 2px -1px oklch(0.20 0.05 28 / 4%);
+  --shadow-md:   0 4px 6px -1px oklch(0.20 0.05 28 / 7%),
+                 0 2px 4px -2px oklch(0.20 0.05 28 / 4%);
+  --shadow-lg:   0 10px 15px -3px oklch(0.20 0.05 28 / 8%),
+                 0 4px  6px -4px oklch(0.20 0.05 28 / 4%);
+  --shadow-xl:   0 20px 25px -5px oklch(0.20 0.05 28 / 10%),
+                 0 8px 10px -6px  oklch(0.20 0.05 28 / 4%);
+
+  /* Inner highlight used on cards / inputs (white 6% on top edge). */
+  --shadow-inner-highlight: inset 0 1px 0 0 rgba(255,255,255,0.6);
+  --shadow-inner-edge:      0 1px 0 0 oklch(0.20 0.05 28 / 6%);
+
+  /* Branded glow — primary buttons + premium CTA only. */
+  --shadow-primary:   0 1px 2px 0 oklch(0.58 0.22 28 / 14%),
+                      0 4px 12px -2px oklch(0.58 0.22 28 / 24%);
+  --shadow-primary-lg:0 4px 14px 0 oklch(0.58 0.22 28 / 18%),
+                      0 12px 32px -4px oklch(0.58 0.22 28 / 30%);
+
+  /* ============================================================
+     8. MOTION — calm, confident; no bounce, no spring.
+     ============================================================ */
+  --ease-out:     cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out:  cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast:   120ms;
+  --duration-base:   180ms;
+  --duration-slow:   280ms;
+}
+
+/* ============================================================
+   9. DARK MODE — warm-near-black anchored on hue 28–30, never
+      cool slate. Primary moves UP in lightness (66) to keep
+      contrast on dark surfaces. Tested for WCAG AA on body text.
+   ============================================================ */
+.dark, [data-theme='dark'] {
+  color-scheme: dark;
+
+  /* Surfaces — three steps of warm near-black */
+  --background:            oklch(0.16 0.010 30);  /* page */
+  --foreground:            oklch(0.96 0.010 60);  /* body text */
+  --card:                  oklch(0.20 0.012 30);  /* cards */
+  --card-foreground:       oklch(0.96 0.010 60);
+  --popover:               oklch(0.23 0.014 30);  /* menus */
+  --popover-foreground:    oklch(0.96 0.010 60);
+  --surface-raised:        oklch(0.22 0.012 30);
+  --surface-sunken:        oklch(0.13 0.008 30);
+
+  /* Brand — bumped lightness so it pops on dark; chroma stays */
+  --primary:               oklch(0.68 0.20 30);
+  --primary-foreground:    oklch(0.14 0.010 30);
+  --primary-hover:         oklch(0.74 0.20 30);
+  --primary-active:        oklch(0.62 0.21 30);
+
+  /* Supporting tones */
+  --secondary:             oklch(0.24 0.012 30);
+  --secondary-foreground:  oklch(0.92 0.010 60);
+  --muted:                 oklch(0.22 0.012 30);
+  --muted-foreground:      oklch(0.68 0.012 40);
+  --accent:                oklch(0.28 0.05 28);
+  --accent-foreground:     oklch(0.88 0.08 28);
+
+  /* Semantic — dimmed for dark backgrounds */
+  --destructive:           oklch(0.66 0.21 24);
+  --destructive-foreground:oklch(0.14 0.010 30);
+  --success:               oklch(0.70 0.16 142);
+  --success-foreground:    oklch(0.80 0.14 142);
+  --warning:               oklch(0.80 0.16 65);
+  --warning-foreground:    oklch(0.84 0.13 65);
+  --info:                  oklch(0.66 0.030 35);
+  --info-foreground:       oklch(0.80 0.020 35);
+
+  /* Borders fade into surface — no harsh 1px */
+  --border:                oklch(0.30 0.010 30 / 80%);
+  --input:                 oklch(0.30 0.010 30);
+  --ring:                  oklch(0.68 0.20 30);
+
+  /* Shadows — almost invisible on dark; rely on borders + lift */
+  --shadow-xs:   0 1px 2px 0   oklch(0 0 0 / 24%);
+  --shadow-sm:   0 1px 3px 0   oklch(0 0 0 / 30%),
+                 0 1px 2px -1px oklch(0 0 0 / 20%);
+  --shadow-md:   0 4px 8px -1px oklch(0 0 0 / 36%),
+                 0 2px 4px -2px oklch(0 0 0 / 20%);
+  --shadow-lg:   0 12px 20px -3px oklch(0 0 0 / 44%),
+                 0 4px  8px -4px  oklch(0 0 0 / 24%);
+  --shadow-xl:   0 24px 40px -8px oklch(0 0 0 / 52%);
+  --shadow-inner-highlight: inset 0 1px 0 0 oklch(1 0 0 / 6%);
+  --shadow-inner-edge:      0 1px 0 0 oklch(1 0 0 / 4%);
+  --shadow-primary:    0 1px 2px 0  oklch(0.68 0.20 30 / 24%),
+                       0 4px 16px -2px oklch(0.68 0.20 30 / 36%);
+  --shadow-primary-lg: 0 4px 18px 0  oklch(0.68 0.20 30 / 28%),
+                       0 16px 40px -6px oklch(0.68 0.20 30 / 40%);
+
+  /* Overlay / glass adapt */
+  --overlay:               oklch(0 0 0 / 70%);
+  --glass-bg:              oklch(0.18 0.012 30 / 80%);
+  --glass-border:          oklch(1 0 0 / 6%);
+
+  /* Brand gradient cools slightly so it doesn't glow nuclear on dark */
+  --brand-gradient:        linear-gradient(135deg,
+                             oklch(0.68 0.20 30) 0%,
+                             oklch(0.50 0.18 22) 100%);
+  --brand-gradient-soft:   linear-gradient(180deg,
+                             oklch(0.24 0.04 28) 0%,
+                             transparent 100%);
+}
+
+::selection {
+  background: oklch(0.58 0.22 28 / 24%);
+  color: var(--foreground);
+}
+[data-theme='dark'] ::selection {
+  background: oklch(0.68 0.20 30 / 36%);
+  color: var(--foreground);
+}
+
+/* ============================================================
+  10. SEMANTIC ELEMENTS — typographic defaults so the system
+       renders consistently without Tailwind classes (good for
+       prose, README previews, third-party content).
+   ============================================================ */
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  color: var(--foreground);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Anchor background on the html element too, so dark mode survives
+   iframe environments that force body { background: transparent }.
+   In production this is a no-op. */
+html { background: var(--background); }
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-4xl), 5vw, var(--text-5xl));
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--foreground);
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+}
+
+h3, .h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+}
+
+h4, .h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+}
+
+h5, .h5 {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+}
+
+p {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--foreground);
+  text-wrap: pretty;
+}
+
+.eyebrow {                        /* small uppercase label above section title */
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--brand-600);
+}
+
+.lede {                            /* hero subtitle */
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  color: var(--muted-foreground);
+  text-wrap: pretty;
+}
+
+small, .caption {
+  font-size: var(--text-xs);
+  color: var(--muted-foreground);
+}
+
+code, kbd, pre, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  font-variant-ligatures: none;
+}
+
+code {
+  background: var(--muted);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-sm);
+  color: var(--brand-700);
+}
+
+a {
+  color: var(--brand-600);
+  text-decoration: none;
+  text-underline-offset: 3px;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+a:hover { color: var(--brand-700); text-decoration: underline; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: var(--space-8) 0;
+}

@@ -1,0 +1,104 @@
+/* og/og.css — shared chrome for every OG template.
+   Each template HTML imports this after colors_and_type.css. */
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  width: 1200px; height: 630px;
+  overflow: hidden;
+}
+body {
+  font-family: var(--font-display);
+  color: var(--foreground);
+  background: var(--background);
+  position: relative;
+}
+
+/* Brand ornament — same warm radial as the marketing hero. */
+.og-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(58% 50% at 28% 0%, oklch(0.62 0.22 32 / 28%) 0%, transparent 65%),
+    radial-gradient(45% 50% at 100% 100%, oklch(0.78 0.16 65 / 18%) 0%, transparent 60%);
+}
+.og-top-line {
+  position: absolute; top: 0; left: 0; right: 0; height: 2px; z-index: 1;
+  background: linear-gradient(90deg, transparent, oklch(0.58 0.22 28 / 60%), transparent);
+}
+/* Subtle dot grid in the bottom corner — adds visual texture without bloat. */
+.og-grid {
+  position: absolute;
+  right: 64px; bottom: 64px;
+  width: 320px; height: 320px;
+  background-image: radial-gradient(oklch(0.20 0.05 28 / 6%) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: radial-gradient(closest-side, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(closest-side, black 30%, transparent 80%);
+  pointer-events: none; z-index: 0;
+}
+
+.og-frame {
+  position: relative; z-index: 2;
+  width: 100%; height: 100%;
+  padding: 64px;
+  display: flex; flex-direction: column;
+}
+
+/* Brand mark + wordmark in upper-left */
+.og-brand {
+  display: flex; align-items: center; gap: 14px;
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 24px;
+  color: var(--foreground);
+}
+.og-brand .mark {
+  width: 48px; height: 48px;
+  border-radius: 11px;
+  background: var(--brand-gradient);
+  color: white;
+  display: grid; place-items: center;
+  font-weight: 800;
+  font-size: 24px;
+  letter-spacing: -1px;
+  box-shadow: var(--shadow-primary);
+}
+
+.og-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 16px; font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-600);
+}
+.og-eyebrow::before {
+  content: ""; width: 28px; height: 2px; background: var(--brand-500);
+}
+
+.og-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+  text-wrap: balance;
+}
+
+.og-subtitle {
+  font-family: var(--font-sans);
+  color: var(--muted-foreground);
+  text-wrap: pretty;
+  margin: 0;
+}
+
+.og-footer-row {
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  color: var(--muted-foreground);
+}
+.og-footer-row strong { color: var(--foreground); font-weight: 600; }
+.og-url {
+  font-family: var(--font-mono);
+  letter-spacing: 0;
+  color: var(--brand-600);
+}

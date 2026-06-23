@@ -246,3 +246,209 @@
     @apply font-sans font-mono;
   }
 }
+
+/* =============================================================
+ * Meathill Studio Design System — 暖色覆盖
+ * 基于柯基 Mui 的毛色：奶油白 + 背毛黄 + 深棕字
+ * ============================================================= */
+
+:root {
+  /* 色彩覆盖 — 暖中性 */
+  --background: #fdfaf2;            /* cream */
+  --foreground: #3a2e23;            /* ink */
+  --card: #f6efde;                  /* paper */
+  --card-foreground: #3a2e23;       /* ink */
+  --popover: #f6efde;               /* paper */
+  --popover-foreground: #3a2e23;    /* ink */
+  --muted: #f6efde;                 /* paper */
+  --muted-foreground: #5a4938;      /* ink-soft */
+  --accent: #fbf1d8;                /* fluff */
+  --accent-foreground: #3a2e23;     /* ink */
+  --border: #e0d3b8;                /* rule */
+  --input: #c9b790;                 /* rule-strong */
+  --ring: #e6c34a;                  /* yellow */
+  --primary: #e6c34a;               /* yellow */
+  --primary-foreground: #3a2e23;    /* ink */
+  --secondary: #f6efde;             /* paper */
+  --secondary-foreground: #3a2e23;  /* ink */
+  --destructive: #c44a32;           /* danger / tongue */
+  --destructive-foreground: #fdfaf2;
+  --success: #4f8a3a;
+  --success-foreground: #fdfaf2;
+  --warning: #c9892b;
+  --warning-foreground: #fdfaf2;
+  --info: #3b6f9a;
+  --info-foreground: #fdfaf2;
+
+  /* 圆角 — 紧凑风格 */
+  --radius: 0.5rem;
+
+  /* Meathill Studio 专用 token */
+  --color-cream: #fdfaf2;
+  --color-paper: #f6efde;
+  --color-paper-deep: #ede2c5;
+  --color-ink: #3a2e23;
+  --color-ink-soft: #5a4938;
+  --color-mute: #8a7660;
+  --color-rule: #e0d3b8;
+  --color-rule-strong: #c9b790;
+  --color-ink-line: #3a2e23;
+  --color-fluff: #fbf1d8;
+  --color-corgi: #f3c574;
+  --color-yellow: #e6c34a;
+  --color-yellow-warm: #e6a23a;
+  --color-yellow-deep: #b3851c;
+  --color-tongue: #d8694e;
+
+  /* Press 阴影 */
+  --shadow-press-yellow: 0 3px 0 0 #b3851c;
+  --shadow-press-ink: 0 3px 0 0 #3a2e23;
+  --glow-yellow: 0 0 24px rgb(230 195 74 / 0.35);
+}
+
+/* ========== Meathill Studio 组件样式 ========== */
+
+/* Press 按钮 — 主 CTA */
+.btn-press {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: 8px;
+  border: 2px solid var(--color-ink);
+  background: var(--color-yellow);
+  color: var(--color-ink);
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: var(--shadow-press-yellow);
+  transition: transform 120ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 120ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+.btn-press:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 0 #b3851c;
+}
+.btn-press:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 0 #b3851c;
+}
+
+/* Press 按钮 — ink 变体（次要 CTA） */
+.btn-press-ink {
+  background: var(--color-cream);
+  box-shadow: var(--shadow-press-ink);
+}
+.btn-press-ink:hover {
+  box-shadow: 0 4px 0 0 #3a2e23;
+}
+.btn-press-ink:active {
+  box-shadow: 0 1px 0 0 #3a2e23;
+}
+
+/* 大号 CTA 按钮 */
+.btn-press-lg {
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 0 0 #b3851c;
+}
+.btn-press-lg:hover {
+  box-shadow: 0 5px 0 0 #b3851c;
+}
+.btn-press-lg:active {
+  box-shadow: 0 1px 0 0 #b3851c;
+}
+
+/* Press 卡片 */
+.card-press {
+  background: var(--color-cream);
+  border: 2px solid var(--color-ink);
+  border-radius: 10px;
+  box-shadow: 0 4px 0 0 var(--color-ink);
+  transition: transform 180ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.card-press:hover {
+  transform: translateY(-2px);
+}
+
+/* Eyebrow 标签 */
+.eyebrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 2px solid color-mix(in srgb, var(--color-corgi) 70%, transparent);
+  background: var(--color-fluff);
+  color: var(--color-yellow-deep);
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* 特性标签 */
+.feat-tag {
+  display: inline-flex;
+  padding: 2px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--color-rule);
+  background: color-mix(in srgb, var(--color-paper) 70%, transparent);
+  color: var(--color-ink-soft);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* 背景装饰 */
+.bg-sun {
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 0%, rgb(243 197 116 / 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 10% 100%, rgb(251 241 216 / 0.6) 0%, transparent 50%);
+}
+.bg-grid {
+  background-image: radial-gradient(circle, rgb(58 46 35 / 0.05) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+
+/* Highlight 高亮文字 */
+.highlight {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+.highlight::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  bottom: 6%;
+  height: 42%;
+  background: color-mix(in srgb, var(--color-corgi) 80%, transparent);
+  transform: skewY(-1deg);
+  border-radius: 2px;
+  z-index: -1;
+}
+
+/* 选中文字 */
+::selection {
+  background: var(--color-yellow);
+  color: var(--color-ink);
+}
+
+/* 链接样式覆盖 */
+a {
+  color: var(--color-yellow-deep);
+  text-decoration: underline;
+  text-decoration-color: var(--color-corgi);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: color 120ms, text-decoration-color 120ms;
+}
+a:hover {
+  color: var(--color-ink);
+  text-decoration-color: var(--color-yellow);
+}

@@ -1,16 +1,11 @@
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { Separator } from '@/components/ui/separator';
 import {
   CheckCircleIcon,
-  ClockIcon,
   CodeIcon,
   FileZipIcon,
   GlobeIcon,
@@ -90,43 +85,48 @@ const PERSONAS = [
 
 const PRICING_PLANS = [
   {
-    name: '免费预览',
-    price: '0',
-    unit: '',
-    desc: '72 小时内免费访问',
-    features: ['全球 CDN 部署', '可分享的预览链接', '72 小时有效期'],
-    cta: '立即尝试',
-    ctaHref: '/submit',
+    name: '基础托管',
+    price: '99',
+    unit: '元/年',
+    desc: '长期稳定的在线方案',
+    features: [
+      '长期稳定的可访问链接',
+      '全球 CDN 加速',
+      'HTTPS 证书',
+      '不限访问次数',
+      '邮件技术支持',
+    ],
+    cta: '联系我们',
     highlighted: false,
   },
   {
-    name: '基础托管',
-    price: '29',
+    name: '全自持托管',
+    price: '299',
     unit: '元/年',
-    desc: '长期稳定的在线方案',
-    features: ['长期稳定的预览链接', '全球 CDN 加速', '不限访问次数', '邮件技术支持'],
+    desc: '绑定自己的域名',
+    features: [
+      '绑定自己的域名',
+      'HTTPS 证书',
+      '长期稳定托管',
+      '全球 CDN 加速',
+      '优先技术支持',
+    ],
     cta: '联系我们',
-    ctaHref: '/submit',
     highlighted: true,
   },
   {
-    name: '自定义域名',
-    price: '99',
-    unit: '元/年',
-    desc: '用你自己的域名',
-    features: ['绑定自己的域名', 'HTTPS 证书', '长期稳定托管', '优先技术支持'],
-    cta: '联系我们',
-    ctaHref: '/submit',
-    highlighted: false,
-  },
-  {
     name: '人工服务',
-    price: '299-999',
-    unit: '元',
+    price: '999',
+    unit: '元/年',
     desc: '专业人工部署与优化',
-    features: ['专业人工部署', '代码优化建议', '性能调优', '一对一支持'],
+    features: [
+      '专业人工部署',
+      '代码优化建议',
+      '性能调优',
+      'HTTPS 证书',
+      '一对一支持',
+    ],
     cta: '联系我们',
-    ctaHref: '/submit',
     highlighted: false,
   },
 ];
@@ -144,12 +144,12 @@ const FAQS = [
   {
     question: '预览链接 72 小时后怎么办？',
     answer:
-      '免费预览链接会在 72 小时后自动过期。如果你需要长期使用，可以选择我们的付费托管方案，最低 29 元/年。',
+      '免费预览链接会在 72 小时后自动过期。如果你需要长期使用，可以选择我们的付费托管方案，最低 99 元/年。',
   },
   {
     question: '能绑定自己的域名吗？',
     answer:
-      '可以。选择「自定义域名」方案（99 元/年），我们帮你配置域名解析和 HTTPS 证书。',
+      '可以。选择「全自持托管」方案（299 元/年），我们帮你配置域名解析和 HTTPS 证书。',
   },
   {
     question: '我的代码安全吗？',
@@ -163,195 +163,197 @@ const FAQS = [
   },
 ];
 
-const SITE_URL = 'https://vibesite.dev';
-
 export default function HomePage() {
   return (
     <main className="flex min-h-screen flex-col">
       {/* 导航栏 */}
-      <nav className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-sm">
-        <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
-          <a href="/" className="flex items-center gap-2 font-bold">
-            <div className="flex size-7 items-center justify-center rounded-md bg-primary text-primary-foreground text-xs">
-              V
-            </div>
+      <header className="sticky top-0 z-30 border-b border-[--color-rule] bg-[--color-cream]/88 backdrop-blur-sm">
+        <div className="mx-auto flex h-14 max-w-[1100px] items-center justify-between gap-4 px-6">
+          <a
+            href="/"
+            className="flex items-center gap-2.5 font-[family-name:var(--font-display)] text-lg font-extrabold tracking-tight text-[--color-ink] no-underline"
+          >
             VibeSite
           </a>
-          <div className="hidden items-center gap-6 md:flex">
+          <nav className="hidden items-center gap-1 text-sm text-[--color-ink-soft] md:flex">
             <a
               href="#how-it-works"
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="rounded px-2.5 py-1.5 no-underline transition-colors hover:bg-[--color-fluff] hover:text-[--color-ink]"
             >
               怎么用
             </a>
             <a
               href="#pricing"
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="rounded px-2.5 py-1.5 no-underline transition-colors hover:bg-[--color-fluff] hover:text-[--color-ink]"
             >
               定价
             </a>
             <a
               href="#faq"
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="rounded px-2.5 py-1.5 no-underline transition-colors hover:bg-[--color-fluff] hover:text-[--color-ink]"
             >
               FAQ
             </a>
-          </div>
-          <Button size="sm" render={<a href="/submit" />}>
+          </nav>
+          <a href="/submit" className="btn-press px-3 py-1.5 text-sm">
             立即上线
-          </Button>
+          </a>
         </div>
-      </nav>
+      </header>
 
       {/* Hero */}
-      <section className="flex flex-col items-center justify-center gap-6 px-4 pb-8 pt-16 text-center md:pb-12 md:pt-24">
-        <h1 className="max-w-2xl text-3xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
-          AI 写好了网页
-          <br />
-          我们帮你上线
-        </h1>
-        <p className="max-w-lg text-base text-muted-foreground md:text-lg">
-          上传 zip 文件，10 分钟拿到一个真实可访问的链接。
-          <br className="hidden md:block" />
-          免费预览，无需注册，全球 CDN 加速。
-        </p>
-        <div className="flex gap-3">
-          <Button size="lg" render={<a href="/submit" />}>
-            立即上传
-          </Button>
-          <Button size="lg" variant="outline" render={<a href="#how-it-works" />}>
-            了解更多
-          </Button>
-        </div>
-        <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
-          <span className="flex items-center gap-1">
-            <CheckCircleIcon className="size-3.5 text-success" />
-            免费预览
+      <section className="relative overflow-hidden border-b border-[--color-rule]">
+        <div className="bg-sun absolute inset-0 pointer-events-none" aria-hidden />
+        <div className="bg-grid absolute inset-0 opacity-50 pointer-events-none" aria-hidden />
+        <div className="relative mx-auto max-w-[1100px] px-6 py-16 md:py-28">
+          <span className="eyebrow-badge mb-6 inline-flex">
+            免费预览 · 无需注册 · 全球 CDN
           </span>
-          <span className="flex items-center gap-1">
-            <CheckCircleIcon className="size-3.5 text-success" />
-            无需注册
-          </span>
-          <span className="flex items-center gap-1">
-            <CheckCircleIcon className="size-3.5 text-success" />
-            全球 CDN
-          </span>
+          <h1 className="mt-6 max-w-2xl font-[family-name:var(--font-display)] text-[clamp(2.4rem,6vw,4.5rem)] font-extrabold leading-[1.05] tracking-tight text-[--color-ink]">
+            AI 写好了网页
+            <br />
+            <span className="highlight">我们帮你上线</span>
+          </h1>
+          <p className="mt-6 max-w-lg text-base leading-relaxed text-[--color-ink-soft]">
+            上传 zip 文件，10 分钟拿到一个真实可访问的链接。
+            不需要懂 Cloudflare，不需要命令行，不需要 GitHub。
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a href="/submit" className="btn-press btn-press-lg">
+              立即上传
+            </a>
+            <a
+              href="#how-it-works"
+              className="btn-press btn-press-ink btn-press-lg"
+            >
+              了解流程
+            </a>
+          </div>
+          <p className="mt-8 max-w-md border-t-2 border-dashed border-[--color-rule-strong] pt-4 text-sm leading-relaxed text-[--color-mute]">
+            目前优先支持 Cursor、Bolt、Lovable、v0 等 AI 工具生成的静态网页。
+          </p>
         </div>
       </section>
 
       {/* 工具兼容条 */}
-      <section className="border-y bg-muted/30 px-4 py-8">
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="mb-4 text-sm text-muted-foreground">
+      <section className="border-b border-[--color-rule] bg-[--color-paper] px-6 py-8">
+        <div className="mx-auto max-w-[1100px] text-center">
+          <p className="mb-4 text-sm text-[--color-mute]">
             支持所有主流 AI 工具生成的网页
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-2">
             {AI_TOOLS.map((tool) => (
-              <Badge key={tool} variant="secondary" className="px-4 py-1.5 text-sm">
+              <span key={tool} className="feat-tag">
                 {tool}
-              </Badge>
+              </span>
             ))}
           </div>
         </div>
       </section>
 
       {/* 怎么用 */}
-      <section id="how-it-works" className="px-4 py-16 md:py-24">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">
-            三步完成上线
-          </h2>
-          <p className="mb-12 text-center text-muted-foreground">
-            不需要懂技术，不需要注册任何平台
-          </p>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {[
-              {
-                icon: FileZipIcon,
-                step: '1',
-                title: '打包成 zip',
-                desc: '把你 AI 生成的网站文件打包成 .zip 压缩包。',
-              },
-              {
-                icon: UploadIcon,
-                step: '2',
-                title: '上传到 VibeSite',
-                desc: '填写联系方式，拖拽上传文件。就是这么简单。',
-              },
-              {
-                icon: GlobeIcon,
-                step: '3',
-                title: '拿到链接',
-                desc: '10 分钟内收到一个可访问的链接，分享给任何人。',
-              },
-            ].map((item) => (
-              <div key={item.step} className="flex flex-col items-center text-center">
-                <div className="relative mb-4">
-                  <div className="flex size-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
-                    <item.icon className="size-7" />
-                  </div>
-                  <span className="absolute -right-2 -top-2 flex size-6 items-center justify-center rounded-full bg-success text-xs font-bold text-white">
-                    {item.step}
+      <section
+        id="how-it-works"
+        className="border-b border-[--color-rule] px-6 py-16 md:py-20"
+      >
+        <div className="mx-auto max-w-[1100px]">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-14">
+            <div>
+              <p className="eyebrow">— 怎么开始</p>
+              <h2 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(1.8rem,4vw,2.6rem)] font-extrabold leading-[1.06] tracking-tight text-[--color-ink]">
+                三步完成<span className="highlight">上线</span>
+              </h2>
+              <p className="mt-4 max-w-sm text-sm leading-relaxed text-[--color-ink-soft]">
+                不需要懂技术，不需要注册任何平台。
+                把文件交给我们，剩下的事情我们搞定。
+              </p>
+            </div>
+            <ol className="flex flex-col gap-3">
+              {[
+                {
+                  title: '打包成 zip',
+                  desc: '把你 AI 生成的网站文件打包成 .zip 压缩包。',
+                },
+                {
+                  title: '上传到 VibeSite',
+                  desc: '填写联系方式，拖拽上传文件。就是这么简单。',
+                },
+                {
+                  title: '拿到链接',
+                  desc: '10 分钟内收到一个可访问的链接，分享给任何人。',
+                },
+              ].map((item, i) => (
+                <li
+                  key={item.title}
+                  className="group grid grid-cols-[auto_1fr] items-center gap-4 rounded-[--radius-lg] border-2 border-[--color-rule-strong] bg-[--color-cream] p-3.5 transition-all hover:border-[--color-corgi] hover:bg-[--color-fluff] hover:translate-x-1"
+                >
+                  <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-[--color-yellow] font-[family-name:var(--font-mono)] text-sm font-extrabold text-[--color-ink] shadow-[0_2px_0_0_var(--color-yellow-deep)]">
+                    {String(i + 1).padStart(2, '0')}
                   </span>
-                </div>
-                <h3 className="mb-2 text-lg font-semibold">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.desc}</p>
-              </div>
-            ))}
+                  <span className="text-sm leading-relaxed text-[--color-ink-soft]">
+                    <b className="text-[--color-ink]">{item.title}</b>
+                    <span className="mx-2 text-[--color-rule-strong]">·</span>
+                    {item.desc}
+                  </span>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
 
-      <Separator />
-
       {/* 为什么选择 VibeSite */}
-      <section className="bg-muted/30 px-4 py-16 md:py-24">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">
-            为什么选择 VibeSite
+      <section className="border-b border-[--color-rule] bg-[--color-paper] px-6 py-16 md:py-20">
+        <div className="mx-auto max-w-[1100px]">
+          <p className="eyebrow">— 为什么选择我们</p>
+          <h2 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(1.8rem,4vw,2.6rem)] font-extrabold leading-[1.06] tracking-tight text-[--color-ink]">
+            专为<span className="highlight">非技术用户</span>设计
           </h2>
-          <p className="mb-12 text-center text-muted-foreground">
-            专为不熟悉技术部署的用户设计
+          <p className="mt-4 max-w-md text-sm leading-relaxed text-[--color-ink-soft]">
+            你不需要成为程序员，也能让自己的网页上线。
           </p>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {WHY_POINTS.map((item) => (
-              <Card key={item.title}>
-                <CardHeader>
-                  <div className="mb-2 flex size-10 items-center justify-center rounded-lg bg-primary/10">
-                    <item.icon className="size-5 text-primary" />
-                  </div>
-                  <CardTitle className="text-base">{item.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">{item.desc}</p>
-                </CardContent>
-              </Card>
+              <article
+                key={item.title}
+                className="card-press flex flex-col gap-3 p-5"
+              >
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[--color-yellow] shadow-[0_2px_0_0_var(--color-yellow-deep)]">
+                  <item.icon className="size-5 text-[--color-ink]" />
+                </div>
+                <h3 className="text-lg font-extrabold text-[--color-ink]">
+                  {item.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-[--color-ink-soft]">
+                  {item.desc}
+                </p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
       {/* 使用场景 */}
-      <section className="px-4 py-16 md:py-24">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">
-            适合谁用
+      <section className="border-b border-[--color-rule] px-6 py-16 md:py-20">
+        <div className="mx-auto max-w-[1100px]">
+          <p className="eyebrow">— 适合谁用</p>
+          <h2 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(1.8rem,4vw,2.6rem)] font-extrabold leading-[1.06] tracking-tight text-[--color-ink]">
+            不管你是谁，<span className="highlight">只要有一个网页想上线</span>
           </h2>
-          <p className="mb-12 text-center text-muted-foreground">
-            不管你是谁，只要有一个网页想上线，我们就能帮你
-          </p>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {PERSONAS.map((item) => (
               <div
                 key={item.title}
-                className="flex gap-4 rounded-xl border p-5 transition-colors hover:bg-muted/50"
+                className="card-press flex gap-4 p-5"
               >
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                  <item.icon className="size-5 text-primary" />
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[--color-yellow] shadow-[0_2px_0_0_var(--color-yellow-deep)]">
+                  <item.icon className="size-5 text-[--color-ink]" />
                 </div>
                 <div>
-                  <h3 className="mb-1 font-semibold">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+                  <h3 className="font-extrabold text-[--color-ink]">{item.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-[--color-ink-soft]">
+                    {item.desc}
+                  </p>
                 </div>
               </div>
             ))}
@@ -359,130 +361,226 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Separator />
-
       {/* 定价 */}
-      <section id="pricing" className="px-4 py-16 md:py-24">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">
-            选择适合你的方案
+      <section
+        id="pricing"
+        className="border-b border-[--color-rule] bg-[--color-paper] px-6 py-16 md:py-20"
+      >
+        <div className="mx-auto max-w-[1100px]">
+          <p className="eyebrow text-center">— 定价</p>
+          <h2 className="mt-3 text-center font-[family-name:var(--font-display)] text-[clamp(1.8rem,4vw,2.6rem)] font-extrabold leading-[1.06] tracking-tight text-[--color-ink]">
+            选择适合你的<span className="highlight">方案</span>
           </h2>
-          <p className="mb-12 text-center text-muted-foreground">
-            先免费预览，满意了再升级
+          <p className="mt-4 text-center text-sm text-[--color-ink-soft]">
+            先免费预览，满意了再升级。所有方案均包含 HTTPS。
           </p>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3">
             {PRICING_PLANS.map((plan) => (
-              <Card
+              <div
                 key={plan.name}
-                className={`relative flex flex-col ${
-                  plan.highlighted ? 'border-primary shadow-md' : ''
+                className={`card-press flex flex-col p-6 ${
+                  plan.highlighted
+                    ? 'border-[--color-yellow-deep] bg-[--color-fluff] shadow-[0_5px_0_0_var(--color-yellow-deep)]'
+                    : ''
                 }`}
               >
-                {plan.highlighted && (
-                  <Badge className="absolute -top-2.5 right-4">推荐</Badge>
-                )}
-                <CardHeader>
-                  <CardTitle className="text-base">{plan.name}</CardTitle>
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-3xl font-bold">{plan.price}</span>
-                    {plan.unit && (
-                      <span className="text-sm text-muted-foreground">
-                        {plan.unit}
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-xs text-muted-foreground">{plan.desc}</p>
-                </CardHeader>
-                <CardContent className="flex flex-1 flex-col gap-3">
-                  <ul className="flex-1 space-y-2">
-                    {plan.features.map((feature) => (
-                      <li
-                        key={feature}
-                        className="flex items-start gap-2 text-sm"
-                      >
-                        <CheckCircleIcon className="mt-0.5 size-4 shrink-0 text-success" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button
-                    className="w-full"
-                    variant={plan.highlighted ? 'default' : 'outline'}
-                    render={<a href={plan.ctaHref} />}
-                  >
-                    {plan.cta}
-                  </Button>
-                </CardContent>
-              </Card>
+                <h3 className="text-lg font-extrabold text-[--color-ink]">
+                  {plan.name}
+                </h3>
+                <div className="mt-2 flex items-baseline gap-1">
+                  <span className="font-[family-name:var(--font-display)] text-4xl font-extrabold text-[--color-ink]">
+                    {plan.price}
+                  </span>
+                  <span className="text-sm text-[--color-mute]">{plan.unit}</span>
+                </div>
+                <p className="mt-1 text-xs text-[--color-mute]">{plan.desc}</p>
+                <ul className="mt-5 flex flex-1 flex-col gap-2.5">
+                  {plan.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-start gap-2 text-sm text-[--color-ink-soft]"
+                    >
+                      <CheckCircleIcon className="mt-0.5 size-4 shrink-0 text-[--color-success]" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="/submit"
+                  className={`btn-press mt-6 w-full justify-center ${
+                    plan.highlighted ? '' : 'btn-press-ink'
+                  }`}
+                >
+                  {plan.cta}
+                </a>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <Separator />
-
       {/* FAQ */}
-      <section id="faq" className="px-4 py-16 md:py-24">
-        <div className="mx-auto max-w-2xl">
-          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">
-            常见问题
-          </h2>
-          <p className="mb-8 text-center text-muted-foreground">
-            有疑问？看看下面能不能找到答案
-          </p>
-          <Accordion multiple={false}>
-            {FAQS.map((faq, index) => (
-              <AccordionItem key={index} value={`faq-${index}`}>
-                <AccordionTrigger>{faq.question}</AccordionTrigger>
-                <AccordionContent>{faq.answer}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+      <section id="faq" className="border-b border-[--color-rule] px-6 py-16 md:py-20">
+        <div className="mx-auto max-w-[1100px]">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-[7fr_5fr]">
+            <div>
+              <p className="eyebrow">— 常见问题</p>
+              <h2 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(1.8rem,4vw,2.6rem)] font-extrabold leading-[1.06] tracking-tight text-[--color-ink]">
+                想问的<span className="highlight">大概率</span>在这里
+              </h2>
+              <div className="mt-8">
+                <Accordion multiple={false}>
+                  {FAQS.map((faq, index) => (
+                    <AccordionItem key={index} value={`faq-${index}`}>
+                      <AccordionTrigger>
+                        <span className="flex items-start gap-4 text-left">
+                          <span className="inline-flex h-[26px] items-center rounded bg-[--color-fluff] px-2 font-[family-name:var(--font-mono)] text-xs font-bold text-[--color-yellow-deep]">
+                            Q{String(index + 1).padStart(2, '0')}
+                          </span>
+                          <span className="text-base font-bold text-[--color-ink]">
+                            {faq.question}
+                          </span>
+                        </span>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <div className="pl-[52px] text-sm leading-relaxed text-[--color-ink-soft]">
+                          {faq.answer}
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            </div>
+            <aside className="flex flex-col gap-4">
+              <div className="card-press relative overflow-hidden bg-[--color-fluff] p-6 shadow-[0_5px_0_0_var(--color-yellow-deep)]">
+                <p className="eyebrow">— 免费预览</p>
+                <h3 className="mt-3 text-xl font-extrabold text-[--color-ink]">
+                  先试试，不花钱
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-[--color-ink-soft]">
+                  上传你的网站文件，10 分钟内拿到一个可以分享的链接。
+                  满意了再考虑付费方案。
+                </p>
+                <a href="/submit" className="btn-press mt-5 inline-flex">
+                  立即尝试
+                </a>
+              </div>
+              <div className="card-press flex items-center justify-between gap-4 bg-[--color-cream] p-5">
+                <div>
+                  <p className="eyebrow">— 定价</p>
+                  <p className="mt-1.5 text-base font-extrabold text-[--color-ink]">
+                    查看价格方案
+                  </p>
+                  <p className="mt-0.5 text-xs text-[--color-ink-soft]">
+                    99 / 299 / 999 元/年
+                  </p>
+                </div>
+                <a
+                  href="#pricing"
+                  className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[--color-yellow] text-[--color-ink] no-underline shadow-[0_2px_0_0_var(--color-yellow-deep)]"
+                >
+                  →
+                </a>
+              </div>
+            </aside>
+          </div>
         </div>
       </section>
 
       {/* 最终 CTA */}
-      <section className="bg-primary px-4 py-16 text-primary-foreground md:py-24">
+      <section className="bg-[--color-ink] px-6 py-16 md:py-20">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="mb-4 text-2xl font-bold md:text-3xl">
+          <h2 className="font-[family-name:var(--font-display)] text-[clamp(1.6rem,4vw,2.4rem)] font-extrabold leading-[1.1] text-[--color-cream]">
             准备好上线了吗？
           </h2>
-          <p className="mb-8 text-primary-foreground/80">
+          <p className="mt-4 text-[--color-rule]">
             上传你的网站，10 分钟后就能分享给全世界。
           </p>
-          <Button
-            size="lg"
-            variant="secondary"
-            render={<a href="/submit" />}
-          >
+          <a href="/submit" className="btn-press btn-press-lg mt-8 inline-flex">
             立即上传
-          </Button>
+          </a>
         </div>
       </section>
 
-      {/* 页脚 */}
-      <footer className="border-t px-4 py-8">
-        <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 md:flex-row md:justify-between">
-          <div className="flex items-center gap-2 text-sm font-semibold">
-            <div className="flex size-5 items-center justify-center rounded bg-primary text-[10px] text-primary-foreground">
-              V
+      {/* Footer */}
+      <footer className="bg-[--color-paper]">
+        <div className="mx-auto max-w-[1100px] px-6 py-14">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-[5fr_7fr]">
+            <div>
+              <a
+                href="/"
+                className="flex items-center gap-2.5 font-[family-name:var(--font-display)] text-xl font-extrabold tracking-tight text-[--color-ink] no-underline"
+              >
+                VibeSite
+              </a>
+              <p className="mt-3.5 max-w-[360px] text-sm leading-relaxed text-[--color-ink-soft]">
+                AI 生成网页一键上线服务。上传 zip 文件，10 分钟获得可访问链接。
+              </p>
             </div>
-            VibeSite
+            <div className="grid grid-cols-3 gap-8 text-sm">
+              <div>
+                <h4 className="mb-3 font-[family-name:var(--font-mono)] text-xs font-bold uppercase tracking-wider text-[--color-ink]">
+                  产品
+                </h4>
+                <ul className="flex flex-col gap-2">
+                  <li>
+                    <a href="/submit" className="text-[--color-ink-soft] no-underline hover:text-[--color-ink]">
+                      提交网站
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#pricing" className="text-[--color-ink-soft] no-underline hover:text-[--color-ink]">
+                      定价
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#faq" className="text-[--color-ink-soft] no-underline hover:text-[--color-ink]">
+                      常见问题
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="mb-3 font-[family-name:var(--font-mono)] text-xs font-bold uppercase tracking-wider text-[--color-ink]">
+                  公司
+                </h4>
+                <ul className="flex flex-col gap-2">
+                  <li>
+                    <a href="#" className="text-[--color-ink-soft] no-underline hover:text-[--color-ink]">
+                      关于
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-[--color-ink-soft] no-underline hover:text-[--color-ink]">
+                      联系
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="mb-3 font-[family-name:var(--font-mono)] text-xs font-bold uppercase tracking-wider text-[--color-ink]">
+                  法律
+                </h4>
+                <ul className="flex flex-col gap-2">
+                  <li>
+                    <a href="#" className="text-[--color-ink-soft] no-underline hover:text-[--color-ink]">
+                      服务条款
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-[--color-ink-soft] no-underline hover:text-[--color-ink]">
+                      隐私政策
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div className="flex gap-6 text-sm text-muted-foreground">
-            <a href="#how-it-works" className="hover:text-foreground">
-              怎么用
-            </a>
-            <a href="#pricing" className="hover:text-foreground">
-              定价
-            </a>
-            <a href="#faq" className="hover:text-foreground">
-              FAQ
-            </a>
+          <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-[--color-rule] pt-5 font-[family-name:var(--font-mono)] text-xs tracking-wider text-[--color-mute] sm:flex-row">
+            <span>© {new Date().getFullYear()} Meathill LLC · 保留所有权利</span>
+            <span>Made with 🐾 in 中国</span>
           </div>
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} VibeSite. All rights reserved.
-          </p>
         </div>
       </footer>
 

@@ -1,0 +1,62 @@
+<!doctype html>
+<!-- @dsCard group="Colors" name="Brand color scale" subtitle="Warm crimson — 50 → 950" viewport="700x280" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Brand color scale</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .scale { display: grid; grid-template-columns: repeat(11, 1fr); gap: 6px; }
+  .swatch {
+    aspect-ratio: 0.62 / 1;
+    border-radius: var(--radius);
+    border: 1px solid oklch(0.20 0.05 28 / 5%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 6px 6px;
+    color: white;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 500;
+  }
+  .swatch.lo { color: var(--neutral-800); }
+  .name { font-weight: 600; font-family: var(--font-sans); font-size: 11px; }
+  .anchor {
+    margin-top: 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 10px 12px;
+    background: var(--neutral-0);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .anchor .chip { width: 28px; height: 28px; border-radius: 8px; background: var(--brand-500); box-shadow: var(--shadow-primary); }
+  .anchor .copy { font-size: 12px; color: var(--neutral-700); line-height: 1.45; }
+  .anchor .copy b { font-weight: 600; color: var(--neutral-900); }
+</style>
+</head>
+<body class="card">
+  <div class="scale">
+    <div class="swatch lo" style="background: var(--brand-50)"><span class="name">50</span></div>
+    <div class="swatch lo" style="background: var(--brand-100)"><span class="name">100</span></div>
+    <div class="swatch lo" style="background: var(--brand-200)"><span class="name">200</span></div>
+    <div class="swatch lo" style="background: var(--brand-300)"><span class="name">300</span></div>
+    <div class="swatch"    style="background: var(--brand-400)"><span class="name">400</span></div>
+    <div class="swatch"    style="background: var(--brand-500)"><span class="name">500 ●</span></div>
+    <div class="swatch"    style="background: var(--brand-600)"><span class="name">600</span></div>
+    <div class="swatch"    style="background: var(--brand-700)"><span class="name">700</span></div>
+    <div class="swatch"    style="background: var(--brand-800)"><span class="name">800</span></div>
+    <div class="swatch"    style="background: var(--brand-900)"><span class="name">900</span></div>
+    <div class="swatch"    style="background: var(--brand-950)"><span class="name">950</span></div>
+  </div>
+  <div class="anchor">
+    <div class="chip"></div>
+    <div class="copy">
+      <b>brand-500</b> is the single primary action color. Use sparingly: one or two
+      hits per viewport. <b>600/700</b> for hover/press. <b>50/100</b> for tinted
+      surfaces and selected states.
+    </div>
+  </div>
+</body>
+</html>

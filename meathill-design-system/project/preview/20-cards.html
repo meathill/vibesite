@@ -1,0 +1,95 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Cards" subtitle="feature · interactive · tinted CTA" viewport="700x360" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cards</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body.card { background: var(--neutral-100); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .card-srf {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-2xl);
+    padding: 16px 18px;
+    box-shadow: var(--shadow-xs);
+    position: relative;
+  }
+  .card-srf::before {
+    content: ""; position: absolute; inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    pointer-events: none;
+  }
+  .card-srf h4 { margin: 0; font-size: 16px; font-weight: 600; letter-spacing: -0.005em; }
+  .card-srf .desc { margin: 4px 0 0; color: var(--muted-foreground); font-size: 13px; line-height: 1.5; }
+  .card-srf .meta {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 14px; padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono); font-size: 11px; color: var(--muted-foreground);
+  }
+
+  .card-srf.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+  }
+  .card-srf.interactive { cursor: pointer; transition: all var(--duration-base) var(--ease-out); }
+  .card-srf.interactive:hover {
+    border-color: oklch(0.20 0.05 28 / 12%);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+  .card-srf.tinted {
+    background: linear-gradient(180deg, oklch(0.97 0.012 28), var(--card));
+    border-color: oklch(0.58 0.22 28 / 14%);
+  }
+
+  .icon-tile {
+    width: 36px; height: 36px;
+    border-radius: var(--radius);
+    background: var(--neutral-100);
+    display: grid; place-items: center;
+    margin-bottom: 10px;
+    color: var(--brand-600);
+  }
+  .card-srf.tinted .icon-tile { background: white; }
+</style>
+</head>
+<body class="card">
+  <div class="grid">
+    <div class="card-srf">
+      <div class="icon-tile">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 21h14"/></svg>
+      </div>
+      <h4>HD Downloads</h4>
+      <p class="desc">Original quality, no re-encoding, no watermark. Up to 4K for supported sources.</p>
+      <div class="meta"><span>card · xs shadow</span><span>720×var</span></div>
+    </div>
+
+    <div class="card-srf interactive">
+      <div class="icon-tile">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+      </div>
+      <h4>Fast queue</h4>
+      <p class="desc">Edge-deployed control plane, sub-second job dispatch via Cloudflare Queues.</p>
+      <div class="meta"><span>interactive · hover lifts</span><span>+ md shadow</span></div>
+    </div>
+
+    <div class="card-srf tinted" style="grid-column: 1 / span 2;">
+      <div style="display: flex; gap: 16px; align-items: center;">
+        <div class="icon-tile">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 14 8h6l-5 4 2 7-7-4-7 4 2-7-5-4h6Z"/></svg>
+        </div>
+        <div style="flex: 1;">
+          <h4>Upgrade to Pro</h4>
+          <p class="desc">Unlimited daily downloads, larger files (10 GB), full 4K support, plus access to the MCP and CLI.</p>
+        </div>
+        <button style="height: 36px; padding: 0 14px; border-radius: var(--radius-lg); background: var(--primary); color: white; border: 0; font-weight: 500; box-shadow: var(--shadow-primary); cursor: pointer; font-family: inherit;">View pricing →</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+/* preview/_card.css — frame for every Design System preview card.
+   Each card file imports this AFTER ../colors_and_type.css. */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  font-family: var(--font-sans);
+  color: var(--foreground);
+}
+
+body.card {
+  /* Cards render at 700×N inside the Design System tab. We keep an
+     outer 20px breathing room, then the asset-name renders OUTSIDE,
+     so we never need our own title chrome. */
+  padding: 20px 24px;
+  box-sizing: border-box;
+}
+
+/* Generic atoms shared by multiple cards */
+.row   { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.col   { display: flex; gap: 12px; flex-direction: column; }
+.grid  { display: grid; gap: 12px; }
+
+.swatch {
+  width: 100%;
+  aspect-ratio: 1.4 / 1;
+  border-radius: var(--radius);
+  border: 1px solid oklch(0.20 0.05 28 / 5%);
+  box-shadow: var(--shadow-xs);
+  display: flex;
+  align-items: flex-end;
+  padding: 8px 10px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted-foreground);
+}
+
+.label-strong {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--neutral-800);
+}
+
+.divider { height: 1px; background: var(--border); }
+
+/* Subdued meta column (right-aligned key/value pairs) */
+.meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted-foreground);
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 4px 12px;
+  align-items: baseline;
+}
+.meta b { color: var(--neutral-800); font-weight: 600; }

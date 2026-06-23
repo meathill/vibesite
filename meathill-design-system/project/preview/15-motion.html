@@ -1,0 +1,70 @@
+<!doctype html>
+<!-- @dsCard group="Spacing" name="Motion" subtitle="ease-out / ease-in-out / linear + durations" viewport="700x240" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Motion</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .panel {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    background: var(--neutral-0);
+    padding: 14px 16px;
+    overflow: hidden;
+  }
+  .panel b { display: block; font-size: 12.5px; font-weight: 600; color: var(--neutral-900); margin-bottom: 4px; }
+  .panel small { font-family: var(--font-mono); font-size: 11px; color: var(--muted-foreground); }
+  .track { height: 14px; background: var(--neutral-100); border-radius: 99px; margin-top: 14px; position: relative; overflow: hidden; }
+  .dot {
+    position: absolute; top: 0; left: 0;
+    height: 14px; width: 14px;
+    border-radius: 99px;
+    background: var(--primary);
+    animation: slide 2200ms infinite;
+  }
+  .ease-out .dot { animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .ease-inout .dot { animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+  .ease-linear .dot { animation-timing-function: linear; }
+
+  @keyframes slide {
+    0%, 12% { left: 0; }
+    50%, 62% { left: calc(100% - 14px); }
+    100% { left: 0; }
+  }
+
+  .footnote {
+    margin-top: 14px;
+    font-size: 12px; line-height: 1.5;
+    color: var(--neutral-700);
+  }
+  .footnote b { color: var(--neutral-900); font-weight: 600; }
+</style>
+</head>
+<body class="card">
+  <div class="grid">
+    <div class="panel ease-out">
+      <b>ease-out</b>
+      <small>cubic-bezier(.2,.8,.2,1)</small>
+      <div class="track"><div class="dot"></div></div>
+    </div>
+    <div class="panel ease-inout">
+      <b>ease-in-out</b>
+      <small>cubic-bezier(.4,0,.2,1)</small>
+      <div class="track"><div class="dot"></div></div>
+    </div>
+    <div class="panel ease-linear">
+      <b>linear</b>
+      <small>progress only</small>
+      <div class="track"><div class="dot"></div></div>
+    </div>
+  </div>
+  <p class="footnote">
+    Three durations: <b>fast 120ms</b> (hover / focus), <b>base 180ms</b> (toggle / dropdown),
+    <b>slow 280ms</b> (dialog enter, slide-in). No bounce, no spring — confident and immediate.
+    Avoid layered motion across more than 2 elements at once.
+  </p>
+</body>
+</html>
