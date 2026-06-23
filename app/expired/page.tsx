@@ -1,6 +1,6 @@
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { ClockIcon } from '@phosphor-icons/react/dist/ssr';
 
 const PLANS = [
@@ -41,9 +41,7 @@ export default function ExpiredPage() {
             key={plan.name}
             className={`relative ${plan.recommended ? 'border-primary shadow-md' : ''}`}
           >
-            {plan.recommended && (
-              <Badge className="absolute -top-2 right-4">推荐</Badge>
-            )}
+            {plan.recommended && <Badge className="absolute -top-2 right-4">推荐</Badge>}
             <CardHeader>
               <CardTitle>{plan.name}</CardTitle>
               <p className="text-2xl font-bold">{plan.price}</p>

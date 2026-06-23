@@ -16,17 +16,11 @@ export function uploadToR2(params: UploadParams): Promise<R2Object> {
   });
 }
 
-export function getFromR2(
-  bucket: R2Bucket,
-  key: string,
-): Promise<R2ObjectBody | null> {
+export function getFromR2(bucket: R2Bucket, key: string): Promise<R2ObjectBody | null> {
   return bucket.get(key);
 }
 
-export function deleteFromR2(
-  bucket: R2Bucket,
-  key: string,
-): Promise<void> {
+export function deleteFromR2(bucket: R2Bucket, key: string): Promise<void> {
   return bucket.delete(key);
 }
 

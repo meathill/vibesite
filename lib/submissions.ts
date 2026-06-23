@@ -94,10 +94,7 @@ export async function createNewSubmission(
   return updatedSubmission;
 }
 
-export async function getSubmissionStatus(
-  db: D1Database,
-  id: string,
-): Promise<Submission> {
+export async function getSubmissionStatus(db: D1Database, id: string): Promise<Submission> {
   const submission = await getSubmission(db, id);
   if (!submission) {
     throw new SubmissionNotFoundError(id);
@@ -131,11 +128,7 @@ export async function updateSubmissionResult(
 
   // 发送 Telegram 状态更新通知
   try {
-    await sendStatusUpdateNotification(
-      env.TELEGRAM_BOT_TOKEN,
-      env.TELEGRAM_CHAT_ID,
-      updated,
-    );
+    await sendStatusUpdateNotification(env.TELEGRAM_BOT_TOKEN, env.TELEGRAM_CHAT_ID, updated);
   } catch (error) {
     console.error('Telegram 通知发送失败:', error);
   }

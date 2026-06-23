@@ -80,6 +80,16 @@ const PERSONAS = [
 
 const PRICING_PLANS = [
   {
+    name: '免费预览',
+    price: '0',
+    unit: '',
+    desc: '72 小时内免费访问',
+    features: ['全球 CDN 部署', '可分享的预览链接', '72 小时有效期'],
+    cta: '立即尝试',
+    ctaHref: '/submit',
+    highlighted: false,
+  },
+  {
     name: '基础',
     price: '99',
     unit: '元/年',
@@ -404,7 +414,7 @@ export default function HomePage() {
       </section>
 
       {/* 最终 CTA */}
-      <section className="bg-primary px-4 py-16 text-primary-foreground md:py-24">
+      <section className="bg-primary/75 px-4 py-16 text-primary-foreground md:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="mb-4 text-2xl font-bold md:text-3xl">准备好上线了吗？</h2>
           <p className="mb-8 text-primary-foreground/80">
@@ -437,7 +447,7 @@ export default function HomePage() {
             </a>
           </div>
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Meathill LLC. All rights reserved.
+            © {new Date().getFullYear()} Meathill LLC. All rights reserved. v1.0.0
           </p>
         </div>
       </footer>

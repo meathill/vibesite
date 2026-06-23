@@ -1,20 +1,16 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Spinner } from '@/components/ui/spinner';
+import { Textarea } from '@/components/ui/textarea';
 import { useSubmissionFormStore } from '@/store/submission';
-import {
-  CloudArrowUpIcon,
-  FileArchiveIcon,
-  TrashIcon,
-} from '@phosphor-icons/react/dist/ssr';
+import { CloudArrowUpIcon, FileArchiveIcon, TrashIcon } from '@phosphor-icons/react/dist/ssr';
+import { useRouter } from 'next/navigation';
+import { useCallback, useRef, useState } from 'react';
 
 const INTENT_OPTIONS = [
   { value: 'preview', label: '仅预览' },
@@ -249,9 +245,7 @@ export default function SubmitPage() {
                   tabIndex={0}
                 >
                   <CloudArrowUpIcon className="size-10 text-muted-foreground" />
-                  <p className="text-sm text-muted-foreground">
-                    拖拽 .zip 文件到这里，或点击选择
-                  </p>
+                  <p className="text-sm text-muted-foreground">拖拽 .zip 文件到这里，或点击选择</p>
                   <p className="text-xs text-muted-foreground">最大 50MB</p>
                 </div>
               )}

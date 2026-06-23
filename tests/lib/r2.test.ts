@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
 import { generateR2Key } from '@/lib/r2';
+import { describe, expect, it } from 'vitest';
 
 describe('r2', () => {
   describe('generateR2Key', () => {

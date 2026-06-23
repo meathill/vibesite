@@ -1,19 +1,19 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
-import { useParams } from 'next/navigation';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Spinner } from '@/components/ui/spinner';
+import type { SubmissionStatus } from '@/types';
 import {
   CheckCircleIcon,
   ClockIcon,
   WarningCircleIcon,
   XCircleIcon,
 } from '@phosphor-icons/react/dist/ssr';
-import type { SubmissionStatus } from '@/types';
+import { useParams } from 'next/navigation';
+import { useCallback, useEffect, useState } from 'react';
 
 interface SubmissionStatusData {
   id: string;
@@ -26,16 +26,18 @@ interface SubmissionStatusData {
   updated_at: string;
 }
 
-const STATUS_CONFIG: Record<
-  SubmissionStatus,
-  { label: string; color: string; progress: number }
-> = {
-  pending: { label: '待处理', color: 'bg-warning text-warning-foreground', progress: 10 },
-  processing: { label: '部署中', color: 'bg-info text-info-foreground', progress: 50 },
-  deployed: { label: '已上线', color: 'bg-success text-success-foreground', progress: 100 },
-  failed: { label: '部署失败', color: 'bg-destructive text-destructive-foreground', progress: 100 },
-  expired: { label: '已过期', color: 'bg-muted text-muted-foreground', progress: 100 },
-};
+const STATUS_CONFIG: Record<SubmissionStatus, { label: string; color: string; progress: number }> =
+  {
+    pending: { label: '待处理', color: 'bg-warning text-warning-foreground', progress: 10 },
+    processing: { label: '部署中', color: 'bg-info text-info-foreground', progress: 50 },
+    deployed: { label: '已上线', color: 'bg-success text-success-foreground', progress: 100 },
+    failed: {
+      label: '部署失败',
+      color: 'bg-destructive text-destructive-foreground',
+      progress: 100,
+    },
+    expired: { label: '已过期', color: 'bg-muted text-muted-foreground', progress: 100 },
+  };
 
 export default function StatusPage() {
   const params = useParams();

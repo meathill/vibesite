@@ -43,9 +43,7 @@ export default function OpenGraphImage() {
         >
           V
         </div>
-        <span style={{ fontSize: 32, fontWeight: 700, color: '#171717' }}>
-          VibeSite
-        </span>
+        <span style={{ fontSize: 32, fontWeight: 700, color: '#171717' }}>VibeSite</span>
       </div>
 
       {/* 标题 */}
@@ -88,25 +86,23 @@ export default function OpenGraphImage() {
           justifyContent: 'center',
         }}
       >
-        {['Cursor', 'Bolt', 'Lovable', 'v0', 'ChatGPT', 'Claude'].map(
-          (tool) => (
-            <div
-              key={tool}
-              style={{
-                padding: '8px 18px',
-                borderRadius: 8,
-                background: 'white',
-                color: '#404040',
-                fontSize: 16,
-                fontWeight: 500,
-                boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
-                display: 'flex',
-              }}
-            >
-              {tool}
-            </div>
-          ),
-        )}
+        {['Cursor', 'Bolt', 'Lovable', 'v0', 'ChatGPT', 'Claude'].map((tool) => (
+          <div
+            key={tool}
+            style={{
+              padding: '8px 18px',
+              borderRadius: 8,
+              background: 'white',
+              color: '#404040',
+              fontSize: 16,
+              fontWeight: 500,
+              boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+              display: 'flex',
+            }}
+          >
+            {tool}
+          </div>
+        ))}
       </div>
     </div>,
     { ...size },

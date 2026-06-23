@@ -1,6 +1,6 @@
+import { isAdminAuthenticatedFromRequest } from '@/lib/admin-auth';
 import { getEnv } from '@/lib/cloudflare';
 import { getSubmissions } from '@/lib/db';
-import { isAdminAuthenticatedFromRequest } from '@/lib/admin-auth';
 import { type NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {

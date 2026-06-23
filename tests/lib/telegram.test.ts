@@ -1,6 +1,6 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { sendTelegramMessage, sendNewSubmissionNotification } from '@/lib/telegram';
+import { sendNewSubmissionNotification, sendTelegramMessage } from '@/lib/telegram';
 import type { Submission } from '@/types';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockSubmission: Submission = {
   id: 'abc123',

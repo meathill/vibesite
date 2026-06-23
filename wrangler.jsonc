@@ -30,5 +30,11 @@
       "binding": "R2_DEPLOYED",
       "bucket_name": "vibesite-deployed"
     }
+  ],
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "allowed_destination_addresses": ["*"]
+    }
   ]
 }

@@ -1,13 +1,18 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Spinner } from '@/components/ui/spinner';
 import {
   Table,
   TableBody,
@@ -16,9 +21,10 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Spinner } from '@/components/ui/spinner';
+import { Textarea } from '@/components/ui/textarea';
 import { useAdminStore } from '@/store/admin';
 import type { Submission, SubmissionStatus } from '@/types';
+import { useCallback, useEffect, useState } from 'react';
 
 const STATUS_LABELS: Record<SubmissionStatus, string> = {
   pending: '待处理',
@@ -88,34 +94,34 @@ export default function AdminPage() {
     fetchSubmissions();
   }, [fetchSubmissions]);
 
-  const handleSelectSubmission = useCallback((submission: Submission) => {
-    setSelectedSubmission(submission);
-    setResultStatus(submission.status);
-    setTemporaryUrl(submission.temporary_url ?? '');
-    setPermanentUrl(submission.permanent_url ?? '');
-    setErrorMessage(submission.error_message ?? '');
-    setAdminNote(submission.admin_note ?? '');
-  }, [setSelectedSubmission]);
+  const handleSelectSubmission = useCallback(
+    (submission: Submission) => {
+      setSelectedSubmission(submission);
+      setResultStatus(submission.status);
+      setTemporaryUrl(submission.temporary_url ?? '');
+      setPermanentUrl(submission.permanent_url ?? '');
+      setErrorMessage(submission.error_message ?? '');
+      setAdminNote(submission.admin_note ?? '');
+    },
+    [setSelectedSubmission],
+  );
 
   const handleUpdateResult = useCallback(async () => {
     if (!selectedSubmission) return;
 
     setIsUpdating(true);
     try {
-      const response = await fetch(
-        `/api/admin/submissions/${selectedSubmission.id}/result`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            status: resultStatus,
-            temporary_url: temporaryUrl || undefined,
-            permanent_url: permanentUrl || undefined,
-            error_message: errorMessage || undefined,
-            admin_note: adminNote || undefined,
-          }),
-        },
-      );
+      const response = await fetch(`/api/admin/submissions/${selectedSubmission.id}/result`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          status: resultStatus,
+          temporary_url: temporaryUrl || undefined,
+          permanent_url: permanentUrl || undefined,
+          error_message: errorMessage || undefined,
+          admin_note: adminNote || undefined,
+        }),
+      });
 
       if (!response.ok) throw new Error('更新失败');
 
@@ -156,9 +162,7 @@ export default function AdminPage() {
             ))}
           </SelectContent>
         </Select>
-        <span className="text-sm text-muted-foreground">
-          共 {total} 条记录
-        </span>
+        <span className="text-sm text-muted-foreground">共 {total} 条记录</span>
       </div>
 
       {/* 列表 */}
@@ -295,7 +299,10 @@ export default function AdminPage() {
                 <div className="flex flex-col gap-3">
                   <div className="flex flex-col gap-1.5">
                     <Label>状态</Label>
-                    <Select value={resultStatus} onValueChange={(v) => setResultStatus((v ?? 'pending') as SubmissionStatus)}>
+                    <Select
+                      value={resultStatus}
+                      onValueChange={(v) => setResultStatus((v ?? 'pending') as SubmissionStatus)}
+                    >
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>

@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 import { Spinner } from '@/components/ui/spinner';
 import { useAdminStore } from '@/store/admin';
+import { useCallback, useEffect, useState } from 'react';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, setAuthenticated } = useAdminStore();
@@ -94,9 +94,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 disabled={isLoggingIn}
                 autoFocus
               />
-              {error && (
-                <p className="text-sm text-destructive">{error}</p>
-              )}
+              {error && <p className="text-sm text-destructive">{error}</p>}
               <Button type="submit" className="w-full" disabled={isLoggingIn}>
                 {isLoggingIn ? '登录中...' : '登录'}
               </Button>

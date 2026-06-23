@@ -11,8 +11,7 @@ export function WebsiteJsonLd() {
     '@type': 'WebSite',
     name: 'VibeSite',
     url: SITE_URL,
-    description:
-      'AI 生成网页一键上线服务。上传 zip 文件，10 分钟获得可访问链接。',
+    description: 'AI 生成网页一键上线服务。上传 zip 文件，10 分钟获得可访问链接。',
     inLanguage: 'zh-CN',
     potentialAction: {
       '@type': 'SearchAction',
@@ -37,8 +36,7 @@ export function SoftwareAppJsonLd() {
     name: 'VibeSite',
     applicationCategory: 'WebApplication',
     operatingSystem: 'Web',
-    description:
-      'AI 生成网页一键上线服务。支持 Cursor、Bolt、Lovable、v0 等工具生成的项目。',
+    description: 'AI 生成网页一键上线服务。支持 Cursor、Bolt、Lovable、v0 等工具生成的项目。',
     url: SITE_URL,
     offers: {
       '@type': 'Offer',

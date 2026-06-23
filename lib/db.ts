@@ -41,10 +41,7 @@ export function createSubmission(
     .run();
 }
 
-export async function getSubmission(
-  db: D1Database,
-  id: string,
-): Promise<Submission | null> {
+export async function getSubmission(db: D1Database, id: string): Promise<Submission | null> {
   const result = await db
     .prepare('SELECT * FROM submissions WHERE id = ?1')
     .bind(id)
@@ -57,7 +54,7 @@ export function updateSubmission(
   id: string,
   params: UpdateSubmissionParams,
 ): Promise<D1Result> {
-  const sets: string[] = ['updated_at = datetime(\'now\')'];
+  const sets: string[] = ["updated_at = datetime('now')"];
   const values: unknown[] = [];
   let idx = 1;
 

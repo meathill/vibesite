@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
 import { isAdminAuthenticatedFromRequest } from '@/lib/admin-auth';
+import { describe, expect, it } from 'vitest';
 
 describe('Admin Authentication', () => {
   it('should reject request without cookie', () => {
