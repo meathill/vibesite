@@ -2,151 +2,297 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import { Separator } from '@/components/ui/separator';
+import {
   CheckCircleIcon,
   ClockIcon,
   CodeIcon,
   FileZipIcon,
   GlobeIcon,
+  GraduationCapIcon,
+  LightningIcon,
   RocketIcon,
+  ShieldCheckIcon,
   UploadIcon,
-  XCircleIcon,
+  UserIcon,
 } from '@phosphor-icons/react/dist/ssr';
 import type { Metadata } from 'next';
+import { FaqJsonLd } from '@/components/seo/json-ld';
 
 export const metadata: Metadata = {
-  title: 'VibeSite · AI 生成网页一键上线',
+  title: 'VibeSite - AI 生成网页一键上线 | 免费部署托管',
+  description:
+    '用 AI 生成了网页不知道怎么部署？上传 zip 文件，10 分钟获得可访问链接。支持 Cursor、Bolt、Lovable、v0 生成的项目。免费预览，无需注册。',
+  alternates: { canonical: 'https://vibesite.dev' },
 };
+
+const AI_TOOLS = [
+  'Cursor',
+  'Bolt',
+  'Lovable',
+  'v0',
+  'ChatGPT',
+  'Claude',
+  'Windsurf',
+  'Replit',
+];
+
+const WHY_POINTS = [
+  {
+    icon: CodeIcon,
+    title: '不需要懂命令行',
+    desc: '告别 npm install、git push、CI/CD 配置。上传 zip 就行。',
+  },
+  {
+    icon: GlobeIcon,
+    title: '不需要注册托管平台',
+    desc: '不用折腾 Cloudflare、Vercel、Netlify 的账号和配置。',
+  },
+  {
+    icon: LightningIcon,
+    title: '10 分钟内部署完成',
+    desc: '全球 CDN 分发，任何设备、任何网络都能访问。',
+  },
+  {
+    icon: ShieldCheckIcon,
+    title: '免费预览，零风险',
+    desc: '先看效果，满意了再考虑长期托管。不花一分钱。',
+  },
+];
+
+const PERSONAS = [
+  {
+    icon: RocketIcon,
+    title: 'AI 工具用户',
+    desc: '用 Cursor、Bolt、Lovable、v0 生成了网页，想让别人也能看到。',
+  },
+  {
+    icon: UserIcon,
+    title: '小商家',
+    desc: '想要一个简单的在线展示页面，但不想花几千块找人做。',
+  },
+  {
+    icon: GraduationCapIcon,
+    title: '学生',
+    desc: '课程作业或个人项目需要一个可访问的链接来提交。',
+  },
+  {
+    icon: FileZipIcon,
+    title: '自由职业者',
+    desc: '需要快速给客户展示作品集或项目原型。',
+  },
+];
+
+const PRICING_PLANS = [
+  {
+    name: '免费预览',
+    price: '0',
+    unit: '',
+    desc: '72 小时内免费访问',
+    features: ['全球 CDN 部署', '可分享的预览链接', '72 小时有效期'],
+    cta: '立即尝试',
+    ctaHref: '/submit',
+    highlighted: false,
+  },
+  {
+    name: '基础托管',
+    price: '29',
+    unit: '元/年',
+    desc: '长期稳定的在线方案',
+    features: ['长期稳定的预览链接', '全球 CDN 加速', '不限访问次数', '邮件技术支持'],
+    cta: '联系我们',
+    ctaHref: '/submit',
+    highlighted: true,
+  },
+  {
+    name: '自定义域名',
+    price: '99',
+    unit: '元/年',
+    desc: '用你自己的域名',
+    features: ['绑定自己的域名', 'HTTPS 证书', '长期稳定托管', '优先技术支持'],
+    cta: '联系我们',
+    ctaHref: '/submit',
+    highlighted: false,
+  },
+  {
+    name: '人工服务',
+    price: '299-999',
+    unit: '元',
+    desc: '专业人工部署与优化',
+    features: ['专业人工部署', '代码优化建议', '性能调优', '一对一支持'],
+    cta: '联系我们',
+    ctaHref: '/submit',
+    highlighted: false,
+  },
+];
+
+const FAQS = [
+  {
+    question: '支持什么格式的文件？',
+    answer:
+      '支持 .zip 格式的压缩包。包内应该是网站的源代码或构建产物。支持纯 HTML/CSS/JS、Vite 项目和 React SPA。',
+  },
+  {
+    question: '文件大小有限制吗？',
+    answer: '单个文件最大支持 50MB。如果你的项目超过了，可以尝试压缩图片等静态资源。',
+  },
+  {
+    question: '预览链接 72 小时后怎么办？',
+    answer:
+      '免费预览链接会在 72 小时后自动过期。如果你需要长期使用，可以选择我们的付费托管方案，最低 29 元/年。',
+  },
+  {
+    question: '能绑定自己的域名吗？',
+    answer:
+      '可以。选择「自定义域名」方案（99 元/年），我们帮你配置域名解析和 HTTPS 证书。',
+  },
+  {
+    question: '我的代码安全吗？',
+    answer:
+      '我们仅将你的文件用于部署，不会查看、修改或分享你的代码。预览链接过期后，源文件会从我们的服务器上删除。',
+  },
+  {
+    question: '不支持哪些类型的项目？',
+    answer:
+      '目前不支持需要后端服务的项目（如 Next.js SSR、Express、数据库连接），也不支持需要 Docker 容器化部署的项目。我们专注于纯前端静态网站的部署。',
+  },
+];
+
+const SITE_URL = 'https://vibesite.dev';
 
 export default function HomePage() {
   return (
     <main className="flex min-h-screen flex-col">
+      {/* 导航栏 */}
+      <nav className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-sm">
+        <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
+          <a href="/" className="flex items-center gap-2 font-bold">
+            <div className="flex size-7 items-center justify-center rounded-md bg-primary text-primary-foreground text-xs">
+              V
+            </div>
+            VibeSite
+          </a>
+          <div className="hidden items-center gap-6 md:flex">
+            <a
+              href="#how-it-works"
+              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              怎么用
+            </a>
+            <a
+              href="#pricing"
+              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              定价
+            </a>
+            <a
+              href="#faq"
+              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              FAQ
+            </a>
+          </div>
+          <Button size="sm" render={<a href="/submit" />}>
+            立即上线
+          </Button>
+        </div>
+      </nav>
+
       {/* Hero */}
-      <section className="flex flex-col items-center justify-center gap-6 px-4 py-20 text-center md:py-32">
-        <Badge variant="secondary" className="px-3 py-1">
-          MVP · 快速验证
-        </Badge>
-        <h1 className="max-w-2xl text-4xl font-bold tracking-tight md:text-5xl">
-          AI 生成的网页，一键上线
+      <section className="flex flex-col items-center justify-center gap-6 px-4 pb-8 pt-16 text-center md:pb-12 md:pt-24">
+        <h1 className="max-w-2xl text-3xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
+          AI 写好了网页
+          <br />
+          我们帮你上线
         </h1>
-        <p className="max-w-lg text-lg text-muted-foreground">
-          你用 AI 生成了一个网页，却不知道怎么上线？把文件交给我们，10
-          分钟内获得一个真实可访问的链接。
+        <p className="max-w-lg text-base text-muted-foreground md:text-lg">
+          上传 zip 文件，10 分钟拿到一个真实可访问的链接。
+          <br className="hidden md:block" />
+          免费预览，无需注册，全球 CDN 加速。
         </p>
         <div className="flex gap-3">
           <Button size="lg" render={<a href="/submit" />}>
-            立即提交
+            立即上传
           </Button>
           <Button size="lg" variant="outline" render={<a href="#how-it-works" />}>
-            了解流程
+            了解更多
           </Button>
         </div>
-      </section>
-
-      {/* 支持的项目类型 */}
-      <section className="bg-muted/40 px-4 py-16">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="mb-2 text-center text-2xl font-bold">支持的项目类型</h2>
-          <p className="mb-8 text-center text-muted-foreground">
-            我们目前支持以下类型的前端项目
-          </p>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            <Card>
-              <CardHeader>
-                <FileZipIcon className="mb-2 size-8 text-success" />
-                <CardTitle>AI 生成的网页</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  使用 Cursor、Bolt、Lovable、v0 等 AI 工具生成的纯 HTML/CSS/JS
-                  项目，直接打包上传即可。
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CodeIcon className="mb-2 size-8 text-success" />
-                <CardTitle>Vite 项目</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  使用 Vite 构建的前端项目，包括 Vue、Svelte、Lit 等框架，我们会自动检测并构建。
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <GlobeIcon className="mb-2 size-8 text-success" />
-                <CardTitle>React SPA</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  使用 Create React App 或类似工具创建的 React 单页应用。
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+        <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
+          <span className="flex items-center gap-1">
+            <CheckCircleIcon className="size-3.5 text-success" />
+            免费预览
+          </span>
+          <span className="flex items-center gap-1">
+            <CheckCircleIcon className="size-3.5 text-success" />
+            无需注册
+          </span>
+          <span className="flex items-center gap-1">
+            <CheckCircleIcon className="size-3.5 text-success" />
+            全球 CDN
+          </span>
         </div>
       </section>
 
-      {/* 不支持的项目类型 */}
-      <section className="px-4 py-16">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="mb-2 text-center text-2xl font-bold">不支持的项目类型</h2>
-          <p className="mb-8 text-center text-muted-foreground">
-            以下类型的项目需要完整的服务器环境，暂时无法支持
+      {/* 工具兼容条 */}
+      <section className="border-y bg-muted/30 px-4 py-8">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="mb-4 text-sm text-muted-foreground">
+            支持所有主流 AI 工具生成的网页
           </p>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {[
-              { name: 'Next.js SSR', desc: '需要 Node.js 服务器运行时' },
-              { name: '后端服务', desc: 'Express、Koa、Fastify 等服务端框架' },
-              { name: '数据库', desc: '任何需要数据库连接的项目' },
-              { name: 'Docker', desc: '需要容器化部署的项目' },
-            ].map((item) => (
-              <div
-                key={item.name}
-                className="flex items-center gap-3 rounded-lg border p-4"
-              >
-                <XCircleIcon className="size-5 shrink-0 text-destructive" />
-                <div>
-                  <p className="font-medium">{item.name}</p>
-                  <p className="text-sm text-muted-foreground">{item.desc}</p>
-                </div>
-              </div>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {AI_TOOLS.map((tool) => (
+              <Badge key={tool} variant="secondary" className="px-4 py-1.5 text-sm">
+                {tool}
+              </Badge>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 流程 */}
-      <section id="how-it-works" className="bg-muted/40 px-4 py-16">
+      {/* 怎么用 */}
+      <section id="how-it-works" className="px-4 py-16 md:py-24">
         <div className="mx-auto max-w-4xl">
-          <h2 className="mb-8 text-center text-2xl font-bold">三步完成上线</h2>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">
+            三步完成上线
+          </h2>
+          <p className="mb-12 text-center text-muted-foreground">
+            不需要懂技术，不需要注册任何平台
+          </p>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {[
               {
-                icon: UploadIcon,
+                icon: FileZipIcon,
                 step: '1',
-                title: '上传文件',
-                desc: '把你的 AI 生成网页打包成 .zip 文件，填写联系方式后上传。',
+                title: '打包成 zip',
+                desc: '把你 AI 生成的网站文件打包成 .zip 压缩包。',
               },
               {
-                icon: ClockIcon,
+                icon: UploadIcon,
                 step: '2',
-                title: '等待部署',
-                desc: '我们帮你部署到全球 CDN，通常 10 分钟内完成。',
+                title: '上传到 VibeSite',
+                desc: '填写联系方式，拖拽上传文件。就是这么简单。',
               },
               {
-                icon: CheckCircleIcon,
+                icon: GlobeIcon,
                 step: '3',
-                title: '获得链接',
-                desc: '拿到一个真实可访问的链接，分享给任何人。',
+                title: '拿到链接',
+                desc: '10 分钟内收到一个可访问的链接，分享给任何人。',
               },
             ].map((item) => (
               <div key={item.step} className="flex flex-col items-center text-center">
-                <div className="mb-4 flex size-12 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                  <item.icon className="size-6" />
+                <div className="relative mb-4">
+                  <div className="flex size-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
+                    <item.icon className="size-7" />
+                  </div>
+                  <span className="absolute -right-2 -top-2 flex size-6 items-center justify-center rounded-full bg-success text-xs font-bold text-white">
+                    {item.step}
+                  </span>
                 </div>
                 <h3 className="mb-2 text-lg font-semibold">{item.title}</h3>
                 <p className="text-sm text-muted-foreground">{item.desc}</p>
@@ -156,37 +302,192 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 重要限制 */}
-      <section className="px-4 py-16">
-        <div className="mx-auto max-w-2xl">
-          <h2 className="mb-6 text-center text-2xl font-bold">重要限制</h2>
-          <ul className="space-y-3">
-            {[
-              '每个项目大小限制为 50MB',
-              '仅支持 .zip 格式',
-              '预览链接有效期 72 小时',
-              '不提供自定义域名',
-              '不提供后端服务支持',
-              '不提供 SLA 保证',
-            ].map((item) => (
-              <li key={item} className="flex items-start gap-2">
-                <span className="mt-1 size-1.5 shrink-0 rounded-full bg-muted-foreground" />
-                <span className="text-muted-foreground">{item}</span>
-              </li>
+      <Separator />
+
+      {/* 为什么选择 VibeSite */}
+      <section className="bg-muted/30 px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">
+            为什么选择 VibeSite
+          </h2>
+          <p className="mb-12 text-center text-muted-foreground">
+            专为不熟悉技术部署的用户设计
+          </p>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {WHY_POINTS.map((item) => (
+              <Card key={item.title}>
+                <CardHeader>
+                  <div className="mb-2 flex size-10 items-center justify-center rounded-lg bg-primary/10">
+                    <item.icon className="size-5 text-primary" />
+                  </div>
+                  <CardTitle className="text-base">{item.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+                </CardContent>
+              </Card>
             ))}
-          </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* 使用场景 */}
+      <section className="px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">
+            适合谁用
+          </h2>
+          <p className="mb-12 text-center text-muted-foreground">
+            不管你是谁，只要有一个网页想上线，我们就能帮你
+          </p>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            {PERSONAS.map((item) => (
+              <div
+                key={item.title}
+                className="flex gap-4 rounded-xl border p-5 transition-colors hover:bg-muted/50"
+              >
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                  <item.icon className="size-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="mb-1 font-semibold">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Separator />
+
+      {/* 定价 */}
+      <section id="pricing" className="px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-5xl">
+          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">
+            选择适合你的方案
+          </h2>
+          <p className="mb-12 text-center text-muted-foreground">
+            先免费预览，满意了再升级
+          </p>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {PRICING_PLANS.map((plan) => (
+              <Card
+                key={plan.name}
+                className={`relative flex flex-col ${
+                  plan.highlighted ? 'border-primary shadow-md' : ''
+                }`}
+              >
+                {plan.highlighted && (
+                  <Badge className="absolute -top-2.5 right-4">推荐</Badge>
+                )}
+                <CardHeader>
+                  <CardTitle className="text-base">{plan.name}</CardTitle>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-3xl font-bold">{plan.price}</span>
+                    {plan.unit && (
+                      <span className="text-sm text-muted-foreground">
+                        {plan.unit}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-muted-foreground">{plan.desc}</p>
+                </CardHeader>
+                <CardContent className="flex flex-1 flex-col gap-3">
+                  <ul className="flex-1 space-y-2">
+                    {plan.features.map((feature) => (
+                      <li
+                        key={feature}
+                        className="flex items-start gap-2 text-sm"
+                      >
+                        <CheckCircleIcon className="mt-0.5 size-4 shrink-0 text-success" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <Button
+                    className="w-full"
+                    variant={plan.highlighted ? 'default' : 'outline'}
+                    render={<a href={plan.ctaHref} />}
+                  >
+                    {plan.cta}
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Separator />
+
+      {/* FAQ */}
+      <section id="faq" className="px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-2xl">
+          <h2 className="mb-4 text-center text-2xl font-bold md:text-3xl">
+            常见问题
+          </h2>
+          <p className="mb-8 text-center text-muted-foreground">
+            有疑问？看看下面能不能找到答案
+          </p>
+          <Accordion multiple={false}>
+            {FAQS.map((faq, index) => (
+              <AccordionItem key={index} value={`faq-${index}`}>
+                <AccordionTrigger>{faq.question}</AccordionTrigger>
+                <AccordionContent>{faq.answer}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
+      {/* 最终 CTA */}
+      <section className="bg-primary px-4 py-16 text-primary-foreground md:py-24">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="mb-4 text-2xl font-bold md:text-3xl">
+            准备好上线了吗？
+          </h2>
+          <p className="mb-8 text-primary-foreground/80">
+            上传你的网站，10 分钟后就能分享给全世界。
+          </p>
+          <Button
+            size="lg"
+            variant="secondary"
+            render={<a href="/submit" />}
+          >
+            立即上传
+          </Button>
         </div>
       </section>
 
       {/* 页脚 */}
-      <footer className="border-t px-4 py-8 text-center">
-        <p className="text-sm text-muted-foreground">
-          ⚠️ 免责声明：本服务为 MVP 阶段产品，不保证 SLA。我们仅提供托管服务，不拥有您网站的任何内容版权。
-        </p>
-        <p className="mt-2 text-xs text-muted-foreground">
-          © {new Date().getFullYear()} VibeSite
-        </p>
+      <footer className="border-t px-4 py-8">
+        <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 md:flex-row md:justify-between">
+          <div className="flex items-center gap-2 text-sm font-semibold">
+            <div className="flex size-5 items-center justify-center rounded bg-primary text-[10px] text-primary-foreground">
+              V
+            </div>
+            VibeSite
+          </div>
+          <div className="flex gap-6 text-sm text-muted-foreground">
+            <a href="#how-it-works" className="hover:text-foreground">
+              怎么用
+            </a>
+            <a href="#pricing" className="hover:text-foreground">
+              定价
+            </a>
+            <a href="#faq" className="hover:text-foreground">
+              FAQ
+            </a>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} VibeSite. All rights reserved.
+          </p>
+        </div>
       </footer>
+
+      {/* FAQ 结构化数据 */}
+      <FaqJsonLd faqs={FAQS} />
     </main>
   );
 }

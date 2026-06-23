@@ -2,11 +2,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ClockIcon } from '@phosphor-icons/react/dist/ssr';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: '链接已过期',
-};
 
 const PLANS = [
   {

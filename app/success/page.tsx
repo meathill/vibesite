@@ -1,11 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { CheckCircleIcon } from '@phosphor-icons/react/dist/ssr';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: '提交成功',
-};
 
 export default async function SuccessPage({
   searchParams,
