@@ -1,5 +1,5 @@
--- better-auth 数据库 schema
--- 用于 Cloudflare D1 (SQLite)
+-- Migration: Create better-auth tables
+-- Created: 2026-06-23
 
 -- 用户表
 CREATE TABLE IF NOT EXISTS "user" (
