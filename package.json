@@ -16,7 +16,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "db:init": "wrangler d1 execute vibesite-db --file=./db/schema.sql",
-    "db:seed": "wrangler d1 execute vibesite-db --file=./db/seed.sql"
+    "db:seed": "wrangler d1 execute vibesite-db --file=./db/seed.sql",
+    "deploy:script": "node --experimental-strip-types scripts/deploy.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
