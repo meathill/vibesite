@@ -2,46 +2,61 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "main": ".open-next/worker.js",
   "name": "vibesite",
-  "compatibility_date": "2024-12-30",
-  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "compatibility_date": "2026-06-20",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "vibesite",
+      "database_id": "6e2c0866-4f8a-4e72-9d0d-37a9faedb18c"
+    },
+    {
+      "binding": "NEXT_TAG_CACHE_D1",
+      "database_name": "tag-cache",
+      "database_id": "5f26868d-5d24-4645-8954-a27168f6fcd6"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  },
+  "placement": {
+    "mode": "smart"
+  },
+  "r2_buckets": [
+    {
+      "binding": "R2",
+      "bucket_name": "vibesite"
+    },
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "site-cache"
+    }
+  ],
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "allowed_destination_addresses": [
+        "*"
+      ]
+    }
+  ],
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
       "service": "vibesite"
     }
   ],
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "vibesite-db",
-      "database_id": "YOUR_D1_DATABASE_ID"
-    }
-  ],
-  "r2_buckets": [
-    {
-      "binding": "R2_UPLOADS",
-      "bucket_name": "vibesite-uploads"
-    },
-    {
-      "binding": "R2_DEPLOYED",
-      "bucket_name": "vibesite-deployed"
-    }
-  ],
-  "send_email": [
-    {
-      "name": "EMAIL",
-      "allowed_destination_addresses": ["*"]
-    }
-  ],
   "vars": {
-    "ADMIN_EMAIL": "admin@vibesite.dev",
+    "ADMIN_EMAIL": "meathill@gmail.com",
     "NEXT_PUBLIC_TURNSTILE_SITE_KEY": "",
     "NEXT_PUBLIC_GA_ID": "",
-    "R2_DEPLOYED_BUCKET_NAME": "vibesite-deployed",
     "TELEGRAM_CHAT_ID": ""
   }
 }

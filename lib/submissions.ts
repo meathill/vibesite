@@ -7,7 +7,7 @@ const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
 
 interface CloudflareBindings {
   DB: D1Database;
-  R2_UPLOADS: R2Bucket;
+  R2: R2Bucket;
   TELEGRAM_BOT_TOKEN: string;
   TELEGRAM_CHAT_ID: string;
 }
@@ -60,7 +60,7 @@ export async function createNewSubmission(
   const arrayBuffer = await input.file.arrayBuffer();
 
   await uploadToR2({
-    bucket: env.R2_UPLOADS,
+    bucket: env.R2,
     key: r2Key,
     data: arrayBuffer,
     contentType: 'application/zip',
