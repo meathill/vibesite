@@ -1,5 +1,8 @@
 'use client';
 
+import { CloudArrowUpIcon, FileArchiveIcon, TrashIcon } from '@phosphor-icons/react/dist/ssr';
+import { useRouter } from 'next/navigation';
+import { useCallback, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -8,9 +11,6 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Spinner } from '@/components/ui/spinner';
 import { Textarea } from '@/components/ui/textarea';
 import { useSubmissionFormStore } from '@/store/submission';
-import { CloudArrowUpIcon, FileArchiveIcon, TrashIcon } from '@phosphor-icons/react/dist/ssr';
-import { useRouter } from 'next/navigation';
-import { useCallback, useRef, useState } from 'react';
 
 const INTENT_OPTIONS = [
   { value: 'preview', label: '仅预览' },
@@ -226,8 +226,9 @@ export default function SubmitPage() {
                   </Button>
                 </div>
               ) : (
-                <div
-                  className={`flex cursor-pointer flex-col items-center gap-2 rounded-lg border-2 border-dashed p-8 transition-colors ${
+                <button
+                  type="button"
+                  className={`flex w-full cursor-pointer flex-col items-center gap-2 rounded-lg border-2 border-dashed p-8 transition-colors ${
                     isDragging
                       ? 'border-primary bg-primary/5'
                       : 'border-muted-foreground/25 hover:border-primary/50'
@@ -236,18 +237,12 @@ export default function SubmitPage() {
                   onDragLeave={handleDragLeave}
                   onDrop={handleDrop}
                   onClick={() => fileInputRef.current?.click()}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      fileInputRef.current?.click();
-                    }
-                  }}
-                  role="button"
-                  tabIndex={0}
+                  disabled={isSubmitting}
                 >
                   <CloudArrowUpIcon className="size-10 text-muted-foreground" />
                   <p className="text-sm text-muted-foreground">拖拽 .zip 文件到这里，或点击选择</p>
                   <p className="text-xs text-muted-foreground">最大 50MB</p>
-                </div>
+                </button>
               )}
               <input
                 ref={fileInputRef}

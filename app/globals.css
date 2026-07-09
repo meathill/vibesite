@@ -19,11 +19,13 @@
      character — so Sora handles Latin, Noto Sans SC handles CJK,
      in the same heading, automatically.
      ============================================================ */
-  --font-display: "Sora", "Noto Sans SC", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-    sans-serif; /* h1, h2, marketing display */
-  --font-sans: "Plus Jakarta Sans", "Noto Sans SC", ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", sans-serif; /* body, ui */
-  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace; /* code, ids, timestamps */
+  --font-display:
+    "Sora", "Noto Sans SC", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; /* h1, h2, marketing display */
+  --font-sans:
+    "Plus Jakarta Sans", "Noto Sans SC", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif; /* body, ui */
+  --font-mono:
+    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace; /* code, ids, timestamps */
 
   /* ---- 2a. Type scale (modular ~1.20, slightly compressed for ui) */
   --text-2xs: 0.6875rem; /* 11px  — micro labels, footer copyright   */
@@ -201,9 +203,10 @@
   --shadow-inner-edge: 0 1px 0 0 oklch(0.2 0.05 28 / 6%);
 
   /* Branded glow — primary buttons + premium CTA only. */
-  --shadow-primary: 0 1px 2px 0 oklch(0.58 0.22 28 / 14%), 0 4px 12px -2px oklch(0.58 0.22 28 / 24%);
-  --shadow-primary-lg: 0 4px 14px 0 oklch(0.58 0.22 28 / 18%), 0 12px 32px -4px
-    oklch(0.58 0.22 28 / 30%);
+  --shadow-primary:
+    0 1px 2px 0 oklch(0.58 0.22 28 / 14%), 0 4px 12px -2px oklch(0.58 0.22 28 / 24%);
+  --shadow-primary-lg:
+    0 4px 14px 0 oklch(0.58 0.22 28 / 18%), 0 12px 32px -4px oklch(0.58 0.22 28 / 30%);
 
   /* ============================================================
      8. MOTION — calm, confident; no bounce, no spring.
@@ -272,8 +275,8 @@
   --shadow-inner-highlight: inset 0 1px 0 0 oklch(1 0 0 / 6%);
   --shadow-inner-edge: 0 1px 0 0 oklch(1 0 0 / 4%);
   --shadow-primary: 0 1px 2px 0 oklch(0.68 0.2 30 / 24%), 0 4px 16px -2px oklch(0.68 0.2 30 / 36%);
-  --shadow-primary-lg: 0 4px 18px 0 oklch(0.68 0.2 30 / 28%), 0 16px 40px -6px
-    oklch(0.68 0.2 30 / 40%);
+  --shadow-primary-lg:
+    0 4px 18px 0 oklch(0.68 0.2 30 / 28%), 0 16px 40px -6px oklch(0.68 0.2 30 / 40%);
 
   /* Overlay / glass adapt */
   --overlay: oklch(0 0 0 / 70%);

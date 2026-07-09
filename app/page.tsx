@@ -1,14 +1,3 @@
-import { FaqJsonLd } from '@/components/seo/json-ld';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 import {
   CheckCircleIcon,
   CodeIcon,
@@ -22,6 +11,17 @@ import {
   UserIcon,
 } from '@phosphor-icons/react/dist/ssr';
 import type { Metadata } from 'next';
+import { FaqJsonLd } from '@/components/seo/json-ld';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 
 export const metadata: Metadata = {
   title: 'VibeSite - AI 生成网页一键上线 | 免费部署托管',
@@ -151,8 +151,6 @@ const FAQS = [
       '目前不支持需要后端服务的项目（如 Next.js SSR、Express、数据库连接），也不支持需要 Docker 容器化部署的项目。我们专注于纯前端静态网站的部署。',
   },
 ];
-
-const SITE_URL = 'https://vibesite.dev';
 
 export default function HomePage() {
   return (
@@ -404,7 +402,7 @@ export default function HomePage() {
           <p className="mb-8 text-center text-muted-foreground">有疑问？看看下面能不能找到答案</p>
           <Accordion multiple={false}>
             {FAQS.map((faq, index) => (
-              <AccordionItem key={index} value={`faq-${index}`}>
+              <AccordionItem key={faq.question} value={`faq-${index}`}>
                 <AccordionTrigger>{faq.question}</AccordionTrigger>
                 <AccordionContent>{faq.answer}</AccordionContent>
               </AccordionItem>

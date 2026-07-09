@@ -3,10 +3,7 @@
   "main": ".open-next/worker.js",
   "name": "vibesite",
   "compatibility_date": "2026-06-20",
-  "compatibility_flags": [
-    "nodejs_compat",
-    "global_fetch_strictly_public"
-  ],
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
@@ -42,9 +39,7 @@
   "send_email": [
     {
       "name": "EMAIL",
-      "allowed_destination_addresses": [
-        "*"
-      ]
+      "allowed_destination_addresses": ["*"]
     }
   ],
   "services": [
@@ -56,7 +51,7 @@
   "vars": {
     "ADMIN_EMAIL": "meathill@gmail.com",
     "NEXT_PUBLIC_TURNSTILE_SITE_KEY": "",
-    "NEXT_PUBLIC_GA_ID": "",
-    "TELEGRAM_CHAT_ID": ""
+    "NEXT_PUBLIC_GA_ID": "G-28VYQDS5S0",
+    "TELEGRAM_CHAT_ID": "430446503"
   }
 }

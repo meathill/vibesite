@@ -1,14 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { EnvelopeSimpleIcon, KeyIcon } from '@phosphor-icons/react/dist/ssr';
 import { useRouter } from 'next/navigation';
-import { authClient } from '@/lib/auth-client';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Spinner } from '@/components/ui/spinner';
-import { EnvelopeSimpleIcon, KeyIcon } from '@phosphor-icons/react/dist/ssr';
+import { authClient } from '@/lib/auth-client';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -91,14 +91,10 @@ export default function LoginPage() {
                     disabled={isLoading}
                   />
                 </div>
-                <p className="text-sm text-muted-foreground">
-                  我们将向您的邮箱发送一个 6 位验证码
-                </p>
+                <p className="text-sm text-muted-foreground">我们将向您的邮箱发送一个 6 位验证码</p>
               </div>
 
-              {error && (
-                <p className="text-sm text-destructive">{error}</p>
-              )}
+              {error && <p className="text-sm text-destructive">{error}</p>}
 
               <Button type="submit" className="w-full" disabled={isLoading}>
                 {isLoading ? (
@@ -135,9 +131,7 @@ export default function LoginPage() {
                 </p>
               </div>
 
-              {error && (
-                <p className="text-sm text-destructive">{error}</p>
-              )}
+              {error && <p className="text-sm text-destructive">{error}</p>}
 
               <Button type="submit" className="w-full" disabled={isLoading || otp.length !== 6}>
                 {isLoading ? (

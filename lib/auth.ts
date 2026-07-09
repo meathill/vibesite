@@ -1,10 +1,10 @@
-import { betterAuth } from 'better-auth';
-import { emailOTP } from 'better-auth/plugins';
-import { nextCookies } from 'better-auth/next-js';
 import { getCloudflareContext } from '@opennextjs/cloudflare';
+import { betterAuth } from 'better-auth';
+import { nextCookies } from 'better-auth/next-js';
+import { emailOTP } from 'better-auth/plugins';
 
-// 使用 any 类型避免 better-auth 的复杂类型推断问题
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// better-auth 配置选项会生成过深的泛型，缓存实例用 any 规避
+// biome-ignore lint/suspicious/noExplicitAny: better-auth 复杂类型推断
 let _auth: any = null;
 
 export async function getAuth() {
@@ -29,7 +29,15 @@ export async function getAuth() {
 
     plugins: [
       emailOTP({
-        async sendVerificationOTP({ email, otp, type }: { email: string; otp: string; type: string }) {
+        async sendVerificationOTP({
+          email,
+          otp,
+          type,
+        }: {
+          email: string;
+          otp: string;
+          type: string;
+        }) {
           const subjects: Record<string, string> = {
             'sign-in': 'VibeSite 登录验证码',
             'email-verification': 'VibeSite 邮箱验证',

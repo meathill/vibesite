@@ -34,8 +34,8 @@ export async function createNewSubmission(
     throw new InvalidFileTypeError();
   }
 
-  // 先插入 D1 获取 ID
-  const result = await createSubmission(env.DB, {
+  // 先插入 D1（主键为 TEXT，不依赖 last_row_id）
+  await createSubmission(env.DB, {
     project_name: input.projectName,
     contact: input.contact,
     description: input.description,

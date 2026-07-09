@@ -86,11 +86,7 @@ export function OrganizationJsonLd() {
   );
 }
 
-export function BreadcrumbJsonLd({
-  items,
-}: {
-  items: Array<{ name: string; url: string }>;
-}) {
+export function BreadcrumbJsonLd({ items }: { items: Array<{ name: string; url: string }> }) {
   const data = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -111,11 +107,7 @@ export function BreadcrumbJsonLd({
   );
 }
 
-export function FaqJsonLd({
-  faqs,
-}: {
-  faqs: Array<{ question: string; answer: string }>;
-}) {
+export function FaqJsonLd({ faqs }: { faqs: Array<{ question: string; answer: string }> }) {
   const data = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',

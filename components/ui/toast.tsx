@@ -1,7 +1,5 @@
 'use client';
 
-import { buttonVariants } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
 import { Toast } from '@base-ui/react/toast';
 import {
   CircleAlertIcon,
@@ -11,6 +9,8 @@ import {
   TriangleAlertIcon,
 } from 'lucide-react';
 import type React from 'react';
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 const TOAST_ICONS = {
   error: CircleAlertIcon,
@@ -44,10 +44,7 @@ function getSwipeDirection(position: ToastPosition): SwipeDirection[] {
   return ['right', verticalDirection];
 }
 
-function upsertReplayClassName(toast: {
-  type?: string;
-  updateKey?: number;
-}): string | undefined {
+function upsertReplayClassName(toast: { type?: string; updateKey?: number }): string | undefined {
   const k = toast.updateKey ?? 0;
   if (k <= 0) return undefined;
   const isEven = k % 2 === 0;

@@ -1,7 +1,7 @@
+import { ClockIcon } from '@phosphor-icons/react/dist/ssr';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ClockIcon } from '@phosphor-icons/react/dist/ssr';
 
 const PLANS = [
   {

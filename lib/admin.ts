@@ -1,6 +1,6 @@
-import { getAuth } from './auth';
 import { getCloudflareContext } from '@opennextjs/cloudflare';
 import { headers } from 'next/headers';
+import { getAuth } from './auth';
 
 /**
  * 检查当前用户是否是 admin

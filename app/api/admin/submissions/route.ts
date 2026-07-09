@@ -1,7 +1,7 @@
+import { type NextRequest, NextResponse } from 'next/server';
 import { isAdmin } from '@/lib/admin';
 import { getEnv } from '@/lib/cloudflare';
 import { getSubmissions } from '@/lib/db';
-import { type NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
   if (!(await isAdmin())) {

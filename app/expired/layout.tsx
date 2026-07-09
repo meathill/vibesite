@@ -6,10 +6,6 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://vibesite.dev/expired' },
 };
 
-export default function ExpiredLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function ExpiredLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

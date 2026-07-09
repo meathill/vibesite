@@ -1,11 +1,5 @@
 'use client';
 
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
-import { Spinner } from '@/components/ui/spinner';
-import type { SubmissionStatus } from '@/types';
 import {
   CheckCircleIcon,
   ClockIcon,
@@ -14,6 +8,12 @@ import {
 } from '@phosphor-icons/react/dist/ssr';
 import { useParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Progress } from '@/components/ui/progress';
+import { Spinner } from '@/components/ui/spinner';
+import type { SubmissionStatus } from '@/types';
 
 interface SubmissionStatusData {
   id: string;

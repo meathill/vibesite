@@ -1,7 +1,7 @@
-import { getAuth } from '@/lib/auth';
 import { getCloudflareContext } from '@opennextjs/cloudflare';
-import { NextResponse } from 'next/server';
 import { headers } from 'next/headers';
+import { NextResponse } from 'next/server';
+import { getAuth } from '@/lib/auth';
 
 export async function GET() {
   try {

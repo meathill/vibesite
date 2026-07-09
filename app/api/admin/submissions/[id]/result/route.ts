@@ -1,8 +1,8 @@
+import { type NextRequest, NextResponse } from 'next/server';
 import { isAdmin } from '@/lib/admin';
 import { getEnv } from '@/lib/cloudflare';
 import { SubmissionNotFoundError, updateSubmissionResult } from '@/lib/submissions';
 import type { SubmissionStatus } from '@/types';
-import { type NextRequest, NextResponse } from 'next/server';
 
 interface ResultBody {
   status: SubmissionStatus;

@@ -1,6 +1,6 @@
+import { CheckCircleIcon } from '@phosphor-icons/react/dist/ssr';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { CheckCircleIcon } from '@phosphor-icons/react/dist/ssr';
 
 export default async function SuccessPage({
   searchParams,

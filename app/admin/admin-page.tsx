@@ -1,5 +1,6 @@
 'use client';
 
+import { useCallback, useEffect, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -23,7 +24,6 @@ import {
 } from '@/components/ui/table';
 import { Textarea } from '@/components/ui/textarea';
 import type { Submission, SubmissionStatus } from '@/types';
-import { useCallback, useEffect, useState } from 'react';
 
 const STATUS_LABELS: Record<SubmissionStatus, string> = {
   pending: '待处理',

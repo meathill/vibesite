@@ -1,29 +1,16 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import { useCallback, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
 import { authClient } from '@/lib/auth-client';
-import { useRouter } from 'next/navigation';
-import { useCallback, useEffect, useState } from 'react';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const { data: session, isPending } = authClient.useSession();
   const [isAdmin, setIsAdmin] = useState(false);
   const [isChecking, setIsChecking] = useState(true);
-
-  useEffect(() => {
-    if (isPending) return;
-
-    if (!session) {
-      // 未登录，重定向到登录页面
-      router.push('/login?callbackUrl=/admin');
-      return;
-    }
-
-    // 检查是否是 admin
-    checkAdmin();
-  }, [session, isPending, router]);
 
   const checkAdmin = useCallback(async () => {
     try {
@@ -40,6 +27,19 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       setIsChecking(false);
     }
   }, [router]);
+
+  useEffect(() => {
+    if (isPending) return;
+
+    if (!session) {
+      // 未登录，重定向到登录页面
+      router.push('/login?callbackUrl=/admin');
+      return;
+    }
+
+    // 检查是否是 admin
+    checkAdmin();
+  }, [session, isPending, router, checkAdmin]);
 
   const handleLogout = useCallback(async () => {
     await authClient.signOut();
@@ -68,9 +68,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="mx-auto flex max-w-6xl items-center justify-between">
           <h1 className="text-lg font-semibold">VibeSite 管理后台</h1>
           <div className="flex items-center gap-4">
-            <span className="text-sm text-muted-foreground">
-              {session?.user?.email}
-            </span>
+            <span className="text-sm text-muted-foreground">{session?.user?.email}</span>
             <Button variant="ghost" size="sm" onClick={handleLogout}>
               退出
             </Button>

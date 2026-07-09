@@ -1,7 +1,7 @@
-import { OrganizationJsonLd, SoftwareAppJsonLd, WebsiteJsonLd } from '@/components/seo/json-ld';
 import type { Metadata } from 'next';
 import { JetBrains_Mono, Plus_Jakarta_Sans, Sora } from 'next/font/google';
 import Script from 'next/script';
+import { OrganizationJsonLd, SoftwareAppJsonLd, WebsiteJsonLd } from '@/components/seo/json-ld';
 import './globals.css';
 
 const sora = Sora({
@@ -95,11 +95,7 @@ export const metadata: Metadata = {
 // 本地开发时留空则不加载 GA
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-CN">
       <head>

@@ -183,7 +183,7 @@ async function main(): Promise<void> {
         exec(`cp -r "${extractDir}"/* "${outputDir}"/`);
         break;
 
-      case 'vite':
+      case 'vite': {
         log('🔧 安装依赖...');
         exec('npm install --prefer-offline', extractDir);
         log('🔧 构建 Vite 项目...');
@@ -194,6 +194,7 @@ async function main(): Promise<void> {
           : join(extractDir, 'build');
         exec(`cp -r "${viteDist}"/* "${outputDir}"/`);
         break;
+      }
 
       case 'react':
         log('🔧 安装依赖...');

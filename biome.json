@@ -1,12 +1,16 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.0/schema.json",
-  "organizeImports": {
-    "enabled": true
+  "$schema": "https://biomejs.dev/schemas/2.5.3/schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
   },
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
+      "preset": "recommended",
       "style": {
         "noNonNullAssertion": "off"
       },
@@ -27,15 +31,37 @@
       "semicolons": "always"
     }
   },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
   "files": {
-    "ignore": [
-      "node_modules",
-      ".next",
-      ".open-next",
-      "public",
-      "coverage",
-      "worker-configuration.d.ts",
-      "cloudflare-env.d.ts"
+    "includes": [
+      "**",
+      "!**/node_modules",
+      "!**/.next",
+      "!**/.open-next",
+      "!**/.wrangler",
+      "!**/.agents",
+      "!**/public",
+      "!**/coverage",
+      "!**/worker-configuration.d.ts",
+      "!**/cloudflare-env.d.ts"
     ]
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["components/ui/**"],
+      "linter": {
+        "rules": {
+          "a11y": {
+            "noSvgWithoutTitle": "off",
+            "useSemanticElements": "off",
+            "noStaticElementInteractions": "off"
+          }
+        }
+      }
+    }
+  ]
 }
