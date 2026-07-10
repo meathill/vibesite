@@ -493,6 +493,10 @@
   --color-info: var(--info);
   --color-destructive-foreground: var(--destructive-foreground);
 
+  /* Background images (gradients) */
+  --background-image-brand-gradient: var(--brand-gradient);
+  --background-image-brand-gradient-soft: var(--brand-gradient-soft);
+
   /* Border radius */
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
