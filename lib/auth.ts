@@ -11,6 +11,11 @@ export async function getAuth() {
     secret: env.BETTER_AUTH_SECRET,
 
     database: env.DB,
+    advanced: {
+      ipAddress: {
+        ipAddressHeaders: ['cf-connecting-ip'],
+      },
+    },
 
     // 禁用邮箱密码登录，只使用 OTP
     emailAndPassword: {

@@ -57,7 +57,10 @@ import { POST } from '@/app/api/auth/[...all]/route';
 function createOTPRequest(email: string): Request {
   return new Request('https://vibe.meathill.com/api/auth/email-otp/send-verification-otp', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'cf-connecting-ip': '203.0.113.1',
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({ email, type: 'sign-in' }),
   });
 }
