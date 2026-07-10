@@ -36,10 +36,11 @@
       "bucket_name": "site-cache"
     }
   ],
+  // 不写 allowed_destination_addresses = 不限制收件人。
+  // 不可使用 ["*"]，API 会报 10021（必须是合法邮箱或完全省略）。
   "send_email": [
     {
-      "name": "EMAIL",
-      "allowed_destination_addresses": ["*"]
+      "name": "EMAIL"
     }
   ],
   "services": [
@@ -48,9 +49,13 @@
       "service": "vibesite"
     }
   ],
+  "secrets": {
+    "required": ["BETTER_AUTH_SECRET", "TELEGRAM_BOT_TOKEN", "TURNSTILE_SECRET_KEY"]
+  },
   "vars": {
     "ADMIN_EMAIL": "meathill@gmail.com",
-    "NEXT_PUBLIC_TURNSTILE_SITE_KEY": "",
+    "BETTER_AUTH_URL": "https://vibe.meathill.com",
+    "NEXT_PUBLIC_TURNSTILE_SITE_KEY": "0x4AAAAAADy8XwHkb7VPLZ8-",
     "NEXT_PUBLIC_GA_ID": "G-28VYQDS5S0",
     "TELEGRAM_CHAT_ID": "430446503"
   }
