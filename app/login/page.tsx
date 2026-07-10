@@ -1,6 +1,6 @@
 'use client';
 
-import { EnvelopeSimpleIcon, KeyIcon, WarningCircleIcon } from '@phosphor-icons/react/dist/ssr';
+import { EnvelopeSimpleIcon, WarningCircleIcon } from '@phosphor-icons/react/dist/ssr';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Alert, AlertTitle } from '@/components/ui/alert';
@@ -8,8 +8,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { OTPField, OTPFieldInput } from '@/components/ui/otp-field';
 import { Spinner } from '@/components/ui/spinner';
 import { authClient } from '@/lib/auth-client';
+
+const OTP_LENGTH = 6;
+const OTP_SLOT_KEYS = Array.from({ length: OTP_LENGTH }, (_, i) => `otp-slot-${i}`);
 
 export default function LoginPage() {
   const router = useRouter();
@@ -117,21 +121,19 @@ export default function LoginPage() {
             <form onSubmit={handleVerifyOTP} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="otp">验证码</Label>
-                <div className="relative">
-                  <KeyIcon className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-                  <Input
-                    id="otp"
-                    type="text"
-                    placeholder="000000"
-                    value={otp}
-                    onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
-                    required
-                    maxLength={6}
-                    className="pl-10 text-center text-lg tracking-widest"
-                    disabled={isLoading}
-                    autoFocus
-                  />
-                </div>
+                <OTPField
+                  id="otp"
+                  length={OTP_LENGTH}
+                  value={otp}
+                  onValueChange={setOtp}
+                  disabled={isLoading}
+                  required
+                  className="justify-center"
+                >
+                  {OTP_SLOT_KEYS.map((slotKey, index) => (
+                    <OTPFieldInput key={slotKey} autoFocus={index === 0} />
+                  ))}
+                </OTPField>
                 <p className="text-sm text-muted-foreground">
                   验证码已发送至 <span className="font-medium">{email}</span>
                 </p>
@@ -144,7 +146,11 @@ export default function LoginPage() {
                 </Alert>
               )}
 
-              <Button type="submit" className="w-full" disabled={isLoading || otp.length !== 6}>
+              <Button
+                type="submit"
+                className="w-full"
+                disabled={isLoading || otp.length !== OTP_LENGTH}
+              >
                 {isLoading ? (
                   <>
                     <Spinner className="mr-2 size-4" />
