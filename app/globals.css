@@ -301,131 +301,137 @@
   10. SEMANTIC ELEMENTS — typographic defaults so the system
        renders consistently without Tailwind classes (good for
        prose, README previews, third-party content).
+       Wrapped in `@layer base` so any Tailwind utility class
+       (e.g. text-primary-foreground on a Button rendered as <a>)
+       can still override these defaults — unlayered CSS would
+       otherwise always win over Tailwind's utilities layer.
    ============================================================ */
-body {
-  font-family: var(--font-sans);
-  font-size: var(--text-base);
-  font-weight: var(--weight-regular);
-  line-height: var(--leading-normal);
-  color: var(--foreground);
-  background: var(--background);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    font-weight: var(--weight-regular);
+    line-height: var(--leading-normal);
+    color: var(--foreground);
+    background: var(--background);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
 
-/* Anchor background on the html element too, so dark mode survives
-   iframe environments that force body { background: transparent }.
-   In production this is a no-op. */
-html {
-  background: var(--background);
-}
+  /* Anchor background on the html element too, so dark mode survives
+     iframe environments that force body { background: transparent }.
+     In production this is a no-op. */
+  html {
+    background: var(--background);
+  }
 
-h1,
-.h1 {
-  font-family: var(--font-display);
-  font-size: clamp(var(--text-4xl), 5vw, var(--text-5xl));
-  font-weight: var(--weight-bold);
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
-  color: var(--foreground);
-}
+  h1,
+  .h1 {
+    font-family: var(--font-display);
+    font-size: clamp(var(--text-4xl), 5vw, var(--text-5xl));
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    color: var(--foreground);
+  }
 
-h2,
-.h2 {
-  font-family: var(--font-display);
-  font-size: var(--text-3xl);
-  font-weight: var(--weight-bold);
-  line-height: var(--leading-snug);
-  letter-spacing: var(--tracking-tight);
-}
+  h2,
+  .h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-tight);
+  }
 
-h3,
-.h3 {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: var(--weight-semibold);
-  line-height: var(--leading-snug);
-}
+  h3,
+  .h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-semibold);
+    line-height: var(--leading-snug);
+  }
 
-h4,
-.h4 {
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: var(--weight-semibold);
-  line-height: var(--leading-snug);
-}
+  h4,
+  .h4 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--weight-semibold);
+    line-height: var(--leading-snug);
+  }
 
-h5,
-.h5 {
-  font-family: var(--font-sans);
-  font-size: var(--text-lg);
-  font-weight: var(--weight-semibold);
-}
+  h5,
+  .h5 {
+    font-family: var(--font-sans);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+  }
 
-p {
-  font-family: var(--font-sans);
-  font-size: var(--text-base);
-  line-height: var(--leading-relaxed);
-  color: var(--foreground);
-  text-wrap: pretty;
-}
+  p {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--foreground);
+    text-wrap: pretty;
+  }
 
-.eyebrow {
-  /* small uppercase label above section title */
-  font-family: var(--font-sans);
-  font-size: var(--text-xs);
-  font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  color: var(--brand-600);
-}
+  .eyebrow {
+    /* small uppercase label above section title */
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--brand-600);
+  }
 
-.lede {
-  /* hero subtitle */
-  font-family: var(--font-sans);
-  font-size: var(--text-md);
-  line-height: var(--leading-relaxed);
-  color: var(--muted-foreground);
-  text-wrap: pretty;
-}
+  .lede {
+    /* hero subtitle */
+    font-family: var(--font-sans);
+    font-size: var(--text-md);
+    line-height: var(--leading-relaxed);
+    color: var(--muted-foreground);
+    text-wrap: pretty;
+  }
 
-small,
-.caption {
-  font-size: var(--text-xs);
-  color: var(--muted-foreground);
-}
+  small,
+  .caption {
+    font-size: var(--text-xs);
+    color: var(--muted-foreground);
+  }
 
-code,
-kbd,
-pre,
-.mono {
-  font-family: var(--font-mono);
-  font-size: 0.92em;
-  font-variant-ligatures: none;
-}
+  code,
+  kbd,
+  pre,
+  .mono {
+    font-family: var(--font-mono);
+    font-size: 0.92em;
+    font-variant-ligatures: none;
+  }
 
-code {
-  background: var(--muted);
-  padding: 0.1em 0.35em;
-  border-radius: var(--radius-sm);
-  color: var(--brand-700);
-}
+  code {
+    background: var(--muted);
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-sm);
+    color: var(--brand-700);
+  }
 
-a {
-  color: var(--brand-600);
-  text-decoration: none;
-  text-underline-offset: 3px;
-  transition: color var(--duration-fast) var(--ease-out);
-}
-a:hover {
-  color: var(--brand-700);
-  text-decoration: underline;
-}
+  a {
+    color: var(--brand-600);
+    text-decoration: none;
+    text-underline-offset: 3px;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+  a:hover {
+    color: var(--brand-700);
+    text-decoration: underline;
+  }
 
-hr {
-  border: 0;
-  border-top: 1px solid var(--border);
-  margin: var(--space-8) 0;
+  hr {
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: var(--space-8) 0;
+  }
 }
 
 /* ============================================================
