@@ -47,7 +47,7 @@ export async function getAuth() {
           try {
             await env.EMAIL.send({
               to: email,
-              from: 'noreply@vibesite.dev',
+              from: 'noreply@vibe.meathill.com',
               subject: subjects[type] || 'VibeSite 验证码',
               html: `
                 <div style="font-family: sans-serif; max-width: 400px; margin: 0 auto; padding: 20px;">

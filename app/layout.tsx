@@ -25,7 +25,7 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ['400', '500', '600'],
 });
 
-const SITE_URL = 'https://vibesite.dev';
+const SITE_URL = 'https://vibe.meathill.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

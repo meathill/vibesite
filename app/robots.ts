@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/admin/', '/api/'],
       },
     ],
-    sitemap: 'https://vibesite.dev/sitemap.xml',
+    sitemap: 'https://vibe.meathill.com/sitemap.xml',
   };
 }

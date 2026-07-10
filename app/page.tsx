@@ -27,10 +27,21 @@ export const metadata: Metadata = {
   title: 'VibeSite - AI 生成网页一键上线 | 免费部署托管',
   description:
     '用 AI 生成了网页不知道怎么部署？上传 zip 文件，10 分钟获得可访问链接。支持 Cursor、Bolt、Lovable、v0 生成的项目。免费预览，无需注册。',
-  alternates: { canonical: 'https://vibesite.dev' },
+  alternates: { canonical: 'https://vibe.meathill.com' },
 };
 
-const AI_TOOLS = ['Cursor', 'Bolt', 'Lovable', 'v0', 'ChatGPT', 'Claude', 'Windsurf', 'Replit'];
+const AI_TOOLS = [
+  '豆包',
+  'DeepSeek',
+  'Cursor',
+  'Bolt',
+  'Lovable',
+  'v0',
+  'ChatGPT',
+  'Claude',
+  'Windsurf',
+  'Replit',
+];
 
 const WHY_POINTS = [
   {
@@ -91,20 +102,20 @@ const PRICING_PLANS = [
   },
   {
     name: '基础',
-    price: '99',
+    price: '188',
     unit: '元/年',
     desc: '快速上线，省心省力',
-    features: ['HTTPS 证书', '全球 CDN 加速', '不限访问次数', '邮件技术支持'],
+    features: ['HTTPS 证书', '独立二级域名', '全球 CDN 加速', '不限访问次数', '邮件技术支持'],
     cta: '立即开始',
     ctaHref: '/submit',
     highlighted: false,
   },
   {
     name: '全自持',
-    price: '299',
+    price: '988',
     unit: '元/年',
     desc: '完全掌控你的网站',
-    features: ['HTTPS 证书', '绑定自定义域名', '完全自主管理', '优先技术支持'],
+    features: ['HTTPS 证书', '自定义域名', '完全自主管理', '优先技术支持', '后端数据库支持'],
     cta: '立即开始',
     ctaHref: '/submit',
     highlighted: true,
@@ -114,7 +125,13 @@ const PRICING_PLANS = [
     price: '联系我',
     unit: '',
     desc: '专业人工部署与优化',
-    features: ['HTTPS 证书', '专业人工部署', '代码优化建议', '一对一支持'],
+    features: [
+      'HTTPS 证书',
+      '专业全栈开发',
+      '代码优化建议',
+      '一对一支持',
+      '除合法合规外无任何限制',
+    ],
     cta: '联系我们',
     ctaHref: '/submit',
     highlighted: false,

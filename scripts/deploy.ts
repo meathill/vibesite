@@ -208,7 +208,7 @@ async function main(): Promise<void> {
     // 6. 生成预览链接
     const previewUrl = args.tempUrl
       ? `${args.tempUrl}/${args.id}/`
-      : `https://preview.vibesite.dev/${args.id}/`;
+      : `https://preview.vibe.meathill.com/${args.id}/`;
 
     // 7. 更新状态为已部署
     log('✅ 更新状态为已部署...');

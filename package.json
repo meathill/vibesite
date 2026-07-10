@@ -12,8 +12,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "db:migrate": "wrangler d1 migrations apply vibesite-db",
-    "db:migrate:create": "wrangler d1 migrations create vibesite-db",
+    "db:migrate": "wrangler d1 migrations apply vibesite --remote",
+    "db:migrate:create": "wrangler d1 migrations create vibesite",
     "deploy:script": "node --experimental-strip-types scripts/deploy.ts"
   },
   "dependencies": {

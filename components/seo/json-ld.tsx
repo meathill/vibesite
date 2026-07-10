@@ -3,7 +3,7 @@
  * 用于向搜索引擎提供语义化数据
  */
 
-const SITE_URL = 'https://vibesite.dev';
+const SITE_URL = 'https://vibe.meathill.com';
 
 export function WebsiteJsonLd() {
   const data = {

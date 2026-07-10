@@ -1,8 +1,9 @@
 'use client';
 
-import { EnvelopeSimpleIcon, KeyIcon } from '@phosphor-icons/react/dist/ssr';
+import { EnvelopeSimpleIcon, KeyIcon, WarningCircleIcon } from '@phosphor-icons/react/dist/ssr';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { Alert, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -94,7 +95,12 @@ export default function LoginPage() {
                 <p className="text-sm text-muted-foreground">我们将向您的邮箱发送一个 6 位验证码</p>
               </div>
 
-              {error && <p className="text-sm text-destructive">{error}</p>}
+              {error && (
+                <Alert variant="error">
+                  <WarningCircleIcon />
+                  <AlertTitle>{error}</AlertTitle>
+                </Alert>
+              )}
 
               <Button type="submit" className="w-full" disabled={isLoading}>
                 {isLoading ? (
@@ -131,7 +137,12 @@ export default function LoginPage() {
                 </p>
               </div>
 
-              {error && <p className="text-sm text-destructive">{error}</p>}
+              {error && (
+                <Alert variant="error">
+                  <WarningCircleIcon />
+                  <AlertTitle>{error}</AlertTitle>
+                </Alert>
+              )}
 
               <Button type="submit" className="w-full" disabled={isLoading || otp.length !== 6}>
                 {isLoading ? (
