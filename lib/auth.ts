@@ -3,24 +3,14 @@ import { betterAuth } from 'better-auth';
 import { nextCookies } from 'better-auth/next-js';
 import { emailOTP } from 'better-auth/plugins';
 
-// better-auth 配置选项会生成过深的泛型，缓存实例用 any 规避
-// biome-ignore lint/suspicious/noExplicitAny: better-auth 复杂类型推断
-let _auth: any = null;
-
 export async function getAuth() {
-  if (_auth) return _auth;
-
   const { env } = await getCloudflareContext({ async: true });
 
-  _auth = betterAuth({
+  return betterAuth({
     baseURL: env.BETTER_AUTH_URL || 'http://localhost:3000',
     secret: env.BETTER_AUTH_SECRET,
 
-    // D1 数据库配置
-    database: {
-      provider: 'sqlite',
-      url: env.DB as unknown as string,
-    },
+    database: env.DB,
 
     // 禁用邮箱密码登录，只使用 OTP
     emailAndPassword: {
@@ -74,6 +64,4 @@ export async function getAuth() {
       nextCookies(), // 必须在最后
     ],
   });
-
-  return _auth;
 }
