@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <title>VibeSite</title>
+  <!-- 品牌红 #DF2321 = oklch(0.58 0.22 28)，即 brand-500/primary token；favicon 场景用 hex 保证非浏览器渲染器兼容 -->
+  <rect width="32" height="32" rx="7" fill="#DF2321"/>
+  <rect x="6.75" y="8" width="18.5" height="16" rx="2.5" stroke="white" stroke-width="2.5"/>
+  <path d="M 7 12.75 H 25" stroke="white" stroke-width="2"/>
+  <path d="M 16 21.5 V 16" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 12.9 18.6 L 16 15.5 L 19.1 18.6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

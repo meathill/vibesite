@@ -11,6 +11,7 @@ import {
   UserIcon,
 } from '@phosphor-icons/react/dist/ssr';
 import type { Metadata } from 'next';
+import { BrandMark } from '@/components/brand-mark';
 import { FaqJsonLd } from '@/components/seo/json-ld';
 import {
   Accordion,
@@ -176,8 +177,8 @@ export default function HomePage() {
       <nav className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-sm">
         <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
           <a href="/" className="flex items-center gap-2 font-bold">
-            <div className="flex size-7 items-center justify-center rounded-md bg-primary text-primary-foreground text-xs">
-              V
+            <div className="flex size-7 items-center justify-center rounded-md bg-primary text-primary-foreground">
+              <BrandMark className="size-full" />
             </div>
             VibeSite
           </a>
@@ -445,8 +446,8 @@ export default function HomePage() {
       <footer className="border-t px-4 py-8">
         <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 md:flex-row md:justify-between">
           <div className="flex items-center gap-2 text-sm font-semibold">
-            <div className="flex size-5 items-center justify-center rounded bg-primary text-[10px] text-primary-foreground">
-              V
+            <div className="flex size-5 items-center justify-center rounded bg-primary text-primary-foreground">
+              <BrandMark className="size-full" />
             </div>
             VibeSite
           </div>

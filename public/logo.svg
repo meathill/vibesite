@@ -1,6 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 32" fill="none">
-  <rect x="0" y="4" width="24" height="24" rx="6" fill="#171717"/>
-  <path d="M7 12L12 16L7 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M14 20H18" stroke="white" stroke-width="2" stroke-linecap="round"/>
-  <text x="30" y="22" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#171717">VibeSite</text>
+  <!-- 品牌红 #DF2321 = oklch(0.58 0.22 28)，mark 与 app/icon.svg 同款（缩放 0.75） -->
+  <rect x="0" y="4" width="24" height="24" rx="6" fill="#DF2321"/>
+  <rect x="5.06" y="10" width="13.88" height="12" rx="1.88" stroke="white" stroke-width="1.88"/>
+  <path d="M 5.25 13.56 H 18.75" stroke="white" stroke-width="1.5"/>
+  <path d="M 12 20.13 V 16" stroke="white" stroke-width="1.88" stroke-linecap="round"/>
+  <path d="M 9.68 17.95 L 12 15.63 L 14.33 17.95" stroke="white" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="30" y="22" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#1C1917">VibeSite</text>
 </svg>

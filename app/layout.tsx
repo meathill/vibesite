@@ -56,20 +56,11 @@ export const metadata: Metadata = {
     siteName: 'VibeSite',
     locale: 'zh_CN',
     type: 'website',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'VibeSite - AI 生成网页一键上线',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'VibeSite - AI 生成网页一键上线',
     description: '上传 zip，10 分钟拿到可访问链接。免费预览，无需注册。',
-    images: ['/og-image.png'],
   },
   robots: {
     index: true,
@@ -84,10 +75,6 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: SITE_URL,
-  },
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
   },
 };
 

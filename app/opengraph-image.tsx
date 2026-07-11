@@ -32,16 +32,32 @@ export default function OpenGraphImage() {
             width: 48,
             height: 48,
             borderRadius: 12,
-            background: '#171717',
+            background: '#DF2321',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: 'white',
-            fontSize: 28,
-            fontWeight: 700,
           }}
         >
-          V
+          <svg width="34" height="34" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <rect
+              x="6.75"
+              y="8"
+              width="18.5"
+              height="16"
+              rx="2.5"
+              stroke="white"
+              strokeWidth="2.5"
+            />
+            <path d="M 7 12.75 H 25" stroke="white" strokeWidth="2" />
+            <path d="M 16 21.5 V 16" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+            <path
+              d="M 12.9 18.6 L 16 15.5 L 19.1 18.6"
+              stroke="white"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </div>
         <span style={{ fontSize: 32, fontWeight: 700, color: '#171717' }}>VibeSite</span>
       </div>
