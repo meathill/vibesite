@@ -44,6 +44,7 @@
       "!**/.open-next",
       "!**/.wrangler",
       "!**/.agents",
+      "!**/marketing",
       "!**/public",
       "!**/coverage",
       "!**/worker-configuration.d.ts",
