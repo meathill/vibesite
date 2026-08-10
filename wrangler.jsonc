@@ -16,8 +16,8 @@
     },
     {
       "binding": "NEXT_TAG_CACHE_D1",
-      "database_name": "tag-cache",
-      "database_id": "5f26868d-5d24-4645-8954-a27168f6fcd6"
+      "database_name": "vibesite",
+      "database_id": "6e2c0866-4f8a-4e72-9d0d-37a9faedb18c"
     }
   ],
   "observability": {
@@ -33,7 +33,7 @@
     },
     {
       "binding": "NEXT_INC_CACHE_R2_BUCKET",
-      "bucket_name": "site-cache"
+      "bucket_name": "vibesite"
     }
   ],
   // 不写 allowed_destination_addresses = 不限制收件人。
