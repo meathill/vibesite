@@ -1,3 +1,4 @@
+import { BrandFooter, BrandHeader } from 'meathill-brand-react';
 import {
   CheckCircleIcon,
   CodeIcon,
@@ -11,7 +12,6 @@ import {
   UserIcon,
 } from '@phosphor-icons/react/dist/ssr';
 import type { Metadata } from 'next';
-import { BrandMark } from '@/components/brand-mark';
 import { FaqJsonLd } from '@/components/seo/json-ld';
 import {
   Accordion,
@@ -174,43 +174,43 @@ export default function HomePage() {
   return (
     <main className="flex min-h-screen flex-col">
       {/* 导航栏 */}
-      <nav className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-sm">
-        <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
-          <a href="/" className="flex items-center gap-2 font-bold">
-            <div className="flex size-7 items-center justify-center rounded-md bg-primary text-primary-foreground">
-              <BrandMark className="size-full" />
-            </div>
-            VibeSite
-          </a>
-          <div className="hidden items-center gap-6 md:flex">
-            <a
-              href="#how-it-works"
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+      <BrandHeader
+        currentSiteId="vibesite"
+        locale="zh"
+        productName="VibeSite"
+        productUrl="https://vibe.meathill.com"
+        actions={
+          <div className="flex items-center gap-6">
+            <nav className="hidden items-center gap-6 md:flex">
+              <a
+                href="#how-it-works"
+                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                怎么用
+              </a>
+              <a
+                href="#pricing"
+                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                定价
+              </a>
+              <a
+                href="#faq"
+                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                FAQ
+              </a>
+            </nav>
+            <Button
+              size="default"
+              className="bg-brand-gradient shadow-primary"
+              render={<a href="/submit" />}
             >
-              怎么用
-            </a>
-            <a
-              href="#pricing"
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              定价
-            </a>
-            <a
-              href="#faq"
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              FAQ
-            </a>
+              立即上线
+            </Button>
           </div>
-          <Button
-            size="default"
-            className="bg-brand-gradient shadow-primary"
-            render={<a href="/submit" />}
-          >
-            立即上线
-          </Button>
-        </div>
-      </nav>
+        }
+      />
 
       {/* Hero */}
       <section className="flex flex-col items-center justify-center gap-6 px-4 pb-8 pt-16 text-center md:pb-12 md:pt-24">
@@ -443,30 +443,23 @@ export default function HomePage() {
       </section>
 
       {/* 页脚 */}
-      <footer className="border-t px-4 py-8">
-        <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 md:flex-row md:justify-between">
-          <div className="flex items-center gap-2 text-sm font-semibold">
-            <div className="flex size-5 items-center justify-center rounded bg-primary text-primary-foreground">
-              <BrandMark className="size-full" />
-            </div>
-            VibeSite
-          </div>
-          <div className="flex gap-6 text-sm text-muted-foreground">
-            <a href="#how-it-works" className="hover:text-foreground">
-              怎么用
-            </a>
-            <a href="#pricing" className="hover:text-foreground">
-              定价
-            </a>
-            <a href="#faq" className="hover:text-foreground">
-              FAQ
-            </a>
-          </div>
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Meathill LLC. All rights reserved. v1.0.0
-          </p>
-        </div>
-      </footer>
+      <BrandFooter
+        currentSiteId="vibesite"
+        description="上传 zip 文件，10 分钟获得可访问链接。免费预览，无需注册。"
+        locale="zh"
+      >
+        <nav className="flex gap-6 text-sm text-muted-foreground">
+          <a href="#how-it-works" className="hover:text-foreground">
+            怎么用
+          </a>
+          <a href="#pricing" className="hover:text-foreground">
+            定价
+          </a>
+          <a href="#faq" className="hover:text-foreground">
+            FAQ
+          </a>
+        </nav>
+      </BrandFooter>
 
       {/* FAQ 结构化数据 */}
       <FaqJsonLd faqs={FAQS} />

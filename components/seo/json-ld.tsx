@@ -3,6 +3,8 @@
  * 用于向搜索引擎提供语义化数据
  */
 
+import { brandCatalog, getOrganizationJsonLd } from 'meathill-brand';
+
 const SITE_URL = 'https://vibe.meathill.com';
 
 export function WebsiteJsonLd() {
@@ -13,6 +15,7 @@ export function WebsiteJsonLd() {
     url: SITE_URL,
     description: 'AI 生成网页一键上线服务。上传 zip 文件，10 分钟获得可访问链接。',
     inLanguage: 'zh-CN',
+    publisher: { '@id': brandCatalog.organization.id },
     potentialAction: {
       '@type': 'SearchAction',
       target: `${SITE_URL}/search?q={search_term_string}`,
@@ -38,6 +41,7 @@ export function SoftwareAppJsonLd() {
     operatingSystem: 'Web',
     description: 'AI 生成网页一键上线服务。支持 Cursor、Bolt、Lovable、v0 等工具生成的项目。',
     url: SITE_URL,
+    publisher: { '@id': brandCatalog.organization.id },
     offers: {
       '@type': 'Offer',
       price: '0',
@@ -63,19 +67,7 @@ export function SoftwareAppJsonLd() {
 }
 
 export function OrganizationJsonLd() {
-  const data = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'VibeSite',
-    url: SITE_URL,
-    logo: `${SITE_URL}/logo.svg`,
-    description: 'AI 生成网页一键上线服务',
-    contactPoint: {
-      '@type': 'ContactPoint',
-      contactType: 'customer service',
-      availableLanguage: ['Chinese', 'English'],
-    },
-  };
+  const data = getOrganizationJsonLd();
 
   return (
     <script
