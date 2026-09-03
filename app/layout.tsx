@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { JetBrains_Mono, Plus_Jakarta_Sans, Sora } from 'next/font/google';
 import Script from 'next/script';
-import { OrganizationJsonLd, SoftwareAppJsonLd, WebsiteJsonLd } from '@/components/seo/json-ld';
+import { OrganizationJsonLd, WebPageJsonLd, WebsiteJsonLd } from '@/components/seo/json-ld';
 import './globals.css';
 
 const sora = Sora({
@@ -87,7 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="zh-CN">
       <head>
         <WebsiteJsonLd />
-        <SoftwareAppJsonLd />
+        <WebPageJsonLd />
         <OrganizationJsonLd />
       </head>
       <body

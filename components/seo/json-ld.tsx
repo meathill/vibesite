@@ -7,21 +7,27 @@ import { brandCatalog, getOrganizationJsonLd } from 'meathill-brand';
 
 const SITE_URL = 'https://vibe.meathill.com';
 
-export function WebsiteJsonLd() {
-  const data = {
+const SITE_NAME = 'VibeSite';
+const SITE_DESCRIPTION = 'AI 生成网页一键上线服务。上传 zip 文件，10 分钟获得可访问链接。';
+const HOMEPAGE_TITLE = 'VibeSite - AI 生成网页一键上线 | 免费部署托管';
+const HOMEPAGE_DESCRIPTION =
+  '用 AI 生成了网页不知道怎么部署？上传 zip 文件，10 分钟获得可访问链接。支持 Cursor、Bolt、Lovable、v0 生成的项目。免费预览，无需注册。';
+
+export function getWebsiteJsonLd() {
+  return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'VibeSite',
+    '@id': `${SITE_URL}/#website`,
+    name: SITE_NAME,
     url: SITE_URL,
-    description: 'AI 生成网页一键上线服务。上传 zip 文件，10 分钟获得可访问链接。',
+    description: SITE_DESCRIPTION,
     inLanguage: 'zh-CN',
     publisher: { '@id': brandCatalog.organization.id },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${SITE_URL}/search?q={search_term_string}`,
-      'query-input': 'required name=search_term_string',
-    },
   };
+}
+
+export function WebsiteJsonLd() {
+  const data = getWebsiteJsonLd();
 
   return (
     <script
@@ -32,30 +38,22 @@ export function WebsiteJsonLd() {
   );
 }
 
-export function SoftwareAppJsonLd() {
-  const data = {
+export function getWebPageJsonLd() {
+  return {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: 'VibeSite',
-    applicationCategory: 'WebApplication',
-    operatingSystem: 'Web',
-    description: 'AI 生成网页一键上线服务。支持 Cursor、Bolt、Lovable、v0 等工具生成的项目。',
+    '@type': 'WebPage',
+    '@id': `${SITE_URL}/#webpage`,
     url: SITE_URL,
+    name: HOMEPAGE_TITLE,
+    description: HOMEPAGE_DESCRIPTION,
+    inLanguage: 'zh-CN',
+    isPartOf: { '@id': `${SITE_URL}/#website` },
     publisher: { '@id': brandCatalog.organization.id },
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'CNY',
-      description: '免费预览链接',
-    },
-    featureList: [
-      '支持纯 HTML/CSS/JS 项目',
-      '支持 Vite 项目',
-      '支持 React SPA',
-      '全球 CDN 部署',
-      '10 分钟内部署完成',
-    ],
   };
+}
+
+export function WebPageJsonLd() {
+  const data = getWebPageJsonLd();
 
   return (
     <script
