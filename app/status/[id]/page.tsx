@@ -6,6 +6,7 @@ import {
   WarningCircleIcon,
   XCircleIcon,
 } from '@phosphor-icons/react/dist/ssr';
+import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
@@ -111,7 +112,7 @@ export default function StatusPage() {
           <CardContent className="flex flex-col items-center gap-4 pt-8">
             <XCircleIcon className="size-12 text-destructive" />
             <p className="text-muted-foreground">{error}</p>
-            <Button variant="outline" render={<a href="/" />}>
+            <Button variant="outline" render={<Link href="/" prefetch={false} />}>
               返回首页
             </Button>
           </CardContent>
@@ -206,10 +207,14 @@ export default function StatusPage() {
           )}
 
           <div className="flex gap-3">
-            <Button variant="outline" className="flex-1" render={<a href="/" />}>
+            <Button
+              variant="outline"
+              className="flex-1"
+              render={<Link href="/" prefetch={false} />}
+            >
               返回首页
             </Button>
-            <Button className="flex-1" render={<a href="/submit" />}>
+            <Button className="flex-1" render={<Link href="/submit" prefetch={false} />}>
               重新提交
             </Button>
           </div>

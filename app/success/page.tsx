@@ -1,4 +1,5 @@
 import { CheckCircleIcon } from '@phosphor-icons/react/dist/ssr';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -29,11 +30,15 @@ export default async function SuccessPage({
 
           <div className="flex w-full gap-3">
             {id && (
-              <Button className="flex-1" render={<a href={`/status/${id}`} />}>
+              <Button className="flex-1" render={<Link href={`/status/${id}`} />}>
                 查看进度
               </Button>
             )}
-            <Button className="flex-1" variant="outline" render={<a href="/" />}>
+            <Button
+              className="flex-1"
+              variant="outline"
+              render={<Link href="/" prefetch={false} />}
+            >
               返回首页
             </Button>
           </div>

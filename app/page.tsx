@@ -1,4 +1,3 @@
-import { BrandFooter, BrandHeader } from 'meathill-brand-react';
 import {
   CheckCircleIcon,
   CodeIcon,
@@ -11,7 +10,9 @@ import {
   UploadIcon,
   UserIcon,
 } from '@phosphor-icons/react/dist/ssr';
+import { BrandFooter, BrandHeader } from 'meathill-brand-react';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { FaqJsonLd } from '@/components/seo/json-ld';
 import {
   Accordion,
@@ -204,7 +205,7 @@ export default function HomePage() {
             <Button
               size="default"
               className="bg-brand-gradient shadow-primary"
-              render={<a href="/submit" />}
+              render={<Link href="/submit" />}
             >
               立即上线
             </Button>
@@ -228,7 +229,7 @@ export default function HomePage() {
           <Button
             size="xl"
             className="bg-brand-gradient shadow-primary-lg"
-            render={<a href="/submit" />}
+            render={<Link href="/submit" />}
           >
             立即上传
           </Button>
@@ -400,7 +401,7 @@ export default function HomePage() {
                   <Button
                     className={`w-full ${plan.highlighted ? 'bg-brand-gradient shadow-primary' : ''}`}
                     variant={plan.highlighted ? 'default' : 'outline'}
-                    render={<a href={plan.ctaHref} />}
+                    render={<Link href={plan.ctaHref} prefetch={false} />}
                   >
                     {plan.cta}
                   </Button>
@@ -436,7 +437,7 @@ export default function HomePage() {
           <p className="mb-8 text-primary-foreground/80">
             上传你的网站，10 分钟后就能分享给全世界。
           </p>
-          <Button size="xl" variant="secondary" render={<a href="/submit" />}>
+          <Button size="xl" variant="secondary" render={<Link href="/submit" prefetch={false} />}>
             立即上传
           </Button>
         </div>

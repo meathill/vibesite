@@ -7,5 +7,8 @@ export default defineCloudflareConfig({
   incrementalCache: r2IncrementalCache,
   queue: doQueue,
   tagCache: d1TagCache,
-  enableCacheInterception: true,
+  // https://github.com/meathill/vibesite/issues/4
+  // Next 16.3 + OpenNext cache interception 会引发 _rsc 预取循环，打爆 Worker 请求数。
+  // 保持关闭，直到上游修复（opennextjs-cloudflare#1348）。
+  enableCacheInterception: false,
 });

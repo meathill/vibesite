@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
-    "@opennextjs/cloudflare": "^1.20.4",
+    "@opennextjs/cloudflare": "^1.20.6",
     "@phosphor-icons/react": "^2.1.10",
     "@tailwindcss/postcss": "^4.3.2",
     "better-auth": "^1.6.23",
@@ -27,7 +27,7 @@
     "lucide-react": "^1.23.0",
     "meathill-brand": "^0.1.0",
     "meathill-brand-react": "^0.1.0",
-    "next": "^16.3.3",
+    "next": "^16.3.4",
     "postcss": "^8.5.16",
     "react": "^19.2.7",
     "react-day-picker": "^10.0.1",

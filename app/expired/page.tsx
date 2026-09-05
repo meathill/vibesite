@@ -1,4 +1,5 @@
 import { ClockIcon } from '@phosphor-icons/react/dist/ssr';
+import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -61,10 +62,10 @@ export default function ExpiredPage() {
       </div>
 
       <div className="mt-8 flex gap-3">
-        <Button size="lg" render={<a href="/submit" />}>
+        <Button size="lg" render={<Link href="/submit" />}>
           重新提交
         </Button>
-        <Button size="lg" variant="outline" render={<a href="/" />}>
+        <Button size="lg" variant="outline" render={<Link href="/" prefetch={false} />}>
           返回首页
         </Button>
       </div>
