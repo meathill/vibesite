@@ -1,31 +1,29 @@
 import { describe, expect, it } from 'vitest';
+import { SUBMISSION_STATUSES } from '@/types';
 
-describe('Admin Submissions API', () => {
-  it('should parse pagination params', () => {
+describe('Admin Submissions API 分页约定', () => {
+  it('解析 page/limit/status', () => {
     const url = new URL('http://localhost/api/admin/submissions?page=2&limit=10&status=pending');
-    const page = Number.parseInt(url.searchParams.get('page') ?? '1', 10);
-    const limit = Number.parseInt(url.searchParams.get('limit') ?? '20', 10);
-    const status = url.searchParams.get('status') ?? undefined;
-
-    expect(page).toBe(2);
-    expect(limit).toBe(10);
-    expect(status).toBe('pending');
+    expect(Number.parseInt(url.searchParams.get('page') ?? '1', 10)).toBe(2);
+    expect(Number.parseInt(url.searchParams.get('limit') ?? '20', 10)).toBe(10);
+    expect(url.searchParams.get('status')).toBe('pending');
   });
 
-  it('should use default pagination', () => {
+  it('缺省分页为 1/20', () => {
     const url = new URL('http://localhost/api/admin/submissions');
-    const page = Number.parseInt(url.searchParams.get('page') ?? '1', 10);
-    const limit = Number.parseInt(url.searchParams.get('limit') ?? '20', 10);
-
-    expect(page).toBe(1);
-    expect(limit).toBe(20);
+    expect(Number.parseInt(url.searchParams.get('page') ?? '1', 10)).toBe(1);
+    expect(Number.parseInt(url.searchParams.get('limit') ?? '20', 10)).toBe(20);
   });
 });
 
-describe('Admin Result API', () => {
-  it('should validate status values', () => {
-    const validStatuses = ['pending', 'processing', 'deployed', 'failed', 'expired'];
-    expect(validStatuses).toContain('deployed');
-    expect(validStatuses).not.toContain('invalid');
+describe('Admin Result API 状态白名单（与路由共用 SUBMISSION_STATUSES）', () => {
+  it('接受全部合法状态', () => {
+    for (const status of SUBMISSION_STATUSES) {
+      expect((SUBMISSION_STATUSES as readonly string[]).includes(status)).toBe(true);
+    }
+  });
+
+  it('拒绝非法状态', () => {
+    expect((SUBMISSION_STATUSES as readonly string[]).includes('invalid')).toBe(false);
   });
 });

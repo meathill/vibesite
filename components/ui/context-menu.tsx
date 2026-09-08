@@ -1,7 +1,7 @@
 'use client';
 
 import { ContextMenu as ContextMenuPrimitive } from '@base-ui/react/context-menu';
-import { ChevronRightIcon } from 'lucide-react';
+import { CheckIcon, ChevronRightIcon } from 'lucide-react';
 import type * as React from 'react';
 import { cn } from '@/lib/utils';
 
@@ -150,20 +150,7 @@ export function ContextMenuCheckboxItem({
       ) : (
         <>
           <ContextMenuPrimitive.CheckboxItemIndicator className="col-start-1 -ms-0.5">
-            <svg
-              aria-hidden="true"
-              fill="none"
-              height="24"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M5.252 12.7 10.2 18.63 18.748 5.37" />
-            </svg>
+            <CheckIcon aria-hidden />
           </ContextMenuPrimitive.CheckboxItemIndicator>
           <span className="col-start-2">{children}</span>
         </>
@@ -193,20 +180,7 @@ export function ContextMenuRadioItem({
       {...props}
     >
       <ContextMenuPrimitive.RadioItemIndicator className="col-start-1 -ms-0.5">
-        <svg
-          aria-hidden="true"
-          fill="none"
-          height="24"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M5.252 12.7 10.2 18.63 18.748 5.37" />
-        </svg>
+        <CheckIcon aria-hidden />
       </ContextMenuPrimitive.RadioItemIndicator>
       <span className="col-start-2">{children}</span>
     </ContextMenuPrimitive.RadioItem>

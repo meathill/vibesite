@@ -6,7 +6,7 @@ import { mergeProps } from '@base-ui/react/merge-props';
 import { Radio as RadioPrimitive } from '@base-ui/react/radio';
 import { RadioGroup as RadioGroupPrimitive } from '@base-ui/react/radio-group';
 import { useRender } from '@base-ui/react/use-render';
-import { ChevronRightIcon, XIcon } from 'lucide-react';
+import { CheckIcon, ChevronRightIcon, XIcon } from 'lucide-react';
 import type React from 'react';
 import { createContext, useContext } from 'react';
 import { Button } from '@/components/ui/button';
@@ -521,19 +521,7 @@ export function DrawerMenuCheckboxItem({
       ) : (
         <>
           <CheckboxPrimitive.Indicator className="col-start-1">
-            <svg
-              fill="none"
-              height="24"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M5.252 12.7 10.2 18.63 18.748 5.37" />
-            </svg>
+            <CheckIcon aria-hidden />
           </CheckboxPrimitive.Indicator>
           <span className="col-start-2">{children}</span>
         </>
@@ -580,19 +568,7 @@ export function DrawerMenuRadioItem({
       {...props}
     >
       <RadioPrimitive.Indicator className="col-start-1">
-        <svg
-          fill="none"
-          height="24"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M5.252 12.7 10.2 18.63 18.748 5.37" />
-        </svg>
+        <CheckIcon aria-hidden />
       </RadioPrimitive.Indicator>
       <span className="col-start-2">{children}</span>
     </RadioPrimitive.Root>

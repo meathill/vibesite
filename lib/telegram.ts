@@ -1,19 +1,5 @@
+import { INTENT_LABELS, TELEGRAM_STATUS_LABELS } from '@/lib/status-labels';
 import type { Submission } from '@/types';
-
-const STATUS_LABELS: Record<string, string> = {
-  pending: '⏳ 待处理',
-  processing: '🔧 部署中',
-  deployed: '✅ 已上线',
-  failed: '❌ 部署失败',
-  expired: '⏰ 已过期',
-};
-
-const INTENT_LABELS: Record<string, string> = {
-  preview: '仅预览',
-  hosting: '长期托管',
-  custom_domain: '绑定域名',
-  human_service: '需要人工服务',
-};
 
 export async function sendTelegramMessage(
   token: string,
@@ -71,7 +57,7 @@ export function sendStatusUpdateNotification(
     '🔄 <b>状态更新</b>',
     '',
     `<b>项目名称：</b>${submission.project_name}`,
-    `<b>状态：</b>${STATUS_LABELS[submission.status] ?? submission.status}`,
+    `<b>状态：</b>${TELEGRAM_STATUS_LABELS[submission.status] ?? submission.status}`,
   ];
 
   if (submission.temporary_url) {

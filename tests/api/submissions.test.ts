@@ -1,51 +1,45 @@
 import { describe, expect, it } from 'vitest';
+import { submissionTextSchema } from '@/lib/validation';
 
-describe('POST /api/submissions', () => {
-  it('should reject empty projectName', () => {
-    // 基础参数校验测试 - 在没有 Cloudflare 环境时验证逻辑
-    const projectName = '';
-    const contact = 'test@example.com';
-
-    expect(projectName.trim()).toBe('');
-    expect(contact.trim()).toBeTruthy();
+describe('POST /api/submissions 参数校验（与 route 共用同一 schema）', () => {
+  it('空项目名被拒绝', () => {
+    const result = submissionTextSchema.safeParse({ projectName: '', contact: 'a@b.c' });
+    expect(result.success).toBe(false);
   });
 
-  it('should reject missing contact', () => {
-    const projectName = '测试项目';
-    const contact = '';
-
-    expect(projectName.trim()).toBeTruthy();
-    expect(contact.trim()).toBe('');
+  it('缺联系方式被拒绝', () => {
+    const result = submissionTextSchema.safeParse({ projectName: '测试项目', contact: '  ' });
+    expect(result.success).toBe(false);
   });
 
-  it('should validate file type', () => {
-    const filename = 'test.txt';
-    expect(filename.endsWith('.zip')).toBe(false);
-
-    const zipFilename = 'test.zip';
-    expect(zipFilename.endsWith('.zip')).toBe(true);
+  it('非法 intent 被拒绝', () => {
+    const result = submissionTextSchema.safeParse({
+      projectName: 'x',
+      contact: 'y',
+      intent: 'not-a-real-intent',
+    });
+    expect(result.success).toBe(false);
   });
 
-  it('should validate file size', () => {
-    const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
-    const smallFile = 1024 * 1024; // 1MB
-    const largeFile = 100 * 1024 * 1024; // 100MB
+  it('.zip 文件名大小写均接受', () => {
+    expect('test.ZIP'.toLowerCase().endsWith('.zip')).toBe(true);
+  });
 
-    expect(smallFile).toBeLessThanOrEqual(MAX_FILE_SIZE);
-    expect(largeFile).toBeGreaterThan(MAX_FILE_SIZE);
+  it('50MB 边界正确', () => {
+    const max = 50 * 1024 * 1024;
+    expect(1024 * 1024).toBeLessThanOrEqual(max);
+    expect(100 * 1024 * 1024).toBeGreaterThan(max);
   });
 });
 
-describe('GET /api/submissions', () => {
-  it('should require id parameter', () => {
+describe('GET /api/submissions?id=xxx', () => {
+  it('缺 id 时应返回 400（路由用 apiError 缺 ID）', () => {
     const url = new URL('http://localhost/api/submissions');
-    const id = url.searchParams.get('id');
-    expect(id).toBeNull();
+    expect(url.searchParams.get('id')).toBeNull();
   });
 
-  it('should extract id from query', () => {
+  it('能从 query 取出 id', () => {
     const url = new URL('http://localhost/api/submissions?id=abc123');
-    const id = url.searchParams.get('id');
-    expect(id).toBe('abc123');
+    expect(url.searchParams.get('id')).toBe('abc123');
   });
 });

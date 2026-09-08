@@ -10,14 +10,11 @@ import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Spinner } from '@/components/ui/spinner';
 import { Textarea } from '@/components/ui/textarea';
+import { fetchJson } from '@/lib/fetcher';
+import { cn } from '@/lib/utils';
+import { validateSubmissionFile } from '@/lib/validation';
 import { useSubmissionFormStore } from '@/store/submission';
-
-const INTENT_OPTIONS = [
-  { value: 'preview', label: '仅预览' },
-  { value: 'hosting', label: '长期托管' },
-  { value: 'custom_domain', label: '绑定自己的域名' },
-  { value: 'human_service', label: '需要人工服务' },
-];
+import { INTENT_OPTIONS } from '@/types';
 
 export default function SubmitPage() {
   const router = useRouter();
@@ -50,44 +47,34 @@ export default function SubmitPage() {
     setIsDragging(false);
   }, []);
 
-  const handleDrop = useCallback(
-    (e: React.DragEvent) => {
-      e.preventDefault();
-      setIsDragging(false);
-      const droppedFile = e.dataTransfer.files[0];
-      if (droppedFile) {
-        if (!droppedFile.name.endsWith('.zip')) {
-          setError('仅支持 .zip 文件');
-          return;
-        }
-        if (droppedFile.size > 50 * 1024 * 1024) {
-          setError('文件大小不能超过 50MB');
-          return;
-        }
-        setFile(droppedFile);
-        setError(null);
+  const acceptFile = useCallback(
+    (candidate: File | undefined) => {
+      if (!candidate) return;
+      const validationError = validateSubmissionFile(candidate);
+      if (validationError) {
+        setError(validationError);
+        return;
       }
+      setFile(candidate);
+      setError(null);
     },
     [setError, setFile],
   );
 
+  const handleDrop = useCallback(
+    (e: React.DragEvent) => {
+      e.preventDefault();
+      setIsDragging(false);
+      acceptFile(e.dataTransfer.files[0]);
+    },
+    [acceptFile],
+  );
+
   const handleFileSelect = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const selectedFile = e.target.files?.[0];
-      if (selectedFile) {
-        if (!selectedFile.name.endsWith('.zip')) {
-          setError('仅支持 .zip 文件');
-          return;
-        }
-        if (selectedFile.size > 50 * 1024 * 1024) {
-          setError('文件大小不能超过 50MB');
-          return;
-        }
-        setFile(selectedFile);
-        setError(null);
-      }
+      acceptFile(e.target.files?.[0]);
     },
-    [setError, setFile],
+    [acceptFile],
   );
 
   const handleSubmit = useCallback(
@@ -122,16 +109,10 @@ export default function SubmitPage() {
         }
         formData.append('file', file);
 
-        const response = await fetch('/api/submissions', {
+        const data = await fetchJson<{ id?: string }>(`/api/submissions`, {
           method: 'POST',
           body: formData,
         });
-
-        const data = (await response.json()) as { id?: string; error?: string };
-
-        if (!response.ok) {
-          throw new Error(data.error ?? '提交失败');
-        }
 
         router.push(`/success?id=${data.id}`);
       } catch (err) {
@@ -228,11 +209,12 @@ export default function SubmitPage() {
               ) : (
                 <button
                   type="button"
-                  className={`flex w-full cursor-pointer flex-col items-center gap-2 rounded-lg border-2 border-dashed p-8 transition-colors ${
+                  className={cn(
+                    'flex w-full cursor-pointer flex-col items-center gap-2 rounded-lg border-2 border-dashed p-8 transition-colors',
                     isDragging
                       ? 'border-primary bg-primary/5'
-                      : 'border-muted-foreground/25 hover:border-primary/50'
-                  }`}
+                      : 'border-muted-foreground/25 hover:border-primary/50',
+                  )}
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
                   onDrop={handleDrop}

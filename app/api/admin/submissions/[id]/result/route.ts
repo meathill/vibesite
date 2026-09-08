@@ -1,11 +1,12 @@
-import { type NextRequest, NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 import { isAdmin } from '@/lib/admin';
+import { apiError, apiOk } from '@/lib/api-response';
 import { getEnv } from '@/lib/cloudflare';
 import { SubmissionNotFoundError, updateSubmissionResult } from '@/lib/submissions';
-import type { SubmissionStatus } from '@/types';
+import { SUBMISSION_STATUSES } from '@/types';
 
 interface ResultBody {
-  status: SubmissionStatus;
+  status: (typeof SUBMISSION_STATUSES)[number];
   temporary_url?: string;
   permanent_url?: string;
   error_message?: string;
@@ -14,7 +15,7 @@ interface ResultBody {
 
 export async function POST(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   if (!(await isAdmin())) {
-    return NextResponse.json({ error: '未授权' }, { status: 401 });
+    return apiError('未授权', 401, 'UNAUTHORIZED');
   }
 
   try {
@@ -23,23 +24,16 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
     const body = (await request.json()) as ResultBody;
 
     if (!body.status) {
-      return NextResponse.json({ error: '请提供状态' }, { status: 400 });
+      return apiError('请提供状态', 400, 'MISSING_STATUS');
     }
 
-    const validStatuses: SubmissionStatus[] = [
-      'pending',
-      'processing',
-      'deployed',
-      'failed',
-      'expired',
-    ];
-    if (!validStatuses.includes(body.status)) {
-      return NextResponse.json({ error: '无效的状态值' }, { status: 400 });
+    if (!(SUBMISSION_STATUSES as readonly string[]).includes(body.status)) {
+      return apiError('无效的状态值', 400, 'INVALID_STATUS');
     }
 
     const submission = await updateSubmissionResult(env, id, body);
 
-    return NextResponse.json({
+    return apiOk({
       id: submission.id,
       status: submission.status,
       temporary_url: submission.temporary_url,
@@ -47,10 +41,10 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
     });
   } catch (error) {
     if (error instanceof SubmissionNotFoundError) {
-      return NextResponse.json({ error: error.message }, { status: 404 });
+      return apiError(error.message, 404, 'NOT_FOUND');
     }
 
     console.error('更新提交结果失败:', error);
-    return NextResponse.json({ error: '服务器内部错误' }, { status: 500 });
+    return apiError('服务器内部错误', 500, 'INTERNAL_ERROR');
   }
 }

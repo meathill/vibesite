@@ -1,6 +1,5 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -23,120 +22,43 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Textarea } from '@/components/ui/textarea';
-import type { Submission, SubmissionStatus } from '@/types';
-
-const STATUS_LABELS: Record<SubmissionStatus, string> = {
-  pending: '待处理',
-  processing: '部署中',
-  deployed: '已上线',
-  failed: '部署失败',
-  expired: '已过期',
-};
-
-const STATUS_COLORS: Record<SubmissionStatus, string> = {
-  pending: 'bg-warning text-warning-foreground',
-  processing: 'bg-info text-info-foreground',
-  deployed: 'bg-success text-success-foreground',
-  failed: 'bg-destructive text-destructive-foreground',
-  expired: 'bg-muted text-muted-foreground',
-};
+import { useAdminSubmissions } from '@/hooks/use-admin-submissions';
+import { formatDateTime } from '@/lib/format';
+import { STATUS_COLORS, STATUS_LABELS } from '@/lib/status-labels';
+import type { SubmissionStatus } from '@/types';
 
 export default function AdminPageContent() {
-  const [submissions, setSubmissions] = useState<Submission[]>([]);
-  const [total, setTotal] = useState(0);
-  const [page, setPage] = useState(1);
-  const [statusFilter, setStatusFilter] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
-  const [selectedSubmission, setSelectedSubmission] = useState<Submission | null>(null);
-
-  const [resultStatus, setResultStatus] = useState<SubmissionStatus>('deployed');
-  const [temporaryUrl, setTemporaryUrl] = useState('');
-  const [permanentUrl, setPermanentUrl] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [adminNote, setAdminNote] = useState('');
-  const [isUpdating, setIsUpdating] = useState(false);
-
-  const fetchSubmissions = useCallback(async () => {
-    setIsLoading(true);
-    try {
-      const params = new URLSearchParams({
-        page: String(page),
-        limit: '20',
-      });
-      if (statusFilter) {
-        params.set('status', statusFilter);
-      }
-
-      const response = await fetch(`/api/admin/submissions?${params}`);
-      if (!response.ok) throw new Error('获取失败');
-
-      const data = (await response.json()) as {
-        submissions: Submission[];
-        total: number;
-      };
-      setSubmissions(data.submissions);
-      setTotal(data.total);
-    } catch {
-      // 错误处理
-    } finally {
-      setIsLoading(false);
-    }
-  }, [page, statusFilter]);
-
-  useEffect(() => {
-    fetchSubmissions();
-  }, [fetchSubmissions]);
-
-  const handleSelectSubmission = useCallback((submission: Submission) => {
-    setSelectedSubmission(submission);
-    setResultStatus(submission.status);
-    setTemporaryUrl(submission.temporary_url ?? '');
-    setPermanentUrl(submission.permanent_url ?? '');
-    setErrorMessage(submission.error_message ?? '');
-    setAdminNote(submission.admin_note ?? '');
-  }, []);
-
-  const handleUpdateResult = useCallback(async () => {
-    if (!selectedSubmission) return;
-
-    setIsUpdating(true);
-    try {
-      const response = await fetch(`/api/admin/submissions/${selectedSubmission.id}/result`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          status: resultStatus,
-          temporary_url: temporaryUrl || undefined,
-          permanent_url: permanentUrl || undefined,
-          error_message: errorMessage || undefined,
-          admin_note: adminNote || undefined,
-        }),
-      });
-
-      if (!response.ok) throw new Error('更新失败');
-
-      setSelectedSubmission(null);
-      fetchSubmissions();
-    } catch {
-      // 错误处理
-    } finally {
-      setIsUpdating(false);
-    }
-  }, [
+  const {
+    submissions,
+    total,
+    page,
+    setPage,
+    statusFilter,
+    setStatusFilter,
+    isLoading,
+    listError,
     selectedSubmission,
+    selectSubmission,
+    clearSelection,
     resultStatus,
+    setResultStatus,
     temporaryUrl,
+    setTemporaryUrl,
     permanentUrl,
+    setPermanentUrl,
     errorMessage,
+    setErrorMessage,
     adminNote,
-    fetchSubmissions,
-  ]);
+    setAdminNote,
+    isUpdating,
+    updateError,
+    updateResult,
+  } = useAdminSubmissions();
 
   const totalPages = Math.ceil(total / 20);
 
   return (
     <div className="flex flex-col gap-6">
-      {/* 筛选 */}
       <div className="flex items-center gap-4">
         <Select value={statusFilter} onValueChange={(v) => setStatusFilter(v ?? '')}>
           <SelectTrigger className="w-40">
@@ -154,7 +76,12 @@ export default function AdminPageContent() {
         <span className="text-sm text-muted-foreground">共 {total} 条记录</span>
       </div>
 
-      {/* 列表 */}
+      {listError && (
+        <div className="rounded-md bg-destructive/10 px-4 py-3 text-sm text-destructive">
+          {listError}
+        </div>
+      )}
+
       {isLoading ? (
         <div className="flex justify-center py-12">
           <Spinner className="size-8" />
@@ -191,14 +118,10 @@ export default function AdminPageContent() {
                       </Badge>
                     </TableCell>
                     <TableCell className="text-sm text-muted-foreground">
-                      {new Date(item.created_at).toLocaleString('zh-CN')}
+                      {formatDateTime(item.created_at)}
                     </TableCell>
                     <TableCell>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => handleSelectSubmission(item)}
-                      >
+                      <Button variant="ghost" size="sm" onClick={() => selectSubmission(item)}>
                         查看
                       </Button>
                     </TableCell>
@@ -210,7 +133,6 @@ export default function AdminPageContent() {
         </div>
       )}
 
-      {/* 分页 */}
       {totalPages > 1 && (
         <div className="flex items-center justify-center gap-2">
           <Button
@@ -235,11 +157,10 @@ export default function AdminPageContent() {
         </div>
       )}
 
-      {/* 详情弹窗 */}
       <Dialog
         open={!!selectedSubmission}
         onOpenChange={(open) => {
-          if (!open) setSelectedSubmission(null);
+          if (!open) clearSelection();
         }}
       >
         <DialogContent className="max-w-lg">
@@ -263,9 +184,7 @@ export default function AdminPageContent() {
                 </div>
                 <div>
                   <p className="text-muted-foreground">创建时间</p>
-                  <p className="font-medium">
-                    {new Date(selectedSubmission.created_at).toLocaleString('zh-CN')}
-                  </p>
+                  <p className="font-medium">{formatDateTime(selectedSubmission.created_at)}</p>
                 </div>
               </div>
 
@@ -342,7 +261,13 @@ export default function AdminPageContent() {
                     />
                   </div>
 
-                  <Button onClick={handleUpdateResult} disabled={isUpdating}>
+                  {updateError && (
+                    <div className="rounded-md bg-destructive/10 px-4 py-3 text-sm text-destructive">
+                      {updateError}
+                    </div>
+                  )}
+
+                  <Button onClick={updateResult} disabled={isUpdating}>
                     {isUpdating ? '更新中...' : '更新'}
                   </Button>
                 </div>

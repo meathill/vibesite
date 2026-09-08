@@ -46,10 +46,4 @@ export interface SubmissionResult {
   admin_note?: string;
 }
 
-export interface AdminSubmissionUpdate {
-  status: SubmissionStatus;
-  temporary_url?: string;
-  permanent_url?: string;
-  error_message?: string;
-  admin_note?: string;
-}
+export type AdminSubmissionUpdate = SubmissionResult;

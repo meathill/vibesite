@@ -14,31 +14,22 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Spinner } from '@/components/ui/spinner';
-import type { SubmissionStatus } from '@/types';
+import { fetchJson } from '@/lib/fetcher';
+import { STATUS_CONFIG } from '@/lib/status-labels';
+import { cn } from '@/lib/utils';
+import type { Submission } from '@/types';
 
-interface SubmissionStatusData {
-  id: string;
-  project_name: string;
-  status: SubmissionStatus;
-  temporary_url: string | null;
-  permanent_url: string | null;
-  error_message: string | null;
-  created_at: string;
-  updated_at: string;
-}
-
-const STATUS_CONFIG: Record<SubmissionStatus, { label: string; color: string; progress: number }> =
-  {
-    pending: { label: '待处理', color: 'bg-warning text-warning-foreground', progress: 10 },
-    processing: { label: '部署中', color: 'bg-info text-info-foreground', progress: 50 },
-    deployed: { label: '已上线', color: 'bg-success text-success-foreground', progress: 100 },
-    failed: {
-      label: '部署失败',
-      color: 'bg-destructive text-destructive-foreground',
-      progress: 100,
-    },
-    expired: { label: '已过期', color: 'bg-muted text-muted-foreground', progress: 100 },
-  };
+type SubmissionStatusData = Pick<
+  Submission,
+  | 'id'
+  | 'project_name'
+  | 'status'
+  | 'temporary_url'
+  | 'permanent_url'
+  | 'error_message'
+  | 'created_at'
+  | 'updated_at'
+>;
 
 export default function StatusPage() {
   const params = useParams();
@@ -50,12 +41,7 @@ export default function StatusPage() {
 
   const fetchStatus = useCallback(async () => {
     try {
-      const response = await fetch(`/api/submissions?id=${id}`);
-      if (!response.ok) {
-        const body = (await response.json()) as { error?: string };
-        throw new Error(body.error ?? '查询失败');
-      }
-      const result = (await response.json()) as SubmissionStatusData;
+      const result = await fetchJson<SubmissionStatusData>(`/api/submissions?id=${id}`);
       setData(result);
       setError(null);
 
@@ -147,13 +133,14 @@ export default function StatusPage() {
       <Card className="w-full max-w-lg">
         <CardHeader className="text-center">
           <StatusIcon
-            className={`mx-auto size-12 ${
+            className={cn(
+              'mx-auto size-12',
               data.status === 'deployed'
                 ? 'text-success'
                 : data.status === 'failed'
                   ? 'text-destructive'
-                  : 'text-primary'
-            }`}
+                  : 'text-primary',
+            )}
           />
           <CardTitle className="text-2xl">部署进度</CardTitle>
         </CardHeader>

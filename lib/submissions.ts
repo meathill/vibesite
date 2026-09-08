@@ -1,9 +1,8 @@
 import { createSubmission, getSubmission, updateSubmission } from '@/lib/db';
 import { generateR2Key, uploadToR2 } from '@/lib/r2';
 import { sendNewSubmissionNotification, sendStatusUpdateNotification } from '@/lib/telegram';
+import { isFileTooLarge, isZipFile } from '@/lib/validation';
 import type { Submission, SubmissionStatus } from '@/types';
-
-const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
 
 interface CloudflareBindings {
   DB: D1Database;
@@ -25,12 +24,12 @@ export async function createNewSubmission(
   input: CreateNewSubmissionInput,
 ): Promise<Submission> {
   // 校验文件大小
-  if (input.file.size > MAX_FILE_SIZE) {
+  if (isFileTooLarge(input.file.size)) {
     throw new FileTooLargeError();
   }
 
   // 校验文件类型
-  if (!input.file.name.endsWith('.zip')) {
+  if (!isZipFile(input.file.name)) {
     throw new InvalidFileTypeError();
   }
 

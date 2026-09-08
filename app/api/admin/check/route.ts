@@ -1,6 +1,6 @@
 import { getCloudflareContext } from '@opennextjs/cloudflare';
 import { headers } from 'next/headers';
-import { NextResponse } from 'next/server';
+import { apiError, apiOk } from '@/lib/api-response';
 import { getAuth } from '@/lib/auth';
 
 export async function GET() {
@@ -13,17 +13,17 @@ export async function GET() {
     });
 
     if (!session?.user?.email) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      return apiError('未授权', 401, 'UNAUTHORIZED');
     }
 
     const { env } = await getCloudflareContext({ async: true });
 
     if (session.user.email !== env.ADMIN_EMAIL) {
-      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+      return apiError('禁止访问', 403, 'FORBIDDEN');
     }
 
-    return NextResponse.json({ isAdmin: true });
+    return apiOk({ isAdmin: true });
   } catch {
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return apiError('服务器内部错误', 500, 'INTERNAL_ERROR');
   }
 }

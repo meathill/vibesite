@@ -1,5 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { sendNewSubmissionNotification, sendTelegramMessage } from '@/lib/telegram';
+import {
+  sendNewSubmissionNotification,
+  sendStatusUpdateNotification,
+  sendTelegramMessage,
+} from '@/lib/telegram';
 import type { Submission } from '@/types';
 
 const mockSubmission: Submission = {
@@ -72,6 +76,26 @@ describe('telegram', () => {
       expect(body.text).toContain('test@example.com');
       expect(body.text).toContain('仅预览');
       expect(body.text).toContain('abc123');
+    });
+  });
+
+  describe('sendStatusUpdateNotification', () => {
+    it('包含状态标签与预览链接', async () => {
+      const mockFetch = vi.fn().mockResolvedValue({
+        ok: true,
+        json: () => Promise.resolve({ ok: true }),
+      });
+      vi.stubGlobal('fetch', mockFetch);
+
+      await sendStatusUpdateNotification('test-token', '12345', {
+        ...mockSubmission,
+        status: 'deployed',
+        temporary_url: 'https://example.pages.dev',
+      });
+
+      const body = JSON.parse(mockFetch.mock.calls[0][1].body);
+      expect(body.text).toContain('已上线');
+      expect(body.text).toContain('https://example.pages.dev');
     });
   });
 });

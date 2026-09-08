@@ -1105,3 +1105,13 @@ MVP 阶段后台可以非常简单。
 > 让不会部署的普通用户，把 AI 生成的网站文件提交给我；我用脚本帮他生成一个可以访问的预览链接，再验证他是否愿意为长期上线付费。
 
 这不是完整托管平台，而是一个轻量的上线服务入口。
+
+---
+
+## 23. 实现偏差备忘（2026-09 第一次维护时记录）
+
+- 本地脚本：`§9.5/§12` 的 `pnpm deploy <id> + ADMIN_TOKEN + Docker 构建`，实际为 `scripts/deploy.ts --id/--file/--r2-key/--api/--admin-pwd` + Better-Auth OTP。**Docker 内构建（§13.2）未实现**，为已知安全缺口，见 `DEPLOYMENT.md`。
+- 数据库：`§10` 单表假设，实际 3 个迁移（含 Better-Auth 表对齐），见 `migrations/`。
+- 后台：`§16` “后置”的登录与 admin 列表已实现（`app/login + app/admin + middleware`）。
+- 缓存：`§8` 暂不用的 Queues/Workflows，实际 `open-next.config.ts` 已配 R2/D1/queue 绑定但拦截关闭（issue #4），见 `DEV_NOTE.md`。
+- R2：`§9.2` 双桶假设，实际单桶 `vibesite`。

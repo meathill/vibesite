@@ -16,17 +16,17 @@ type Breakpoint = keyof typeof BREAKPOINTS;
 
 type BreakpointQuery = Breakpoint | `max-${Breakpoint}` | `${Breakpoint}:max-${Breakpoint}`;
 
-function resolveMin(value: Breakpoint | number): string {
+export function resolveMin(value: Breakpoint | number): string {
   const px = typeof value === 'number' ? value : BREAKPOINTS[value];
   return `(min-width: ${px}px)`;
 }
 
-function resolveMax(value: Breakpoint | number): string {
+export function resolveMax(value: Breakpoint | number): string {
   const px = typeof value === 'number' ? value : BREAKPOINTS[value];
   return `(max-width: ${px - 1}px)`;
 }
 
-function parseQuery(query: BreakpointQuery | MediaQueryInput | (string & {})): string {
+export function parseQuery(query: BreakpointQuery | MediaQueryInput | (string & {})): string {
   if (typeof query !== 'string') {
     const parts: string[] = [];
     if (query.min != null) parts.push(resolveMin(query.min));
